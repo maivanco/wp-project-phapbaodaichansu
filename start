@@ -1,0 +1,43 @@
+set -e
+
+ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+
+# Check if .env exists
+if [ ! -f "$ROOT_DIR/.env" ]; then
+    echo "📋 Creating .env file from template..."
+    cp "$ROOT_DIR/env.default" "$ROOT_DIR/.env"
+    echo "✅ .env file created. Please update it with your database credentials if needed."
+else
+    echo "✅ .env file already exists"
+fi
+
+docker compose up -d "$@"
+
+# Check if npm is installed
+if ! command -v npm &> /dev/null; then
+    echo "❌ Error: npm is not installed."
+    echo "   Please install Node.js (which includes npm) from https://nodejs.org/ and try again."
+    exit 1
+fi
+
+# Check if node_modules exists, install if not
+if [ ! -d "$ROOT_DIR/node_modules" ]; then
+    echo "📦 node_modules not found. Running npm install..."
+    npm install
+fi
+
+# Start Vite dev server in background
+echo "🔧 Starting Vite dev server..."
+npm run dev &
+VITE_PID=$!
+
+echo ""
+echo "🚀 Services are running:"
+echo "   WordPress   → http://localhost:8000"
+echo "   phpMyAdmin  → http://localhost:8081"
+echo "   Vite HMR    → http://localhost:5173"
+echo ""
+
+# Stop Vite when script is interrupted (Ctrl+C)
+trap "kill $VITE_PID 2>/dev/null" EXIT
+wait $VITE_PID

@@ -1,0 +1,2 @@
+# This directory will contain your WordPress themes and plugins
+# It is mounted to /var/www/html/wp-content in the container

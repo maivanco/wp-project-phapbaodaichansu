@@ -1,0 +1,40 @@
+{
+	frankenphp
+}
+
+# The SERVER_NAME environment variable is used to configure the domain name
+{$SERVER_NAME:localhost} {
+	# Root directory
+	root * /app
+
+	# Increase upload size
+	request_body {
+		max_size 100MB
+	}
+
+	# Deny access to sensitive files
+	@forbidden {
+		path /wp-config.php
+		path /.ht*
+	}
+	error @forbidden 403
+
+	# Vite HMR proxy — forward dev server routes (JS modules, WebSocket, ping)
+	@vite {
+		path /@vite/*
+		path /vite/*
+		path /node_modules/*
+		path /__vite_ping
+	}
+	reverse_proxy @vite host.docker.internal:5173
+
+	# Static assets caching
+	@static {
+		file
+		path *.jpg *.jpeg *.png *.gif *.ico *.css *.js *.svg *.woff *.woff2 *.ttf *.eot
+	}
+	header @static Cache-Control "public, max-age=31536000, immutable"
+
+	# PHP handler
+	php_server
+}

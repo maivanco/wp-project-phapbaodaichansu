@@ -1,0 +1,113 @@
+@theme {
+  --color-text-body: #303549;
+  --color-main: #CDFAB3;
+  --color-dark-blue: #303549;
+  --color-light-peach: #FFF4EB;
+  --color-blue: #A6BDF7;
+  --color-teal: #074C51;
+
+  --container-width: 1286px;
+}
+@utility color-text-body {
+  color: var(--color-text-body);
+}
+
+@utility color-main {
+  color: var(--color-main);
+}
+@utility color-blue {
+  color: var(--color-blue);
+}
+@utility color-teal {
+  color: var(--color-teal);
+}
+
+@utility bg-main {
+  background-color: var(--color-main);
+}
+
+@source inline("h-[{10,20,30,40,50,60,70,80,90,100}px]");
+
+@source inline("mt-[{10,20,30,40,50,60,70,80,90,100}px]");
+@source inline("mb-[{10,20,30,40,50,60,70,80,90,100}px]");
+
+@keyframes marquee-content {
+  from {
+    transform: translateX( 100% );
+  }
+  to {
+    transform: translateX( -100% );
+  }
+}
+
+.marquee-text {
+  animation-duration: 10s ;
+  animation-iteration-count: infinite ;
+  animation-name: marquee-content ;
+  animation-timing-function: linear ;
+}
+
+body {
+  color: var(--color-text-body);
+  background-color: var(--color-light-peach);
+  font-size: 16px;
+  line-height:1.5;
+  font-family: 'oakes-grotesk', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-weight: 400;
+}
+
+.container{
+  max-width: var(--container-width);
+  padding-left: 15px;
+  padding-right: 15px;
+  margin-left:auto;
+  margin-right:auto;
+}
+
+#menu-footer-primary{
+  font-size:48px;
+  line-height:54px;
+  display:flex;
+  flex-direction:column;
+  gap:30px;
+  a:hover{
+    color:var(--color-blue);
+  }
+  .sub-menu{
+    font-size:14px;
+  }
+  .inline-items{
+    display:flex;
+    gap:32px;
+  }
+}
+#menu-footer-secondary{
+  margin-top:39px;
+  display:flex;
+  flex-direction:column;
+  gap:36px;
+  font-size:18px;
+  a:hover{
+    color:var(--color-blue);
+  }
+}
+
+.slick-dots{
+  display:flex;
+  justify-content: flex-end;
+  gap:12px;
+  width:100%;
+  text-align:right;
+  padding:40px 92px 0 0;
+  li{
+    button{
+      font-size:0;
+    }
+    width:2px;
+    height:21px;
+    border-left:2px solid var(--color-text-body);
+    &.slick-active{
+      border-color: var(--color-blue);
+    }
+  }
+}

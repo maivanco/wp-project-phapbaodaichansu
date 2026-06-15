@@ -1,0 +1,29 @@
+@font-face {
+    font-family: 'oakes-grotesk';
+    src: url('../fonts/oakes-grotesk-light.ttf') format('truetype'),
+        url('../fonts/oakes-grotesk-light.woff') format('woff'),
+        url('../fonts/oakes-grotesk-light.woff2') format('woff2');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'oakes-grotesk';
+    src: url('../fonts/oakes-grotesk-regular.ttf') format('truetype'),
+        url('../fonts/oakes-grotesk-regular.woff') format('woff'),
+        url('../fonts/oakes-grotesk-regular.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'oakes-grotesk';
+    src: url('../fonts/oakes-grotesk-semi-bold.ttf') format('truetype'),
+        url('../fonts/oakes-grotesk-semi-bold.woff') format('woff'),
+        url('../fonts/oakes-grotesk-semi-bold.woff2') format('woff2');
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+}

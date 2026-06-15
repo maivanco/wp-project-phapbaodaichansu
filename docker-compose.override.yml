@@ -1,0 +1,17 @@
+services:
+
+  phpmyadmin:
+    image: phpmyadmin:latest
+    container_name: local-phpmyadmin
+    restart: unless-stopped
+    depends_on:
+      - db
+    ports:
+      - 8081:80
+    env_file:
+      - .env
+    environment:
+      PMA_HOST: ${WORDPRESS_DB_HOST}
+      PMA_USER: ${WORDPRESS_DB_USER}
+      PMA_PASSWORD: ${WORDPRESS_DB_PASSWORD}
+      UPLOAD_LIMIT: 64M

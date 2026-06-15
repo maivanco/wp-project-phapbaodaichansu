@@ -1,0 +1,49 @@
+services:
+
+  db:
+    image: mysql:8.0
+    container_name: local-db
+    restart: unless-stopped
+    env_file:
+      - .env
+    environment:
+      MYSQL_DATABASE: ${WORDPRESS_DB_NAME}
+      MYSQL_USER: ${WORDPRESS_DB_USER}
+      MYSQL_PASSWORD: ${WORDPRESS_DB_PASSWORD}
+      MYSQL_ROOT_PASSWORD: ${WORDPRESS_DB_ROOT_PASSWORD}
+    volumes:
+      - db_data:/var/lib/mysql
+
+  wordpress:
+    container_name: local-wordpress
+    build: .
+    depends_on:
+      - db
+    restart: always
+    ports:
+      - 8000:80
+    env_file:
+      - .env
+    environment:
+      SERVER_NAME: :80
+      SERVER_ROOT: /app/public/
+      WORDPRESS_DB_HOST: ${WORDPRESS_DB_HOST}
+      WORDPRESS_DB_USER: ${WORDPRESS_DB_USER}
+      WORDPRESS_DB_PASSWORD: ${WORDPRESS_DB_PASSWORD}
+      WORDPRESS_DB_NAME: ${WORDPRESS_DB_NAME}
+      CADDY_SERVER_EXTRA_DIRECTIVES: |
+        @wpadmin path /wp-admin
+        rewrite @wpadmin /wp-admin/index.php
+        @wpadminSlash path /wp-admin/
+        rewrite @wpadminSlash /wp-admin/index.php
+
+    volumes:
+      - wp_uploads:/app/public/wp-content/uploads
+      - ./src-configs/themes/default-theme:/app/public/wp-content/themes/default-theme
+      - ./src-configs/plugins:/app/public/wp-content/plugins
+      - ./src-configs/configs/wp-config.php:/app/public/wp-config.php
+
+
+volumes:
+  db_data:
+  wp_uploads:
