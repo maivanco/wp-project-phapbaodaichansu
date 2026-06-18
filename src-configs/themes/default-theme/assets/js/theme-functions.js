@@ -12,13 +12,13 @@ jQuery(document).ready(function ($) {
     nextArrow: '<button type="button" class="slick-next"><i class="fa-solid fa-chevron-right"></i></button>',
   });
 
-  $('#featured-book-slider').slick({
+  $('#featured-book-slider-off').slick({
     slidesToShow: 1,
     slidesToScroll: 1,
-    autoplay: false,
-    autoplaySpeed: 2000,
+    autoplay: true,
+    autoplaySpeed: 5000,
     arrows:false,
-    dots:false,
+    dots:true,
     fade: true,
   });
 

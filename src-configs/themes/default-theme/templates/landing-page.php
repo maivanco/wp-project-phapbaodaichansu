@@ -154,20 +154,22 @@ get_header(); ?>
     </div>
 </section>
 
-<section id="featured-book" class="bg-cream relative">
-    <div id="featured-book-slider" class="">
+<section id="featured-book" class="bg-cream relative flex">
+    <div id="featured-book-slider" class="
+        before:absolute before:z-10 before:inset-y-0 before:right-0 before:w-32 before:bg-gradient-to-r before:from-transparent before:to-[#0d0a08]
+        after:absolute after:z-10 after:inset-x-0 after:bottom-0 after:h-24 after:bg-gradient-to-t after:from-[#0d0a08]/60 after:to-transparent">
         <?php for($i = 1; $i <= 5; $i++): ?>
-        <div class="slide slick-slide">
+        <div class="slide">
             <?php 
             render_img_by_src(IMG_URL . "slide-ngoc-le-bi-tam-{$i}.jpg", [
                 'alt' => "Ngọc Lệ Bi Tâm slide {$i}",
-                // 'class' => 'object-contain object-left w-full h-screen',
+                'class' => 'max-h-screen w-full',
             ]);
             ?>
         </div>
         <?php endfor; ?>
     </div>
-    <div class="wysiwyg bg-[rgba(255,255,255,0.7)] rounded-lg p-8 max-w-[400px] max-h-[200px] overflow-hidden absolute bottom-[60px] left-[30px]">
+    <div class="wysiwyg bg-[#0d0a08] text-white p-8 h-screen w-[500px] px-14 absolute top-0 right-0">
         <div class="scrolling">
             <p>Có những cuộc hành trình về nguồn cội không cần bước chân, chính từ ngay mỗi trang sách, mỗi câu chuyện, mỗi lời khai thị, thi kệ và mỗi hình ảnh mà tâm hồn chúng ta được dẫn lối bước vào cõi phiêu nhiên tịch tĩnh - an lạc đời đời... Chúng tôi muốn đề cập đến tác phẩm Ngọc Lệ Bi Tâm - Quán Thế Âm - một Pháp bảo trân quý mà Tôn Sư để lại cho hàng hậu học. Quyển sách này như Phật Đảnh Liên Hoa, soi sáng và phá tan xích xiềng sanh tử u minh, nâng bước chân ta vượt ngang Tam Giới, đốn chứng Niết Bàn Diệu Tâm, liễu ngộ Thật Tướng Vô Tướng, chấn nhiếp Tứ Ma, xuất ngục Ấm Giới, nhanh chóng thành tựu cứu cánh Phạm Hạnh, viên mãn Đại Bồ Đề.
     Ngọc Lệ Bi Tâm - Quán Thế Âm tựa như bàn tay ấm áp của Mẹ hiền Quán Thế Âm, lệ Ngài rơi vào biển luân hồi hóa thành Huyết Ngọc Đại Bi: Ôm ấp và xoa dịu những khổ đau, vỗ về những trái tim mang nặng ưu tư, dìu dắt từng bước chân đang mỏi mệt trên hành trình gian nan tìm về bến bờ an yên tĩnh lặng.</p>
