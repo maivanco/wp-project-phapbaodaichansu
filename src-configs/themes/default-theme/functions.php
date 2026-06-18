@@ -86,7 +86,7 @@ add_action('after_setup_theme', 'wptheme_setup');
 
 function wptheme_scripts()
 {
-	$themeVer = home_url() == 'http://localhost:8000' ? time() : '1.0';
+	$themeVer = getenv('ENVIRONMENT') == 'local' ? time() : '1.0';
 	wp_enqueue_style('fontawesome', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css', array(), '6.2.1');
 
 	wp_enqueue_style('main-font', CSS_URL . 'font.css', array(), $themeVer);

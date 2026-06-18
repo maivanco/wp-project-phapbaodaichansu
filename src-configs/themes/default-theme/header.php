@@ -3,9 +3,12 @@
 
 <head>
 
-    <meta charset="<?php bloginfo('charset'); ?>" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <?php wp_head(); ?>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Google+Sans+Flex:opsz,wght@6..144,1..1000&family=Imperial+Script&display=swap" rel="stylesheet">
+<meta charset="<?php bloginfo('charset'); ?>" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<?php wp_head(); ?>
 
 </head>
 
@@ -13,27 +16,23 @@
     <?php wp_body_open(); ?>
     <div id="page" class="site">
 
-       <header class="absolute z-10 top-[100px] left-[50%] translate-x-[-50%] w-full max-w-[834px]">
-            <nav id="main-mav" class="bg-[#CDFAB3] mx-auto rounded-[32px] p-[8px_14px_8px_28px] flex justify-between items-center gap-[31px]">
-                <a href="#" class="flex-initial">
-                    <?php render_img_by_src(IMG_URL . 'logo-homestayplus.png') ?>
-                </a>
-                <ul id="primary-menu" class="flex-1 flex justify-between items-center">
-                    <li><a href="#">About us </a></li>
-                    <li><a href="#">Student </i></a></li>
-                    <li><a href="#">Hosts </i></a></li>
-                    <li><a href="#">Partners</a></li>
-                </ul>
-                <div class="btn-search"><i class="fa-solid fa-magnifying-glass"></i></div>
-                <a class="bg-[#303549] text-main py-[15px] px-[12px] block rounded-[30px] min-w-[116px] text-center" href="#">
-                    Contact 
-                </a>
-                <a href="#" class="flex items-center justify-between rounded-[30px] min-w-[116px] py-[15px] px-[12px] border border-[#303549] min-w-[88px]">
-                    Login 
-                    <i class="fa-solid fa-chevron-down"></i>
-                </a>
 
-            </nav>
+        <header class="top-0 left-0 right-0 z-50 transition-all duration-300 bg-white/95">
+          <nav class="container">
+            <div class="flex items-center justify-between h-20 max-mobile:h-[60px]">
+              <a class="block text-[48px] max-tablet:text-[36px] max-mobile:text-[32px] font-handwriting text-gradient pr-3" href="<?php echo home_url();?>" data-discover="true">
+                <!-- <img src="<?php echo IMG_URL . '/logo-phap-bao-dai-chan-su.jpg'?>" alt="logo Pháp Bảo Đại Chân Sư" width="1456" height="720"> -->
+                Pháp Bảo Đại Chân Sư
+              </a>
+              <div class="hidden md:flex items-center gap-10">
+                <a class="text-sm font-medium text-warmGray-600 hover:text-charcoal transition-colors duration-200 uppercase tracking-wider" href="/" data-discover="true">Trang chủ</a>
+                <a class="text-sm font-medium text-warmGray-600 hover:text-charcoal transition-colors duration-200 uppercase tracking-wider" href="/#about" data-discover="true">Giới thiệu</a>
+                <a class="text-sm font-medium text-warmGray-600 hover:text-charcoal transition-colors duration-200 uppercase tracking-wider" href="/#books" data-discover="true">Đặt sách</a>
+              </div>
+              <button class="md:hidden p-2 text-charcoal" aria-label="Toggle menu">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-menu w-6 h-6"><line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="6" y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line></svg>
+              </button>
+            </div>
+          </nav>
         </header>
         <main id="page-body">
-

@@ -2,7 +2,7 @@ import { defineConfig } from 'vite'
 import tailwindcss from '@tailwindcss/vite'
 
 export default defineConfig(({ command }) => ({
-  root: 'vite', // Change this to your desired directory
+  root: '.', // Change this to your desired directory
   base: command === 'build' ? '' : '/',
   plugins: [
     tailwindcss(),

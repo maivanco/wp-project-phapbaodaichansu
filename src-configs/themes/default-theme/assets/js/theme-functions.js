@@ -1,12 +1,25 @@
 jQuery(document).ready(function ($) {
 
-  $('.testimonial-items').slick({
+  $('#hero-carousel').slick({
     slidesToShow: 1,
     slidesToScroll: 1,
-    autoplay: true,
+    autoplay: false,
     autoplaySpeed: 2000,
-    variableWidth: true,
+    arrows:true,
+    dots:false,
+    fade: true,
+    prevArrow: '<button type="button" class="slick-prev"><i class="fa-solid fa-chevron-left"></i></button>',
+    nextArrow: '<button type="button" class="slick-next"><i class="fa-solid fa-chevron-right"></i></button>',
+  });
+
+  $('#featured-book-slider').slick({
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    autoplay: false,
+    autoplaySpeed: 2000,
     arrows:false,
-    dots:true
-  })
+    dots:false,
+    fade: true,
+  });
+
 })
