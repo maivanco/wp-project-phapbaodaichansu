@@ -12,13 +12,20 @@ jQuery(document).ready(function ($) {
         nextArrow: '<button type="button" class="slick-next"><i class="fa-solid fa-chevron-right"></i></button>',
     });
 
-    $('#featured-book-slider-off').slick({
+    $('#featured-book-slider').slick({
+        speed: 10000,
+        autoplay: true,
+        autoplaySpeed: 200,
+        cssEase: 'linear',
         slidesToShow: 1,
-        // centerMode: true,
+        slidesToScroll: 1,
         variableWidth: true,
-        arrows:true,
-        dots:true,
-        // fade: true,
+        arrows: false,
+        dots: true
+    });
+
+    $('#toggle-featured-book-content').click(function(){
+        $('#featured-book .wysiwyg').toggleClass('left-[100%] left-auto');
     });
 
     function animateFeaturedBookSection() {
@@ -26,8 +33,9 @@ jQuery(document).ready(function ($) {
         const sliderSelector = '#featured-book .h-scroll';
 
         let sliderOffsetX = 0;
-        let isSliderReachedToTheEnd = false;
         let horizontalSlidingMode = false;
+        let lastScrollTop = $(window).scrollTop();
+        let snapLock = false;
 
         const sliderWidth =
             $('#featured-book-slider .slide').outerWidth(true) *
@@ -45,8 +53,6 @@ jQuery(document).ready(function ($) {
         }
 
         function enableHorizontalSliding() {
-
-            console.log('enableHorizontalSliding');
             $('html, body').css({
                 overflow: 'hidden'
             });
@@ -56,23 +62,14 @@ jQuery(document).ready(function ($) {
                 wheelHandler,
                 { passive: false }
             );
+
+            horizontalSlidingMode = true;
         }
-
-
-        // function isSliderReachedToTheStart(deltaY){
-        //     return sliderOffsetX <= 0 && deltaY < 0;
-        // }
-
-        // function isSliderReachedToTheEnd(maxOffset, deltaY){
-        //     return sliderOffsetX >= maxOffset && deltaY > 0;
-        // }
 
         function disableHorizontalSliding() {
             if (!horizontalSlidingMode) {
                 return;
             }
-
-            horizontalSlidingMode = false;
 
             $('html, body').css({
                 overflow: ''
@@ -82,45 +79,97 @@ jQuery(document).ready(function ($) {
                 'wheel',
                 wheelHandler
             );
+
+            horizontalSlidingMode = false;
         }
 
         function wheelHandler(e) {
             const maxOffset = getMaxOffset();
 
-            // Already at the end -> restore normal scrolling
-            if (sliderOffsetX >= maxOffset && e.deltaY > 0) {
-                console.log('disableHorizontalSliding 01');
+            //
+            // User wants to continue scrolling down
+            //
+            if (
+                sliderOffsetX >= maxOffset &&
+                e.deltaY > 0
+            ) {
                 disableHorizontalSliding();
-                isSliderReachedToTheEnd = true;
+
+                // small push so native scrolling continues naturally
+                window.scrollBy(0, 1);
+
                 return;
             }
 
-            // Already at the beginning -> restore normal scrolling
-            if (sliderOffsetX <= 0 && e.deltaY < 0) {
-                console.log('disableHorizontalSliding 02');
+            //
+            // User wants to continue scrolling up
+            //
+            if (
+                sliderOffsetX <= 0 &&
+                e.deltaY < 0
+            ) {
                 disableHorizontalSliding();
+
+                window.scrollBy(0, -1);
+
                 return;
             }
 
             e.preventDefault();
 
-            isSliderReachedToTheEnd = false;
-
             sliderOffsetX += e.deltaY;
 
-            sliderOffsetX = Math.max(0, Math.min(sliderOffsetX, maxOffset));
+            sliderOffsetX = Math.max(
+                0,
+                Math.min(sliderOffsetX, maxOffset)
+            );
 
             $(sliderSelector).css({
                 transform: `translateX(${-sliderOffsetX}px)`
             });
         }
 
-        function isSectionInViewPort() {
+        function shouldTriggerSection(direction) {
             const scrollTop = $(window).scrollTop();
-            const sectionTop = $(sectionSelector).offset().top;
-            const heightOfHalfScreen = $(window).height() / 2;     
 
-            return scrollTop + heightOfHalfScreen >= sectionTop && scrollTop + heightOfHalfScreen <= sectionTop + heightOfHalfScreen;
+            const sectionTop = $(sectionSelector).offset().top;
+            const sectionHeight = $(sectionSelector).outerHeight();
+
+            // trigger at 50% section height
+            const triggerPoint =
+                sectionTop + (sectionHeight * 0.5);
+
+            const viewportBottom =
+                scrollTop + $(window).height();
+
+            if (direction === 'down') {
+                return viewportBottom >= triggerPoint;
+            }
+
+            if (direction === 'up') {
+                return scrollTop <= triggerPoint &&
+                    scrollTop >= sectionTop - $(window).height();
+            }
+
+            return false;
+        }
+
+        function snapToSectionAndEnable() {
+            if (horizontalSlidingMode || snapLock) {
+                return;
+            }
+
+            snapLock = true;
+
+            $('html, body').stop().animate(
+                {
+                    scrollTop: $(sectionSelector).offset().top
+                },
+                200,
+                function () {
+                    enableHorizontalSliding();
+                }
+            );
         }
 
         $(window).on('scroll.featuredBook', function () {
@@ -128,17 +177,32 @@ jQuery(document).ready(function ($) {
                 return;
             }
 
-            const scrollTop = $(window).scrollTop();
-            const sectionTop = $(sectionSelector).offset().top;
+            const currentScrollTop = $(window).scrollTop();
 
-            // Activate when section reaches top just once
-            if (isSectionInViewPort() && !horizontalSlidingMode && !isSliderReachedToTheEnd) {
-                horizontalSlidingMode = true;
-                enableHorizontalSliding();
-                $("html, body").animate({ 
-                    scrollTop: $(sectionSelector).offset().top 
-                }, 100);
-                
+            const direction =
+                currentScrollTop > lastScrollTop
+                    ? 'down'
+                    : 'up';
+
+            lastScrollTop = currentScrollTop;
+
+            if (shouldTriggerSection(direction)) {
+                snapToSectionAndEnable();
+            }
+
+            const sectionTop = $(sectionSelector).offset().top;
+            const sectionBottom =
+                sectionTop +
+                $(sectionSelector).outerHeight();
+
+            //
+            // reset lock after leaving section
+            //
+            if (
+                currentScrollTop < sectionTop - $(window).height() ||
+                currentScrollTop > sectionBottom
+            ) {
+                snapLock = false;
             }
         });
 
@@ -154,8 +218,7 @@ jQuery(document).ready(function ($) {
                 transform: `translateX(${-sliderOffsetX}px)`
             });
         });
-        
     }
-    animateFeaturedBookSection();
+    // animateFeaturedBookSection();
 
 })

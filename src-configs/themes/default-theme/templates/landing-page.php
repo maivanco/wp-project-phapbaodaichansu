@@ -154,33 +154,112 @@ get_header(); ?>
     </div>
 </section>
 
-<section id="featured-book" class="bg-cream relative overflow-x-auto">
-    <div id="featured-book-slider" class="overflow-x-hidden
-        before:absolute before:z-10 before:inset-y-0 before:right-0 before:w-32 before:bg-gradient-to-r before:from-transparent before:to-[#0d0a08]
+<section id="featured-book" class="bg-cream relative overflow-x-hidden">
+    <div id="featured-book-slider" class="
         after:absolute after:z-10 after:inset-x-0 after:bottom-0 after:h-24 after:bg-gradient-to-t after:from-[#0d0a08]/60 after:to-transparent">
-        <div class="h-scroll flex flex-nowrap">
-            <?php for($i = 1; $i <= 5; $i++): ?>
-            <div class="slide flex-none">
-                <?php 
-                render_img_by_src(IMG_URL . "slide-ngoc-le-bi-tam-{$i}.jpg", [
-                    'alt' => "Ngọc Lệ Bi Tâm slide {$i}",
-                    'class' => 'max-h-screen w-full',
-                ]);
-                ?>
-            </div>
-            <?php endfor; ?>
+        <?php for($i = 1; $i <= 5; $i++): ?>
+        <div class="slide flex-none">
+            <?php 
+            render_img_by_src(IMG_URL . "slide-ngoc-le-bi-tam-{$i}.jpg", [
+                'alt' => "Ngọc Lệ Bi Tâm slide {$i}",
+                'class' => 'max-h-screen w-full',
+            ]);
+            ?>
         </div>
+        <?php endfor; ?>
     </div>
-    <div class="wysiwyg bg-[#0d0a08] text-white p-8 h-screen w-[500px] px-14 absolute top-0 right-0 hidden">
-        <div class="scrolling">
-            <p>Có những cuộc hành trình về nguồn cội không cần bước chân, chính từ ngay mỗi trang sách, mỗi câu chuyện, mỗi lời khai thị, thi kệ và mỗi hình ảnh mà tâm hồn chúng ta được dẫn lối bước vào cõi phiêu nhiên tịch tĩnh - an lạc đời đời... Chúng tôi muốn đề cập đến tác phẩm Ngọc Lệ Bi Tâm - Quán Thế Âm - một Pháp bảo trân quý mà Tôn Sư để lại cho hàng hậu học. Quyển sách này như Phật Đảnh Liên Hoa, soi sáng và phá tan xích xiềng sanh tử u minh, nâng bước chân ta vượt ngang Tam Giới, đốn chứng Niết Bàn Diệu Tâm, liễu ngộ Thật Tướng Vô Tướng, chấn nhiếp Tứ Ma, xuất ngục Ấm Giới, nhanh chóng thành tựu cứu cánh Phạm Hạnh, viên mãn Đại Bồ Đề.
-    Ngọc Lệ Bi Tâm - Quán Thế Âm tựa như bàn tay ấm áp của Mẹ hiền Quán Thế Âm, lệ Ngài rơi vào biển luân hồi hóa thành Huyết Ngọc Đại Bi: Ôm ấp và xoa dịu những khổ đau, vỗ về những trái tim mang nặng ưu tư, dìu dắt từng bước chân đang mỏi mệt trên hành trình gian nan tìm về bến bờ an yên tĩnh lặng.</p>
-                <p>Với từng lời dạy vàng được tinh tuyển từ bộ sách Trang Nghiêm Tổng Trì Nhiếp Kinh Luận mà Thầy tôi Thích Long Viễn đã phải đổ không biết bao nhiêu mồ hôi và nước mắt, với những kinh nghiệm tu tập xương máu được lưu lại, cốt yếu cũng chỉ để thắp sáng con đường tu học cho hàng hậu học, đốt lên ngọn lửa Chánh Pháp và tâm nguyện được nhìn thấy sự mỉm cười nơi phương xa của Đức Thế Tôn, như Bồ Tát Quán Thế Âm luôn tôn thờ Đấng Đạo Sư của mình trên đảnh đầu Ngài vậy. 
-    Ngoài ra từng trang sách là hình ảnh Đức Quán Thế Âm Bồ Tát, dịu hiền và từ bi, với đôi bàn tay chăm chút yêu thương vô bờ bến, là tiếng vọng xa xăm của sự giác ngộ và lòng từ bi bao la, là hành trình đi tìm tiếng gọi, nơi chúng sinh đau khổ xoay quanh giữa vòng xoáy bất tận của sanh tử luân hồi; đúng như trong bài thi kệ Quán Thế Âm mà Tôn Sư đã rỏ máu từ trái tim lưu xuất về Đại Hạnh Đại Nguyện Đại Hùng Đại Lực Đại Từ Bi của Bồ Tát Quán Thế Âm, Ngài đã quán chiếu âm thanh thế gian, bi tâm chảy xuống lệ tràn biển đông, như trong nhiều Kinh điển Đại Thừa có nói: Bồ Tát khi nhìn thấy chúng sanh đau khổ như ngàn mũi kim đâm vào mắt, xuyên thủng con tim... thật đúng như Tôn Sư đã nhỏ huyết lệ từ tim thành thi kệ Quán Thế Âm:…
-    “Ta vẫn đợi con bước trở về
-    Con đừng hờ hững nhé con thơ !
-    Con đừng lấy móc câu tim nữa
-    Lòng ta tan nát, đau đau ghê !</p>
+    <div class="wysiwyg open bg-[rgba(13_10_8_/_100%)] w-1/2 max-w-[670px] px-6 absolute top-0 right-0 left-auto transition-left duration-500 ease-in-out
+    before:absolute before:z-10 before:inset-y-0 before:left-[-128px] before:w-32 before:bg-gradient-to-r before:from-transparent before:to-[#0d0a08]
+    ">
+        <button id="toggle-featured-book-content" type="button" class="absolute z-10 top-[50px] -left-[48px] cursor-pointer w-12 h-12 bg-[#e73f5c] text-white"><i class="fa-solid fa-chevron-right"></i></button>
+        <div class="wrapper h-screen overflow-y-auto p-[50px_20px] text-justify">
+            <div class="scrolling text-white/70 leading-[1.9] text-sm xl:text-[0.9rem] font-light">
+                <div class="flex items-center gap-3 mb-8 text-[#c9922a] text-xs tracking-[0.3em] uppercase font-light">
+                    <span class="block w-12 h-px bg-gradient-to-r from-[#c9922a] to-transparent"></span>
+                    Pháp Bảo
+                </div>
+                <h3 class="font-serif text-white leading-tight mb-2 font-handwriting">
+                    <span class="block text-4xl xl:text-5xl font-light tracking-wider text-white/90">Ngọc Lệ Bi Tâm</span>
+                    <span class="block text-2xl xl:text-3xl font-light tracking-[0.15em] text-[#c9922a] mt-1">Quán Thế Âm</span>
+                </h3>
+                <p class="text-white/40 text-sm tracking-widest uppercase mb-8 mt-3">Sách ảnh &amp; Lời huấn thị</p>
+                <div class="flex items-center gap-3 mb-8">
+                    <span class="block w-12 h-px bg-gradient-to-r from-[#c9922a] to-transparent"></span>
+                    <svg width="16" height="16" viewBox="0 0 16 16" class="text-[#c9922a] flex-shrink-0">
+                        <circle cx="8" cy="8" r="2" fill="currentColor"></circle>
+                        <circle cx="8" cy="8" r="5" fill="none" stroke="currentColor" stroke-width="0.5"></circle>
+                        <circle cx="8" cy="8" r="7.5" fill="none" stroke="currentColor" stroke-width="0.3" stroke-dasharray="2 2"></circle>
+                    </svg>
+                    <span class="block flex-1 h-px bg-gradient-to-l from-[#c9922a]/20 to-transparent"></span>
+                </div>
+                <p>
+                    Có những cuộc hành trình về nguồn cội không cần bước chân, chính từ ngay mỗi trang sách, mỗi câu chuyện, mỗi lời khai thị, thi kệ và mỗi hình ảnh mà tâm hồn chúng ta được dẫn lối bước vào cõi phiêu nhiên tịch tĩnh - an lạc đời đời... Chúng tôi muốn đề cập đến tác phẩm Ngọc Lệ Bi Tâm - Quán Thế Âm - một Pháp bảo trân quý mà Tôn Sư để lại cho hàng hậu học. Quyển sách này như Phật Đảnh Liên Hoa, soi sáng và phá tan xích xiềng sanh tử u minh, nâng bước chân ta vượt ngang Tam Giới, đốn chứng Niết Bàn Diệu Tâm, liễu ngộ Thật Tướng Vô Tướng, chấn nhiếp Tứ Ma, xuất ngục Ấm Giới, nhanh chóng thành tựu cứu cánh Phạm Hạnh, viên mãn Đại Bồ Đề.
+                    <br>
+                    Ngọc Lệ Bi Tâm - Quán Thế Âm tựa như bàn tay ấm áp của Mẹ hiền Quán Thế Âm, lệ Ngài rơi vào biển luân hồi hóa thành Huyết Ngọc Đại Bi: Ôm ấp và xoa dịu những khổ đau, vỗ về những trái tim mang nặng ưu tư, dìu dắt từng bước chân đang mỏi mệt trên hành trình gian nan tìm về bến bờ an yên tĩnh lặng.</p>
+                <p>
+                    Với từng lời dạy vàng được tinh tuyển từ bộ sách Trang Nghiêm Tổng Trì Nhiếp Kinh Luận mà Thầy tôi Thích Long Viễn đã phải đổ không biết bao nhiêu mồ hôi và nước mắt, với những kinh nghiệm tu tập xương máu được lưu lại, cốt yếu cũng chỉ để thắp sáng con đường tu học cho hàng hậu học, đốt lên ngọn lửa Chánh Pháp và tâm nguyện được nhìn thấy sự mỉm cười nơi phương xa của Đức Thế Tôn, như Bồ Tát Quán Thế Âm luôn tôn thờ Đấng Đạo Sư của mình trên đảnh đầu Ngài vậy.
+                </p>
+                <p>
+                    Ngoài ra từng trang sách là hình ảnh Đức Quán Thế Âm Bồ Tát, dịu hiền và từ bi, với đôi bàn tay chăm chút yêu thương vô bờ bến, là tiếng vọng xa xăm của sự giác ngộ và lòng từ bi bao la, là hành trình đi tìm tiếng gọi, nơi chúng sinh đau khổ xoay quanh giữa vòng xoáy bất tận của sanh tử luân hồi; đúng như trong bài thi kệ Quán Thế Âm mà Tôn Sư đã rỏ máu từ trái tim lưu xuất về Đại Hạnh Đại Nguyện Đại Hùng Đại Lực Đại Từ Bi của Bồ Tát Quán Thế Âm, Ngài đã quán chiếu âm thanh thế gian, bi tâm chảy xuống lệ tràn biển đông, như trong nhiều Kinh điển Đại Thừa có nói: Bồ Tát khi nhìn thấy chúng sanh đau khổ như ngàn mũi kim đâm vào mắt, xuyên thủng con tim... thật đúng như Tôn Sư đã nhỏ huyết lệ từ tim thành thi kệ Quán Thế Âm:…
+                </p>
+                <blockquote class="font-handwriting text-3xl relative z-10 mt-[30px]">
+                    <i class="fa-solid fa-quote-left-alt absolute -top-[30px] -left-[20px] text-[#c9922a] text-7xl opacity-[0.35]"></i>
+                    <p>Ta vẫn đợi con bước trở về</p>
+                    <p>Con đừng hờ hững nhé con thơ !</p>
+                    <p>Con đừng lấy móc câu tim nữa</p>
+                    <p>Lòng ta tan nát, đau đau ghê !”</p>
+                    <p>Lệ đã khô rồi theo tiếng con:</p>
+                    <p>Sầu bi ai oán với tủi hờn,</p>
+                    <p>Con than, con khóc rồi quên hết</p>
+                    <p>Thân xác luân hồi hơn núi non.</p>
+                    <p>Ta vẫn nhìn theo bước con đi</p>
+                    <p>Con đi theo tiếng gọi tình si</p>
+                    <p>Con ơi, quay lại cùng gặp gỡ</p>
+                    <p>Liên hoa hóa kiếp bất tư nghì!</p>
+                </blockquote>
+                <p>
+                    Đặc biệt, trong tác phẩm này có 108 bài thi kệ “Đại Ngộ Đắc Tự Tại” của bậc chân tu thâm đạt diệu pháp hành - Thầy Thích Long Viễn lần đầu tiên được kính cẩn hiển lộ. Đây không chỉ là thi kệ mà là pháp âm vô ngại, là lời khai thị vượt ngoài mọi chấp ngã, thấu triệt vạn pháp; mỗi bài kệ còn là đạo lộ, là giai đoạn thành tựu của Ngài; mỗi ngôn âm diệu pháp là lưỡi kiếm Vô Năng Thắng giúp hành giả có thể phá tan rừng rậm ma ý, chiến thắng Tứ ma, xuất Ấm Giới ngục, viên giác Đại Tâm, hành dụng độ sanh vô ngại, là tinh chất của 84.000 pháp môn, thâu nhiếp cả 12 loại Kinh giáo, thật là “Tuyệt đãi viên dung”, cũng là “Siêu tình ly kiến”, quả thật “Bất khả tư nghì”, đúng là tinh hoa của Phật pháp, thật khó có khó tìm khó gặp trong đời. Nếu chúng ta y chỉ vào đây mà tu hành quả thật có thể:
+                </p>
+                <blockquote class="font-handwriting text-3xl relative z-10 mt-[30px]">
+                    <i class="fa-solid fa-quote-left-alt absolute -top-[30px] -left-[20px] text-[#c9922a] text-7xl opacity-[0.35]"></i>
+                    Chẳng nhọc ba A-tăng kỳ, phá huyễn thân tâm tiệm tu phước huệ 
+                    <br>
+                    Chỉ y một trăm lẻ tám thi kệ, mở tàng Phật tánh hoành xuất càn khôn.
+                </blockquote>
+                <br>
+                <p>Đúng thật là:</p>
+                <blockquote class="font-handwriting text-3xl relative z-10 mt-[30px]">
+                    <i class="fa-solid fa-quote-left-alt absolute -top-[30px] -left-[20px] text-[#c9922a] text-7xl opacity-[0.35]"></i>
+                    “Đốn ngộ nhất tâm, liễu đạt vô sanh, phá Ngã Kiến thâm căn, nuốt trọn bản lai diện mục.
+                    <br>    
+                    Tuỳ duyên vạn cảnh, thong dong vô ngại, trụ Pháp Thân chân địa, hằng hành đại dụng thần thông.”
+                </blockquote>
+                <br>
+                <p>
+                    Ôi! Diệu nghĩa thật vô cùng, viên dung tuyệt đối đãi; quả đúng là Đại Ngộ Đắc Tự Tại vậy! <br>
+                    Ngoài ra trong tác phẩm này còn có 7 bài thi kệ “Đại Hùng Đại Lực Đại Trượng Phu” khai mở diệu hạnh - hành dụng chí nguyện vô biên của đệ tử Như Lai, dẫu gươm đao vạn kiếp chẳng phá nổi nguyện tâm Bồ Tát, dù cuồng phong ba cõi chẳng lay được chí khí đại trượng phu. Đúng thật là: <br>
+                </p>
+                <blockquote class="font-handwriting text-3xl relative z-10 mt-[30px]">
+                    <i class="fa-solid fa-quote-left-alt absolute -top-[30px] -left-[20px] text-[#c9922a] text-7xl opacity-[0.35]"></i>
+                    Một niệm phát khởi, Thần kinh Quỷ khiếp, Tam Giới rúng động dưới bước chân Bậc Đại Sĩ vô uý. <br> 
+                    Chí nguyện như lửa trời thiêu sạch ngã chấp, oai nghi như sấm nổ vỡ tung vọng tưởng cả nghìn thu.
+                </blockquote>
+                <br>
+                <p>    
+                    Thệ nguyện ấy như Kim Cang bất thối, hùng chí ấy như Tu-di bất hoại, soi đường dẫn lối cho hậu học tịnh tín nơi Tam Bảo mà dấn thân thực hành Phật đạo chiến thắng ma quân, viên thành tuệ giác vô lậu, làm chủ sống chết, lợi ích trời người. <br>
+                    Và giờ đây, không để đại chúng chờ đợi thêm nữa, thỉnh đại chúng cùng hướng về phía màn hình xem đoạn phim ngắn giới thiệu về Pháp bảo NGỌC LỆ BI TÂM - QUÁN THẾ ÂM.
+                </p>
+                <iframe width="100%" height="800" src="https://www.youtube.com/embed/gBWR9sAKsLo?si=xWDRs-MSL1CA7INJ" title="NGỌC LỆ BI TÂM - QUÁN THẾ ÂM" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+                <p class="text-center mt-8">
+                    <?php load_partial('html/btn-primary', [
+                        'label' => 'Đặt sách',
+                        'class' => 'text-sm !text-white px-10 relative z-10',
+                        'url' => 'https://www.phaptang.com/ngoc-le-bi-tam-quan-the-am',
+                        'target' => '_blank',
+                    ])?>
+                </p>
+            </div>
         </div>
     </div>
     
