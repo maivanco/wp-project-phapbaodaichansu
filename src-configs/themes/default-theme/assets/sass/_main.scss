@@ -95,11 +95,11 @@ body {
   }
 }
 .slick-slide{
-  transition:filter 1s ease-in-out !important;
-  opacity:1 !important;
-  filter:brightness(0);
+  // transition:filter 1s ease-in-out !important;
+  // opacity:1 !important;
+  // filter:brightness(0);
   &.slick-active{
-    filter:brightness(1);
+    // filter:brightness(1);
   }
 }
 .slick-dots{
