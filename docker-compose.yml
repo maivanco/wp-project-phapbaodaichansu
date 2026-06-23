@@ -21,7 +21,7 @@ services:
       - db
     restart: always
     ports:
-      - 8000:80
+      - 8001:80
     env_file:
       - .env
     environment:

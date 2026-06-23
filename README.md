@@ -81,7 +81,7 @@ wp-local-dev/
 
 | Service | Container Name | Port | Description |
 |---|---|---|---|
-| `wordpress` | `local-wordpress` | `8000` | WordPress via FrankenPHP |
+| `wordpress` | `local-wordpress` | `8001` | WordPress via FrankenPHP |
 | `db` | `local-db` | — (internal) | MySQL 8.0 database |
 | `phpmyadmin` | `local-phpmyadmin` | `8080` | phpMyAdmin UI |
 
@@ -126,7 +126,7 @@ bash start
 
 | Service | URL |
 |---|---|
-| WordPress | http://localhost:8000 |
+| WordPress | http://localhost:8001 |
 | phpMyAdmin | http://localhost:8080 |
 | Vite dev server | http://localhost:5173 |
 

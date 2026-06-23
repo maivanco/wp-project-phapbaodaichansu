@@ -33,7 +33,7 @@ VITE_PID=$!
 
 echo ""
 echo "🚀 Services are running:"
-echo "   WordPress   → http://localhost:8000"
+echo "   WordPress   → http://localhost:8001"
 echo "   phpMyAdmin  → http://localhost:8081"
 echo "   Vite HMR    → http://localhost:5173"
 echo ""
