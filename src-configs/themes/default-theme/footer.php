@@ -32,8 +32,7 @@
           </div>
 
           <div>
-            <h4 class="font-serif text-lg font-medium mb-6">Contact Us</h4>
-            
+            <!-- <h4 class="font-serif text-lg font-medium mb-6">Contact Us</h4> -->
           </div>
         </div>
 

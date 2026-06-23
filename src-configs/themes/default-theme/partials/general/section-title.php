@@ -11,7 +11,7 @@ $align = $args['align'] ?? 'center';
     </h4>
   <?php endif; ?>
   <?php if (!empty($section_title)) : ?>
-    <h3 class="text-[56px] leading-[68px] font-handwriting text-gradient p-4">
+    <h3 class="text-[48px] leading-[68px] text-gradient p-4">
       <?= $section_title ?>
     </h3>
   <?php endif; ?>

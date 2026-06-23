@@ -285,3 +285,7 @@ function render_img_by_src($src = '', $extra_attrs = []){
 function render_img_by_id($attachment_id, $size = 'large', $extra_attrs = []){
 	echo wp_get_attachment_image($attachment_id, $size, false, $extra_attrs);
 }
+
+add_action( 'admin_init', function () {
+    remove_menu_page( 'edit-comments.php' );
+});

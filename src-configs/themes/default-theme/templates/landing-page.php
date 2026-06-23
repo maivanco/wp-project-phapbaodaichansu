@@ -54,10 +54,10 @@ get_header(); ?>
 
 <section id="hero-carousel" class="bg-cream">
 
-    <div class="slick-slide !min-h-[calc(100vh-80px)]">
-        <div class="grid grid-cols-4 max-tablet:grid-cols-2 max-mobile:h-[calc(100vh-60px)]">
+    <div class="slick-slide">
+        <div class="grid grid-cols-4 max-tablet:grid-cols-2 !min-h-[calc(100vh-80px)] max-mobile:!h-[calc(100vh-60px)]">
             <img class="h-full brightness-[0.8] hover:brightness-100 transition-filter duration-300" src="<?php echo IMG_URL ?>/v-slide-ngoc-le-bi-tam-1.jpg" alt="Ảnh bìa sách Ngọc Lệ Bi Tâm 1" />
-            <img class="brightness-[0.8] hover:brightness-100 transition-filter duration-300" src="<?php echo IMG_URL ?>/v-slide-ngoc-le-bi-tam-2.jpg" alt="Ảnh bìa sách Ngọc Lệ Bi Tâm 2" />
+            <img class="h-full brightness-[0.8] hover:brightness-100 transition-filter duration-300" src="<?php echo IMG_URL ?>/v-slide-ngoc-le-bi-tam-2.jpg" alt="Ảnh bìa sách Ngọc Lệ Bi Tâm 2" />
             <iframe width="100%" height="100%" src="https://www.youtube.com/embed/gBWR9sAKsLo?si=xWDRs-MSL1CA7INJ&autoplay=1" allow="autoplay-off" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
             <img class="h-full brightness-[0.8] hover:brightness-100 transition-filter duration-300" src="<?php echo IMG_URL ?>/v-slide-ngoc-le-bi-tam-3.jpg" alt="Ảnh bìa sách Ngọc Lệ Bi Tâm 3" />
         </div>
@@ -131,9 +131,10 @@ get_header(); ?>
 <section id="about" class="py-24 lg:py-32 bg-white">
     <div class="container">
         <div class="text-center max-w-2xl mx-auto mb-16">
-            <h2 class="heading-md text-4xl mb-6 text-gradient font-handwriting p-4">
-            Giới thiệu
-            </h2>
+            <?php load_partial('general/section-title', [
+                'section_title' => 'GIỚI THIỆU',
+                'subtitle' => 'TIỂU SỬ THẦY TÔI',
+            ])?>
         </div>
 
         <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center max-w-5xl mx-auto">
@@ -168,7 +169,7 @@ get_header(); ?>
         </div>
         <?php endfor; ?>
     </div>
-    <div class="wysiwyg open bg-[rgba(13_10_8_/_100%)] w-1/2 max-w-[670px] px-6 absolute top-0 right-0 left-auto transition-left duration-500 ease-in-out
+    <div class="wysiwyg open bg-[rgba(13_10_8_/_100%)] w-1/2 max-w-[670px] px-6 absolute top-0 right-0
     before:absolute before:z-10 before:inset-y-0 before:left-[-128px] before:w-32 before:bg-gradient-to-r before:from-transparent before:to-[#0d0a08]
     ">
         <button id="toggle-featured-book-content" type="button" class="absolute z-10 top-[50px] -left-[48px] cursor-pointer w-12 h-12 bg-[#e73f5c] text-white"><i class="fa-solid fa-chevron-right"></i></button>
@@ -268,9 +269,10 @@ get_header(); ?>
 
  <section id="books" class="py-24 bg-cream">
     <div class="container">
-        <div class="text-center max-w-2xl mx-auto mb-16">
+        <div class="text-center max-w-5xl mx-auto mb-16">
             <?php load_partial('general/section-title', [
-                'section_title' => 'Danh mục sách',
+                'section_title' => 'TRANG NGHIÊM TỔNG TRÌ NHIẾP KINH LUẬN',
+                'subtitle' => 'TRỌN BỘ',
             ])?>
         </div>
 
@@ -283,14 +285,14 @@ get_header(); ?>
                     alt="Book Cover"
                     class=""
                     />
-                    <div class="absolute inset-0 bg-gradient-to-t from-charcoal/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-4">
-                    <?php load_partial('html/btn-primary', [
-                        'label' => 'Xem thêm',
-                        'class' => 'block text-sm'
-                    ])?>
-                    </div>
+                    <!-- <div class="absolute inset-0 bg-gradient-to-t from-charcoal/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-4">
+                        <?php load_partial('html/btn-primary', [
+                            'label' => 'Xem thêm',
+                            'class' => 'block text-sm'
+                        ])?>
+                    </div> -->
                 </div>
-                <div class="p-3 lg:p-4 h-[200px] flex flex-col justify-between gap-4">
+                <div class="p-3 lg:p-4 min-h-[200px] flex flex-col justify-between gap-4">
                     <h3 class="text-sm min-h-[72px]">
                     <?php echo $book['title']; ?>
                     </h3>

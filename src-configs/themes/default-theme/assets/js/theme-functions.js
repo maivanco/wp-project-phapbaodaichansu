@@ -13,7 +13,7 @@ jQuery(document).ready(function ($) {
     });
 
     $('#featured-book-slider').slick({
-        speed: 10000,
+        speed: 20000,
         autoplay: true,
         autoplaySpeed: 200,
         cssEase: 'linear',
@@ -25,7 +25,9 @@ jQuery(document).ready(function ($) {
     });
 
     $('#toggle-featured-book-content').click(function(){
-        $('#featured-book .wysiwyg').toggleClass('left-[100%] left-auto');
+        $('#featured-book .wysiwyg').toggleClass('open');
+        $(this).toggleClass('bg-[#23307f] bg-[#e73f5c]');
+        $(this).find('i').toggleClass('fa-chevron-right fa-chevron-left');
     });
 
     function animateFeaturedBookSection() {
