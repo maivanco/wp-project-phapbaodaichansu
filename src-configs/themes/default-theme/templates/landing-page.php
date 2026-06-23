@@ -147,7 +147,7 @@ get_header(); ?>
             </div>
 
             <div>
-                "Vạn Pháp Tùy Duyên" nếu đã hữu duyên...hãy dừng chân mà nghe tôi kể: Thầy tôi (Lương Sơn Long Viễn, Chùa Phật Đảnh Bảo Vương, T.P. Nha Trang- Khánh Hòa) ngay từ thuở ấu thơ luôn ấp ủ giấc mơ đi tìm Chánh Pháp và rồi Người đã ra đi...hiến trọn đời mình cho hạnh phúc chúng sanh ...những chặn đường Người đi đều thấm đẫm nước mắt
+                "Vạn Pháp Tùy Duyên" nếu đã hữu duyên... hãy dừng chân mà nghe tôi kể: Thầy tôi (Lương Sơn Long Viễn, Chùa Phật Đảnh Bảo Vương, T.P. Nha Trang- Khánh Hòa) ngay từ thuở ấu thơ luôn ấp ủ giấc mơ đi tìm Chánh Pháp và rồi Người đã ra đi... hiến trọn đời mình cho hạnh phúc chúng sanh... những chặng đường Người đi đều thấm đẫm nước mắt.
                 <hr class="my-4">
                 <div class="font-handwriting text-4xl">Tỷ kheo Thích Long Viễn</div>
             </div>
