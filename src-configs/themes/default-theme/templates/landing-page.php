@@ -169,11 +169,14 @@ get_header(); ?>
         </div>
         <?php endfor; ?>
     </div>
-    <div class="wysiwyg open bg-[rgba(13_10_8_/_100%)] w-1/2 max-w-[670px] px-6 absolute top-0 right-0
+    <div class="wysiwyg open bg-[rgba(13_10_8_/_100%)] max-w-[670px] px-6 absolute top-0 right-0 z-20
     before:absolute before:z-10 before:inset-y-0 before:left-[-128px] before:w-32 before:bg-gradient-to-r before:from-transparent before:to-[#0d0a08]
+    max-tablet:max-w-[100%] max-tablet:relative max-tablet:px-0
     ">
         <button id="toggle-featured-book-content" type="button" class="absolute z-10 top-[50px] -left-[48px] cursor-pointer w-12 h-12 bg-[#e73f5c] text-white"><i class="fa-solid fa-chevron-right"></i></button>
-        <div class="wrapper h-screen overflow-y-auto p-[50px_20px] text-justify">
+        <div class="wrapper h-screen overflow-y-auto p-[50px_20px] text-justify
+        max-tablet:h-auto max-tablet:overflow-visible
+        ">
             <div class="scrolling text-white/70 leading-[1.9] text-sm xl:text-[0.9rem] font-light">
                 <div class="flex items-center gap-3 mb-8 text-[#c9922a] text-xs tracking-[0.3em] uppercase font-light">
                     <span class="block w-12 h-px bg-gradient-to-r from-[#c9922a] to-transparent"></span>
