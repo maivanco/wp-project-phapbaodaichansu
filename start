@@ -20,16 +20,25 @@ if ! command -v npm &> /dev/null; then
     exit 1
 fi
 
-# Check if node_modules exists, install if not
-if [ ! -d "$ROOT_DIR/node_modules" ]; then
-    echo "📦 node_modules not found. Running npm install..."
-    npm install
+# Load environment variables from .env
+if [ -f "$ROOT_DIR/.env" ]; then
+    # shellcheck disable=SC1090
+    source "$ROOT_DIR/.env"
 fi
 
-# Start Vite dev server in background
-echo "🔧 Starting Vite dev server..."
-npm run dev &
-VITE_PID=$!
+# Install dependencies unless in production environment
+if [ "$NODE_ENV" != "production" ]; then
+    if [ ! -d "$ROOT_DIR/node_modules" ]; then
+        echo "📦 node_modules not found. Running npm install..."
+        npm install
+    fi
+    # Start Vite dev server in background
+    echo "🔧 Starting Vite dev server..."
+    npm run dev &
+    VITE_PID=$!
+else
+    echo "⚙️ Production environment detected. Skipping npm install and Vite."
+fi
 
 echo ""
 echo "🚀 Services are running:"
