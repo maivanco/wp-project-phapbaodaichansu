@@ -11,7 +11,7 @@ else
     echo "✅ .env file already exists"
 fi
 
-docker compose up -d "$@"
+docker compose -f docker-compose.yml -f docker-compose.override.yml up -d "$@"
 
 # Check if npm is installed
 if ! command -v npm &> /dev/null; then

@@ -1,0 +1,20 @@
+set -e
+
+ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+
+# Check if .env exists
+if [ ! -f "$ROOT_DIR/.env" ]; then
+    echo "📋 Creating .env file from template..."
+    cp "$ROOT_DIR/env.default" "$ROOT_DIR/.env"
+    echo "✅ .env file created. Please update it with your database credentials if needed."
+else
+    echo "✅ .env file already exists"
+fi
+
+docker compose -f docker-compose.yml up -d "$@"
+
+echo ""
+echo "🚀 Services are running:"
+echo "   WordPress   → http://localhost:8001"
+echo "   phpMyAdmin  → http://localhost:8081"
+echo ""
