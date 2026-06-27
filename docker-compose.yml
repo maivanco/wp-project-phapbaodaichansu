@@ -2,7 +2,7 @@ services:
 
   db:
     image: mysql:8.0
-    container_name: local-db
+    container_name: ${PROJECT_NAME}-${ENVIRONMENT}-db
     restart: unless-stopped
     env_file:
       - .env
@@ -15,7 +15,7 @@ services:
       - db_data:/var/lib/mysql
 
   wordpress:
-    container_name: local-wordpress
+    container_name: ${PROJECT_NAME}-${ENVIRONMENT}-wordpress
     build: .
     depends_on:
       - db

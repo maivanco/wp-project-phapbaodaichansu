@@ -2,7 +2,7 @@ services:
 
   phpmyadmin:
     image: phpmyadmin:latest
-    container_name: local-phpmyadmin
+    container_name: ${PROJECT_NAME}-${ENVIRONMENT}-phpmyadmin
     restart: unless-stopped
     depends_on:
       - db
