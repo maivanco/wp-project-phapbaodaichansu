@@ -2,9 +2,9 @@
 
     <footer id="site-footer" class="bg-black text-cream pt-16 pb-8">
       <div class="container">
-        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
-          <div class="lg:col-span-1">
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-10 mb-12">
 
+          <div class="lg:col-span-1">
             <p class="">Pháp Tạng</p>
             <ul class="text-sm flex flex-wrap gap-5 mt-5">
               <li>Trụ sở: 764 Nguyễn Chí Thanh, Q.11, TPHCM.</li>
@@ -21,7 +21,7 @@
 
           <div>
             <h4 class="font-serif text-lg font-medium mb-6">Trang nghiêm tổng trì nhiếp kinh luận</h4>
-            <ul class="text-[12px] flex flex-wrap gap-5">
+            <ul class="text-[12px] flex flex-col flex-wrap gap-5">
               <li>Chánh Pháp Hành Nguyên Thuỷ - Tập 1</li>
               <li>Tịnh Độ Pháp Yếu Lục - Tập 1</li>
               <li>Tịnh Độ Pháp Yếu Lục - Tập 2</li>
@@ -29,10 +29,6 @@
               <li>Mật Thừa Môn Thành Phật Pháp Yếu - Tập 1</li>
               <li>Nhật Ánh Từ Vân - Tập 1</li>
             </ul>
-          </div>
-
-          <div>
-            <!-- <h4 class="font-serif text-lg font-medium mb-6">Contact Us</h4> -->
           </div>
         </div>
 
@@ -49,6 +45,7 @@
 
 </div><!--#div-->
 
+<?php get_template_part('partials/cart-popup'); ?>
 <?php wp_footer(); ?>
 
 </script>

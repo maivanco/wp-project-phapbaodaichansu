@@ -2,8 +2,10 @@
   --color-text-body: #222224;
   --color-gold:rgb(196 163 90 / var(--tw-text-opacity, 1));
   --color-cream:rgb(250 248 245 / var(--tw-bg-opacity, 1));
+  --color-cream2: #f6ece5;
   --color-main:#1a747a;
   --color-white:#fff;
+
   --container-width: 1200px;
 
   --breakpoint-tablet: 991px;
@@ -77,6 +79,171 @@ body {
   font-weight: 400;
 }
 
+/* WYSIWYG Editor Content Styling */
+.wp-editor {
+  color: #334155; /* slate-700 */
+  line-height: 1.8;
+  font-size: 1.1rem; /* readable base size */
+}
+
+/* Headings with gradient highlight */
+.wp-editor h1,
+.wp-editor h2,
+.wp-editor h3,
+.wp-editor h4,
+.wp-editor h5,
+.wp-editor h6 {
+  margin-bottom:30px;
+}
+
+.wp-editor h1 {
+  font-size: 2.25rem; /* 36px */
+  letter-spacing: -0.025em;
+  line-height: 1.25;
+}
+
+.wp-editor h2 {
+  font-size: 1.875rem; /* 30px */
+  letter-spacing: -0.02em;
+  line-height: 1.3;
+}
+
+.wp-editor h3 {
+  font-size: 1.5rem; /* 24px */
+  letter-spacing: -0.015em;
+  line-height: 1.35;
+}
+
+.wp-editor h4 {
+  font-size: 1.25rem; /* 20px */
+  line-height: 1.4;
+}
+
+.wp-editor h5 {
+  font-size: 1.125rem; /* 18px */
+  line-height: 1.4;
+}
+
+.wp-editor h6 {
+  font-size: 1rem; /* 16px */
+  line-height: 1.4;
+}
+
+/* Paragraph styling */
+.wp-editor p {
+  margin-top: 0;
+  margin-bottom: 1.25rem;
+  text-wrap: pretty;
+  font-weight: 300;
+}
+
+/* Strong & Bold */
+.wp-editor strong,
+.wp-editor b {
+  font-weight: 600;
+  color: #0f172a; /* slate-900 */
+}
+
+/* Link styling */
+.wp-editor a {
+  color: var(--color-main);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  font-weight: 500;
+  transition: opacity 0.2s;
+}
+
+.wp-editor a:hover {
+  opacity: 0.8;
+}
+
+/* Lists styling */
+.wp-editor ul {
+  list-style-type: none; /* custom bullets */
+  padding-left: 1.75rem;
+  margin-top: 0;
+  margin-bottom: 1.25rem;
+}
+
+.wp-editor ul li {
+  position: relative;
+  margin-bottom: 0.5rem;
+  text-wrap: pretty;
+}
+
+.wp-editor ul li::before {
+  content: "•";
+  color: var(--color-main);
+  font-weight: bold;
+  display: inline-block;
+  width: 1em;
+  margin-left: -1em;
+  position: absolute;
+  left: 0;
+}
+
+.wp-editor ol {
+  list-style-type: decimal;
+  padding-left: 1.75rem;
+  margin-top: 0;
+  margin-bottom: 1.25rem;
+}
+
+.wp-editor ol li {
+  margin-bottom: 0.5rem;
+  text-wrap: pretty;
+  padding-left: 0.25rem;
+}
+
+/* Blockquote styling */
+.wp-editor blockquote {
+  position: relative;
+  margin: 2rem 0;
+  padding: 1.5rem 2rem;
+  background-color: #f8fafc; /* slate-50 */
+  border-left: 4px solid;
+  border-image: linear-gradient(180deg, hsla(339, 100%, 55%, 1) 0%, hsla(197, 100%, 64%, 1) 100%) 1;
+  border-radius: 0 0.75rem 0.75rem 0;
+  font-style: italic;
+  color: #475569; /* slate-600 */
+  text-wrap: pretty;
+}
+
+.wp-editor blockquote p {
+  margin-bottom: 0;
+}
+
+/* Code block styles */
+.wp-editor code {
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 0.875em;
+  background-color: #f1f5f9; /* slate-100 */
+  padding: 0.2rem 0.4rem;
+  border-radius: 0.25rem;
+  color: #0f172a;
+}
+
+.wp-editor pre {
+  background-color: #0f172a;
+  color: #f8fafc;
+  padding: 1.25rem;
+  border-radius: 0.75rem;
+  overflow-x: auto;
+  margin: 1.5rem 0;
+}
+
+.wp-editor pre code {
+  background-color: transparent;
+  padding: 0;
+  color: inherit;
+  font-size: 0.875rem;
+}
+.font-title{
+  font-family: "Space Grotesk", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
 .font-handwriting {
   font-family: "Imperial Script", cursive;
   font-weight: 300;
@@ -100,7 +267,15 @@ body {
   margin-left:auto;
   margin-right:auto;
 }
-
+.lg-container{
+  max-width: 1920px;
+  margin-left:auto;
+  margin-right:auto;
+  padding:0 50px;
+  @media only screen and (max-width: 1600px) {
+    padding:0 15px;
+  }
+}
 .book-border{
   position:relative;
   border-radius: 20px;
@@ -194,4 +369,58 @@ body {
     padding-left:100px;
   }
 
+}
+
+.woocommerce:where(body:not(.woocommerce-block-theme-has-button-styles)) #respond input#submit.alt, 
+.woocommerce:where(body:not(.woocommerce-block-theme-has-button-styles)) a.button.alt, 
+.woocommerce:where(body:not(.woocommerce-block-theme-has-button-styles)) button.button.alt, 
+.woocommerce:where(body:not(.woocommerce-block-theme-has-button-styles)) input.button.alt, 
+:where(body:not(.woocommerce-block-theme-has-button-styles)):where(:not(.edit-post-visual-editor)) .woocommerce #respond input#submit.alt, 
+:where(body:not(.woocommerce-block-theme-has-button-styles)):where(:not(.edit-post-visual-editor)) .woocommerce a.button.alt, 
+:where(body:not(.woocommerce-block-theme-has-button-styles)):where(:not(.edit-post-visual-editor)) .woocommerce button.button.alt, 
+:where(body:not(.woocommerce-block-theme-has-button-styles)):where(:not(.edit-post-visual-editor)) .woocommerce input.button.alt{
+  background-color: var(--color-main);
+  border:1px solid var(--color-main);
+  &:hover{
+    background-color: var(--color-gold);
+    border-color: var(--color-gold);
+  }
+}
+.woocommerce {
+  .quantity {
+    .qty{
+      height: 38px;
+      border: 1px solid #d9d9d9;
+      width: 100px;
+      border-radius: 4px;
+    }
+  }
+}
+.woocommerce ul.product_list_widget{
+  li {
+    margin-bottom:20px;
+  }
+}
+
+.woocommerce .widget_shopping_cart .total, .woocommerce.widget_shopping_cart .total{
+  padding: 30px 0;
+  display: flex;
+  justify-content: space-between;
+}
+
+.woocommerce-product-gallery{
+  .flex-viewport{
+    border-radius:10px;
+  }
+  .flex-control-thumbs{
+    margin:10px -5px 0 -5px !important;
+    li{
+      border-radius:10px;
+      overflow:hidden;
+      padding:0 5px;
+    }
+  }
+}
+.woocommerce div.product form.cart div.quantity{
+  margin-right:15px;
 }

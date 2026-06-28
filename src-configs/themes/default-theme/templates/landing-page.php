@@ -94,6 +94,15 @@ get_header(); ?>
                                 'data-quantity' => 1
                             ]
                         ])?>
+                        <?php load_partial('html/btn-dark-green', [
+                            'label' => 'Đặt sách',
+                            'href' => '?add-to-cart=71',
+                            'class' => 'button product_type_simple add_to_cart_button ajax_add_to_cart px-[40px]',
+                            'custom_attrs' => [
+                                'data-product_id' => 71,
+                                'data-quantity' => 1
+                            ]
+                        ])?>
                     </p>
                 </div>
             </div>
@@ -145,7 +154,7 @@ get_header(); ?>
             <div class="relative overflow-hidden text-center">
                 <img class="rounded-xl w-100"
                 src="<?php echo IMG_URL;?>tieu-su-thay-Thich-Long-Vien.jpg"
-                alt="Eleanor Whitmore - Founder & Curator"
+                alt="Tiểu sử thầy Thích Long Viễn"
                 class="w-full max-w-md mx-auto h-auto object-cover shadow-xl grayscale hover:grayscale-0 transition-all duration-500"
                 />
             </div>

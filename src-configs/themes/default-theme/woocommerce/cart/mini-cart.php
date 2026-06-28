@@ -68,7 +68,21 @@ do_action( 'woocommerce_before_mini_cart' ); ?>
 						</a>
 					<?php endif; ?>
 					<?php echo wc_get_formatted_cart_item_data( $cart_item ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
-					<?php echo apply_filters( 'woocommerce_widget_cart_item_quantity', '<span class="quantity">' . sprintf( '%s &times; %s', $cart_item['quantity'], $product_price ) . '</span>', $cart_item, $cart_item_key ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
+					<?php
+					$product_quantity = woocommerce_quantity_input(
+						array(
+							'input_name'   => "cart[{$cart_item_key}][qty]",
+							'input_value'  => $cart_item['quantity'],
+							'max_value'    => $_product->get_max_purchase_quantity(),
+							'min_value'    => '0',
+							'product_name' => $_product->get_name(),
+							'classes'      => array('mini-cart-qty', 'input-text', 'qty', 'text', 'w-16', 'border', 'rounded', 'px-2', 'py-1', 'text-center'),
+						),
+						$_product,
+						false
+					);
+
+					echo apply_filters( 'woocommerce_widget_cart_item_quantity', '<div class="quantity-wrapper flex items-center gap-3 mt-2" data-cart_item_key="' . esc_attr( $cart_item_key ) . '">' . $product_quantity . '<span class="price ml-2 font-bold">' . $product_price . '</span></div>', $cart_item, $cart_item_key ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 				</li>
 				<?php
 			}

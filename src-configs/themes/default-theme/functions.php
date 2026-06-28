@@ -29,7 +29,7 @@ if (!function_exists('wptheme_setup')) {
 	function wptheme_setup()
 	{
 
-		load_theme_textdomain('sourcecode', get_template_directory() . '/languages');
+		load_theme_textdomain('pbdcs', get_template_directory() . '/languages');
 
 		// Add default posts and comments RSS feed links to head.
 		add_theme_support('automatic-feed-links');
@@ -75,8 +75,6 @@ if (!function_exists('wptheme_setup')) {
 		);
 
 		add_theme_support('post-thumbnails');
-		set_post_thumbnail_size(800, 380, false);
-		add_image_size('square', 390, 322, true);
 
 		// Remove feed icon link from legacy RSS widget.
 		add_filter('rss_widget_feed_link', '__return_false');
@@ -289,3 +287,50 @@ function render_img_by_id($attachment_id, $size = 'large', $extra_attrs = []){
 add_action( 'admin_init', function () {
     remove_menu_page( 'edit-comments.php' );
 });
+
+/**
+ * Change product gallery thumbnail size
+ */
+add_filter( 'woocommerce_gallery_thumbnail_size', 'custom_woocommerce_gallery_thumbnail_size' );
+function custom_woocommerce_gallery_thumbnail_size( $size ) {
+    // You can return any registered WordPress image size here
+    // Examples: 'thumbnail', 'medium', 'large', 'full', or a custom size like 'my-custom-size'
+    return 'thumbnail'; 
+}
+
+
+/**
+ * Update cart count via AJAX
+ */
+add_filter( 'woocommerce_add_to_cart_fragments', 'wptheme_cart_count_fragments', 10, 1 );
+function wptheme_cart_count_fragments( $fragments ) {
+    ob_start();
+    ?>
+    <span class="cart-count absolute top-0 right-0 inline-flex items-center justify-center w-5 h-5 text-[10px] font-bold text-white bg-red-500 rounded-full border-2 border-white -mt-1 -mr-1">
+        <?php echo class_exists('WooCommerce') && is_object(WC()->cart) ? WC()->cart->get_cart_contents_count() : 0; ?>
+    </span>
+    <?php
+    $fragments['span.cart-count'] = ob_get_clean();
+    return $fragments;
+}
+
+/**
+ * Handle AJAX request to update mini cart quantity
+ */
+add_action( 'wp_ajax_update_mini_cart_item_qty', 'wptheme_update_mini_cart_item_qty' );
+add_action( 'wp_ajax_nopriv_update_mini_cart_item_qty', 'wptheme_update_mini_cart_item_qty' );
+function wptheme_update_mini_cart_item_qty() {
+    if ( isset( $_POST['cart_item_key'], $_POST['cart_item_qty'] ) ) {
+        $cart_item_key = sanitize_text_field( wp_unslash( $_POST['cart_item_key'] ) );
+        $cart_item_qty = (int) $_POST['cart_item_qty'];
+
+        if ( $cart_item_qty > 0 ) {
+            WC()->cart->set_quantity( $cart_item_key, $cart_item_qty );
+        } else {
+            WC()->cart->remove_cart_item( $cart_item_key );
+        }
+
+        WC_AJAX::get_refreshed_fragments();
+    }
+    wp_die();
+}
