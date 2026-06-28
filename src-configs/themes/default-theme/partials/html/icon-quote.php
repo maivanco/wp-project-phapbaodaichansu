@@ -1,0 +1,1 @@
+<i class="fa-solid fa-quote-left-alt absolute -top-[30px] -left-[20px] text-[#c9922a] text-7xl opacity-[0.35]"></i>

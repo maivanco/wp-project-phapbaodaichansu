@@ -87,8 +87,12 @@ get_header(); ?>
                     <p class="mt-6">
                         <?php load_partial('html/btn-dark-green', [
                             'label' => 'Đặt sách',
-                            'url' => 'https://www.phaptang.com/kinh-sach-phat-giao',
-                            'class' => 'px-[40px]',
+                            'href' => '?add-to-cart=54',
+                            'class' => 'button product_type_simple add_to_cart_button ajax_add_to_cart px-[40px]',
+                            'custom_attrs' => [
+                                'data-product_id' => 54,
+                                'data-quantity' => 1
+                            ]
                         ])?>
                     </p>
                 </div>
@@ -115,7 +119,7 @@ get_header(); ?>
                     <p class="mt-6">
                         <?php load_partial('html/btn-dark-green', [
                             'label' => 'Đặt sách',
-                            'url' => $book['order_url'],
+                            'href' => $book['order_url'],
                             'target' => '_blank',
                             'class' => 'px-[40px]',
                         ])?>
@@ -305,7 +309,7 @@ get_header(); ?>
                     </div>
                     <?php load_partial('html/btn-dark-green', [
                         'label' => 'Đặt sách',
-                        'url' => $book['order_url'],
+                        'href' => $book['order_url'],
                         'target' => '_blank',
                         'class' => 'text-sm block px-[20px]'
                     ])?>

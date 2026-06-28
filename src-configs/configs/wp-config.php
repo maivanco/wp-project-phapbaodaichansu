@@ -84,6 +84,8 @@ define('WP_DEBUG', false);
 define('WP_AUTO_UPDATE_CORE', false);
 define('WP_ENVIRONMENT_TYPE', getenv('ENVIRONMENT') ?: 'production');
 
+define('FS_METHOD', 'direct');
+
 if (isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] === 'https') {
     $_SERVER['HTTPS'] = 'on';
 }

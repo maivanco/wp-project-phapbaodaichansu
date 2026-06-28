@@ -1,16 +1,30 @@
 <?php
-get_header(); ?>
+get_header();
 
-<?php 
-while(have_posts()):
-  the_post();
-  while (have_rows('sections')): the_row();
-      load_partial('sections/' . get_row_layout());
-	endwhile;
- 
-endwhile;
+/* Start the Loop */
+while (have_posts()) :
+	the_post();
+
 ?>
 
- 
+<section class="breadcrumbs py-4">
+	<div class="container">
+		<?php
+		if (function_exists('yoast_breadcrumb')) {
+			yoast_breadcrumb();
+		}
+		?>
+	</div>
+</section>
+
+<div class="page-wrapper">
+	<div class="container
+		after:content-[''] after:block after:clear-both">
+			<?php the_title();?>
+			<?php the_content(); ?>
+		</div>
+	</div>
 <?php
+endwhile; // End of the loop.
+
 get_footer();
