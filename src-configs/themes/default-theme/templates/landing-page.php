@@ -283,7 +283,7 @@ get_header(); ?>
 </section>
 
 
- <section id="books" class="py-24 bg-cream">
+<section id="books" class="py-24 bg-cream">
     <div class="container">
         <div class="text-center max-w-5xl mx-auto mb-16">
             <?php load_partial('general/section-title', [

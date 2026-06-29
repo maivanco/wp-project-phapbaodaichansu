@@ -5,7 +5,7 @@
   --color-cream2: #f6ece5;
   --color-main:#1a747a;
   --color-white:#fff;
-
+  --color-gray:#A39F98;
   --container-width: 1200px;
 
   --breakpoint-tablet: 991px;
@@ -423,4 +423,12 @@ body {
 }
 .woocommerce div.product form.cart div.quantity{
   margin-right:15px;
+}
+
+.woocommerce-message{
+  border-top-color: var(--color-gold);
+}
+.button.wc-forward{
+  background-color:var(--color-gold);
+  color:var(--color-white);
 }
