@@ -7,16 +7,23 @@ while (have_posts()) :
 
 ?>
 
+<section class="breadcrumbs py-4">
+	<div class="container">
+		<?php
+		if (function_exists('yoast_breadcrumb')) {
+			yoast_breadcrumb();
+		}
+		?>
+	</div>
+</section>
+
 <div class="page-wrapper">
-	<?php 
-	if(have_rows('sections')) {
-		while(have_rows('sections')): the_row();
-			$layout = get_row_layout();
-			load_partial('sections/' .$layout);
-		endwhile;
-	}
-	?>
-</div>
+	<div class="container
+		after:content-[''] after:block after:clear-both">
+			<?php the_title();?>
+			<?php the_content(); ?>
+		</div>
+	</div>
 <?php
 endwhile; // End of the loop.
 
