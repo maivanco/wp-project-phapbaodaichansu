@@ -17,7 +17,7 @@ if ($featured_product_id == 0) {
                 <?php render_img_by_src(IMG_URL . 'slide-ngoc-le-bi-tam-3.jpg', [])?>
             </div>
             <div class="right">
-                <div class="wp-editor">
+                <div class="wp-editor italic">
                     <blockquote class="relative">
                         <p>
                             Quyển sách này như Phật Đảnh Liên Hoa, soi sáng và phá tan xích xiềng sanh tử u minh, nâng bước chân ta vượt ngang Tam Giới, đốn chứng Niết Bàn Diệu Tâm, liễu ngộ Thật Tướng Vô Tướng, chấn nhiếp Tứ Ma, xuất ngục Ấm Giới, nhanh chóng thành tựu cứu cánh Phạm Hạnh, viên mãn Đại Bồ Đề.
