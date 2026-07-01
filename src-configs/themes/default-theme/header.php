@@ -1,3 +1,6 @@
+<?php 
+$heading_tag = is_front_page() ? 'h1' : 'p';
+?>
 <!doctype html>
 <html <?php language_attributes(); ?>>
 
@@ -20,10 +23,12 @@
         <header class="sticky top-0 left-0 right-0 z-50 shadow-lg bg-white/95">
           <nav class="container">
             <div class="flex items-center justify-between h-20 max-mobile:h-[60px]">
-              <a class="block text-[48px] max-tablet:text-[36px] max-mobile:text-[32px] font-handwriting text-gradient pr-3" href="<?php echo home_url();?>" data-discover="true">
-                <!-- <img src="<?php echo IMG_URL . '/logo-phap-bao-dai-chan-su.jpg'?>" alt="logo Pháp Bảo Đại Chân Sư" width="1456" height="720"> -->
-                Pháp Bảo Đại Chân Sư
-              </a>
+
+              <<?php echo $heading_tag;?>>
+                <a class="block text-[48px] max-tablet:text-[36px] max-mobile:text-[32px] font-handwriting text-gradient pr-3" href="<?php echo home_url();?>" data-discover="true">
+                  <?php bloginfo('name');?>
+                </a>
+              </<?php echo $heading_tag;?>>
               <div class="flex items-center gap-4 md:gap-10">
                 <div class="hidden md:flex items-center gap-10">
                   <a class="text-sm font-medium text-warmGray-600 hover:text-charcoal transition-colors duration-200 uppercase tracking-wider" href="/" data-discover="true">Trang chủ</a>

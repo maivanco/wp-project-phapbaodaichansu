@@ -62,7 +62,8 @@ wp-local-dev/
 ├── docker-compose.override.yml   # Additional service: phpMyAdmin
 ├── env.default                   # Environment variable template
 ├── .env                          # Local environment variables (git-ignored)
-├── start                         # Convenience startup script
+├── start.local                   # Local development startup script
+├── start.prod                    # Production startup script
 ├── package.json                  # Node.js project manifest
 ├── vite.config.js                # Vite build & dev-server config
 ├── vite/
@@ -118,8 +119,14 @@ Configured via `src-configs/configs/php.ini`:
 
 ### 1. Start the project
 
+For **local development** (includes Vite dev server and phpMyAdmin):
 ```bash
-bash start
+./start.local
+```
+
+For **production** (only core services, no dev tools):
+```bash
+./start.prod
 ```
 
 ### 3. Access the services
@@ -168,8 +175,11 @@ WORDPRESS_DB_ROOT_PASSWORD=default_root_password
 ## 🔄 Useful Commands
 
 ```bash
-# Start all services (detached) // Start the project
-bash start
+# Start local development environment
+./start.local
+
+# Start production environment
+./start.prod
 
 # Stop all services
 docker compose down

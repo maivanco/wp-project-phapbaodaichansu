@@ -102,9 +102,7 @@ add_action('wp_enqueue_scripts', 'wptheme_scripts');
 // Remove or unregister unused WordPress Image Sizes
 function wptheme_remove_custom_image_sizes()
 {
-	remove_image_size('1536x1536');
 	remove_image_size('2048x2048');
-	remove_image_size('medium_large');
 }
 // Hook the function
 add_filter('init', 'wptheme_remove_custom_image_sizes', 99, 2);
@@ -271,7 +269,12 @@ function render_img_by_src($src = '', $extra_attrs = []){
 	$attrs = array_merge([
 		'src' => $src,
 		'alt' => '',
+		'loading' => 'lazy'
 	], $extra_attrs);
+
+	if (isset($attrs['fetchorigin'])) {
+		unset($attrs['loading']);
+	}
 
 	$attrs_string = "";
 	foreach ($attrs as $key => $value) {
@@ -280,8 +283,16 @@ function render_img_by_src($src = '', $extra_attrs = []){
 	echo '<img ' . $attrs_string . '>';
 }
 
-function render_img_by_id($attachment_id, $size = 'large', $extra_attrs = []){
-	echo wp_get_attachment_image($attachment_id, $size, false, $extra_attrs);
+function render_img_by_id($attachment_id = 0, $size = 'large', $extra_attrs = []){
+	$attrs = array_merge([
+		'alt' => '',
+		'loading' => 'lazy'
+	], $extra_attrs);
+
+	if (isset($attrs['fetchorigin'])) {
+		unset($attrs['loading']);
+	}
+	echo wp_get_attachment_image($attachment_id, $size, false, $attrs);
 }
 
 add_action( 'admin_init', function () {

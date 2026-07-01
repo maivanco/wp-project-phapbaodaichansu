@@ -326,7 +326,7 @@ body {
   width:40px;
   height:40px;
   border-radius:50%;
-  background:rgba(26,116,122,0.8);
+  background:var(--color-gold);
   color:#fff;
   &.slick-prev{
     left:30px;
