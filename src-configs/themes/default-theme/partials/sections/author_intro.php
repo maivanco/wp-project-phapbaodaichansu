@@ -16,7 +16,7 @@
                     <p>
                         Chúng đệ tử các con đã tập hợp, đúc kết từ những lời dạy quý báu của Thầy thành những quyển kinh sách, được Thầy trùng tuyên lại từ chính lời của Đức Thế Tôn.
                         Những pháp hành mà giúp hành giả thấy ngay đạo lộ mà ba đời Chư Phật đã và sẽ đi qua, từ Giáo Lý Nguyên Thuỷ mà hành giả không được bỏ qua như <strong>khổ - vô thường - vô ngã; năm cách ly dục, ly ác pháp; thế nào là Bát Chánh Đạo</strong>, 
-                        cho đến <strong>mười sáu chữ vàn</strong> cốt tuỷ của Tịnh Độ Tông, thế nào <strong>Bồ Đề Tâm</strong>? Hành trì và diệu dụng của Bồ Đề Tâm ra sao? <strong>Làm thế nào để niệm Phật vãng sanh?</strong>
+                        cho đến <strong>mười sáu chữ vàng</strong> cốt tuỷ của Tịnh Độ Tông, thế nào <strong>Bồ Đề Tâm</strong>? Hành trì và diệu dụng của Bồ Đề Tâm ra sao? <strong>Làm thế nào để niệm Phật vãng sanh?</strong>
                         hay thậm chí trong pháp môn Mật Tông, thế nào là <strong>"Đương tướng tức đạo, tức sự nhi chân, tức thân thành Phật"</strong>? 
                         
                     </p>
