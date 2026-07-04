@@ -10,8 +10,11 @@ if (empty($slides) ) {
     <?php foreach($slides as $slide): $img_info = $slide['banner_setup']?>
 
     <div class="slide-slick">
-        <div class="grid grid-cols-[1fr_350px] px-[15px]">
+        <div class="grid grid-cols-[1fr_350px] px-[15px]
+        max-mobile:grid-cols-1
+        ">
             <div class="left pr-[15px] relative min-h-screen flex items-center
+            max-mobile:block max-mobile:min-h-[auto]
             after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-2/3 after:h-[1px] after:bg-gold
             ">
                 <div class="banner-wrapper <?php echo $img_info['image_wrapper_class'];?>">
@@ -23,7 +26,8 @@ if (empty($slides) ) {
                     'extra_classes' => 'absolute bottom-[30px] left-[30px]'
                 ])?>
             </div>
-            <div class="right bg-cream2 py-8 md:py-12 lg:py-20 px-8 flex flex-col justify-center">
+            <div class="right bg-cream2 py-8 md:py-12 lg:py-20 px-8 flex flex-col justify-center
+            max-mobile:hidden">
                 <div class="content">
                     <h3 class="text-3xl font-medium mb-4">
                     <?php echo get_the_title($slide['linked_product']); ?>

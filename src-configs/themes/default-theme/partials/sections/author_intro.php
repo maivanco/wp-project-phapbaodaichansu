@@ -1,14 +1,14 @@
 <section class="sec-intro py-25">
-    <div class="lg-container">
-       <div class="flex gap-5 lg:gap-[14%]">
-            <aside class="w-1/2">
+    <div class="md-container">
+       <div class="flex max-tablet:flex-wrap gap-5 lg:gap-[7%]">
+            <aside class="w-1/2 max-tablet:w-full">
                 <?php load_partial('general/section-title', [
-                    'section_title' => 'Pháp Bảo Đại Chân Sư',
+                    'section_title' => 'Pháp Bảo <br> Đại Chân Sư',
                     'subtitle' => 'GIỚI THIỆU',
                     'align' => 'left'
                 ])?>
 
-                <div class="wp-editor">
+                <div class="wp-editor text-justify">
                     <p>
                         Pháp Bảo Đại Chân Sư là bộ Pháp Bảo bao gồm những pháp hành thực tế của thầy chúng con - Tỷ kheo Thích Long Viễn, người đã dành trọn đời hiến mình cho pháp để tìm ra chân lý tối thượng, cứu cánh Phạm Hạnh từ những lời dạy của Đức Thế Tôn.
                         
@@ -21,35 +21,33 @@
                         
                     </p>
 
+                    <a href="https://www.youtube.com/watch?v=khSGoSIdWDc" target="_blank">
+                        <img
+                            src="<?php echo IMG_URL;?>thi-ke-de-tu-nhu-lai-thich-long-vien.png"
+                            alt="Ảnh Thầy Thích Long Viễn"
+                            class="rounded-xl w-full"
+                        />
+                    </a>
+                    <br>
                     <p>
                         Dựa trên những pháp hành thực chứng của Thầy chứ không phải lý thuyết suông, bộ Pháp Bảo này sẽ cho hành giả thấy được góc nhìn thâu nhiếp giữa các pháp môn, không những chống trái nhau mà ngược lại, nếu khéo dụng tu tập, các pháp môn này sẽ tương hỗ lẫn nhau, giúp hành giả mau chóng bước lên đạo lộ mà chư Phật ba đời đã đi.
-                        Và con đường đó chính là:
+                        Con đường đó chính là:
                     </p>
 
                     <blockquote>
                         <p>Trên Tứ Niệm Xứ tu Tứ Chánh Cần, lấy Bát Chánh Đạo làm nền tảng, câu hữu với pháp Như Lý Tác Ý để ly dục và ly tất cả các pháp ác bất thiện, đoạn tất cả các lậu hoặc, thành tựu Chánh Niệm, từ Chánh Niệm sẽ xuất sanh Chánh Định, nhân Định mà Tuệ sanh. Với trí Tuệ anh sẽ thành tựu Bất Động Tâm Định, an trụ trong Thiền Tư. Đó là giải thoát! </p>
                     </blockquote>
-                    
-                    <a href="https://www.youtube.com/watch?v=khSGoSIdWDc" target="_blank">
-                    <img
-                        src="<?php echo IMG_URL;?>thi-ke-de-tu-nhu-lai-thich-long-vien.png"
-                        alt="Ảnh Thầy Thích Long Viễn"
-                        class="rounded-xl w-full"
-                    />
-                    </a>
-                    <br><br>
-                    
-                     <img
+                    <!-- <img
                         src="<?php echo IMG_URL;?>anh-thay-Thich-Long-Vien.jpg"
                         alt="Ảnh Thầy Thích Long Viễn"
                         class="rounded-xl w-full"
-                    />
+                    /> -->
                     
 
                 </div>
 
             </aside>
-            <aside class="w-1/2">
+            <aside class="w-1/2 max-tablet:w-full">
                 <figure class="group relative overflow-hidden">
                     <img
                         src="<?php echo IMG_URL;?>tieu-su-thay-Thich-Long-Vien.jpg"
@@ -74,7 +72,7 @@
                     </figcaption>
                 </figure>
 
-                <div class="wp-editor mt-8">
+                <div class="wp-editor text-justify mt-8">
                     <p>
                         Kể về Thầy chúng con, người từ nhỏ đã luôn luôn buồn vui thủ thỉ với Đức Phật, hay rúc vào tủ thờ ôm hình Phật mà khóc mà cười. 
                         Thầy hay bảo "Thầy thương ông Phật nhất nhất trên đời". Vậy nên, sau khi hoàn tất chương trình Phổ Thông, Thầy xin phép gia đình cho xuất gia để được gần gũi hơn với "ông Phật". 

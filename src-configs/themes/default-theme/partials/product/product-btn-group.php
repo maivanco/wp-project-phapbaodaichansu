@@ -2,7 +2,9 @@
 $product_id = $args['product_id'] ?? 0;
 $extra_classes = $args['extra_classes'] ?? '';
 ?>
-<div class="btns flex gap-4 mt-8 <?php echo $extra_classes?>">
+<div class="btns flex gap-4 mt-8 <?php echo $extra_classes?> 
+max-mobile:static max-mobile:flex-wrap max-mobile:max-w-[220px] max-mobile:mx-auto
+max-mobile:[&>a]:w-full max-mobile:[&>a]:text-center">
     <a href="<?php echo get_permalink($product_id)?>" class="bg-gold text-white px-10 py-4 text-xl font-medium
     hover:bg-white hover:text-gold hover:shadow-[3px_3px_3px]
     ">
