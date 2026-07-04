@@ -1,85 +1,152 @@
 <?php 
-$products = wc_get_products( array(
+$subtitle = $args['subtitle'] ?? get_sub_field('subtitle');
+$section_title = $args['section_title'] ?? get_sub_field('section_title');
+$display_condition = $args['display_condition'] ?? get_sub_field('display_condition');
+$current_product_id = $args['current_product_id'] ?? 0;
+$product_args = [
     'status'     => 'publish',
-    'limit'      => 10,
-));
-
-$green_books = [
-    [
-        'img_url' => 'https://307a0e78.vws.vegacdn.vn/view/v2/image/img.book/0/0/1/50974.jpg?v=1&w=480&h=700',
-        'img_url_2' => IMG_URL . 'v2-chanh-phap-hanh-nguyen-thuy-tap-1.webp',
-        'title' => 'Chánh Pháp Hành Nguyên Thủy Phật Giáo - Tập 1',
-        'price' => '191.500',
-        'order_url' => 'https://www.phaptang.com/chanh-phap-hanh-nguyen-thuy-phat-giao-tap-1',
-    ],
-    [
-        'img_url' => 'https://307a0e78.vws.vegacdn.vn/view/v2/image/img.book/0/0/1/51016.jpg', 
-        'img_url_2' => IMG_URL . 'v2-tinh-do-phap-yeu-luc-tap-1.webp',
-        'title' => 'Tịnh Độ Pháp Yếu Lục - Tập 1',
-        'price' => '161.500',
-        'order_url' => 'https://www.phaptang.com/tinh-do-phap-yeu-luc-tap-1',
-    ],
-    [
-        'img_url' => 'https://307a0e78.vws.vegacdn.vn/view/v2/image/img.book/0/0/1/51019.jpg', 
-        'img_url_2' => IMG_URL . 'v2-tinh-do-phap-yeu-luc-tap-2.webp',
-        'title' => 'Tịnh Độ Pháp Yếu Lục - Tập 2',
-        'price' => '171.500',
-        'order_url' => 'https://www.phaptang.com/tinh-do-phap-yeu-luc-tap-2',
-    ],
-    [
-        'img_url' => 'https://307a0e78.vws.vegacdn.vn/view/v2/image/img.book/0/0/1/50977.jpg', 
-        'img_url_2' => IMG_URL . 'v2-dai-thua-nhan-tang-chanh-yeu-tap-1.webp',
-        'title' => 'Đại Thừa Nhãn Tạng Chánh Yếu - Tập 1',
-        'price' => '181.500',
-        'order_url' => 'https://www.phaptang.com/dai-thua-nhan-tang-chanh-yeu-tap-1',
-    ],
-    [
-        'img_url' => 'https://307a0e78.vws.vegacdn.vn/view/v2/image/img.book/0/0/1/50980.jpg', 
-        'img_url_2' => IMG_URL . 'v2-mat-thua-mon-thanh-phat-phap-yeu-tap-1.webp',
-        'title' => 'Mật Thừa Môn Thành Phật Pháp Yếu - Tập 1',
-        'price' => '151.500',
-        'order_url' => 'https://www.phaptang.com/mat-thua-mon-thanh-phat-phap-yeu-tap-1',
-    ],
-    [
-        'img_url' => 'https://307a0e78.vws.vegacdn.vn/view/v2/image/img.book/0/0/1/50983.jpg', 
-        'img_url_2' => IMG_URL . 'v2-nhat-anh-tu-van-tap-1.webp',
-        'title' => 'Nhật Ánh Từ Vân - Tập 1',
-        'price' => '141.500',
-        'order_url' => 'https://www.phaptang.com/nhat-anh-tu-van-tap-1',
-    ],
+    'limit'      => 100,
 ];
 
+switch($display_condition) {
+    case 'exclude_current_product':
+        $product_args['exclude'] = [$current_product_id];
+        break;
+    case 'specific_products':
+        $product_args['include'] = get_sub_field('selected_products') ?? [];
+        break;
+    case 'product_category':
+        $product_args['product_category_id'] = get_sub_field('selected_product_category') ?? 0;
+        break;
+    default: // Get latest products
+        break;
+   
+}
+$products = wc_get_products( $product_args );
 ?>
 
-<section id="books" class="py-24 bg-cream">
+<section class="sec-product-list py-24 bg-cream">
     <div class="lg-container">
         <?php load_partial('general/section-title', [
-            'section_title' => 'TRANG NGHIÊM TỔNG TRÌ <br> NHIẾP KINH LUẬN',
-            'subtitle' => 'TRỌN BỘ',
+            'section_title' => $section_title,
+            'subtitle' => $subtitle,
             'align' => 'left'
         ])?>
 
-        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 lg:gap-6">
-            <?php foreach($green_books as $book): ?>
-            <article class="group">
-                <div class="relative overflow-hidden">
-                    <img
-                    src="<?php echo $book['img_url_2']; ?>"
-                    alt="Book Cover"
-                    class=""
-                    />
+        <ul class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 lg:gap-6">
+            <?php foreach($products as $product):?>
+            <li class="group">
+                <div class="relative overflow-hidden group/thumb bg-cream2 p-4">
+                    <a href="<?php echo get_permalink($product->ID); ?>">
+                    <?php echo $product->get_image('woocommerce_thumbnail', ['class' => 'w-full h-auto transition-transform duration-300 group-hover/thumb:scale-105']); ?>
+                    </a>
+                    <button 
+                        type="button"
+                        class="quick-view-btn bg-black cursor-pointer absolute z-20 bottom-0 left-0 w-full py-2 bg-primary/90 text-white text-sm font-medium translate-y-full transition-transform duration-300 group-hover/thumb:translate-y-0"
+                        data-title="<?php echo htmlspecialchars($product->get_name()); ?>"
+                        data-price="<?php echo htmlspecialchars(wc_price($product->get_price())); ?>"
+                        data-img="<?php echo wp_get_attachment_image_url($product->get_image_id()); ?>"
+                        data-url="<?php echo get_permalink($product->get_id());?>"
+                        data-product_id="<?php echo $product->get_id();?>"
+                    >
+                        <?php _e('Xem nhanh','pbdcs') ?>
+                    </button>
                 </div>
                 <div class="flex flex-col gap-4 py-4">
-                    <p class="uppercase text-sm text-gray">Nguyên thuỷ</p>
+                    <p class="uppercase text-sm text-gray">
+                        <?php echo $product->get_categories(); ?>
+                    </p>
                     <h3 class="">
-                        <?php echo $book['title']; ?>
+                        <?php echo $product->get_name(); ?>
                     </h3>
                     <div class="flex items-center justify-between">
-                        <?php echo $book['price']?> đ
+                        <?php echo wc_price($product->get_price()); ?>
                     </div>
                 </div>
-            </article>
+            </li>
             <?php endforeach;?>
-        </div>
+        </ul>
     </div>
 </section>
+
+<!-- Quick View Modal -->
+<div id="quickViewModal" class="fixed inset-0 z-50 flex items-center justify-center hidden bg-black/50 opacity-0 transition-opacity duration-300">
+    <div class="bg-white rounded-lg p-6 max-w-3xl w-full mx-4 relative transform scale-95 transition-transform duration-300" id="quickViewContent">
+        <button type="button" class="absolute top-4 right-4 cursor-pointer" id="closeQuickView">
+            <i class="fa-solid fa-xmark text-2xl"></i>
+        </button>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="modal-img-container flex justify-center items-center bg-cream rounded-md p-4">
+                <img id="qvImage" src="" alt="Product Image" class="max-w-full max-h-[60vh] object-contain drop-shadow-md" />
+            </div>
+            <div class="flex flex-col justify-center">
+                <h2 id="qvTitle" class="text-2xl font-bold mb-4 font-serif"></h2>
+                <div id="qvPrice" class="text-xl text-primary font-semibold mb-6"></div>
+                
+                <div class="btns flex gap-4 mt-8">
+                    <a id="qvReadMore" href="#" class="bg-gold text-white px-6 py-2 text-sm font-medium
+                    hover:bg-white hover:text-gold hover:shadow-[3px_3px_3px]
+                    ">
+                        <?php _e('Xem thêm', 'pbdcs');?>
+                    </a>
+                    <a id="qvAddToCart" href="#" data-product_id="0" data-quantity="1" class="
+                    button product_type_simple add_to_cart_button ajax_add_to_cart 
+                    bg-white px-6 py-2 text-sm font-medium shadow-[3px_3px_3px]
+                    hover:bg-gold hover:text-white hover:shadow-none
+                    ">
+                        <?php _e('Thêm vào giỏ', 'pbdcs');?>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const modal = document.getElementById('quickViewModal');
+    const modalContent = document.getElementById('quickViewContent');
+    const closeBtn = document.getElementById('closeQuickView');
+    const qvImage = document.getElementById('qvImage');
+    const qvTitle = document.getElementById('qvTitle');
+    const qvPrice = document.getElementById('qvPrice');
+    const qvAddToCart = document.getElementById('qvAddToCart');
+    const qvReadMore = document.getElementById('qvReadMore');
+    
+
+    document.querySelectorAll('.quick-view-btn').forEach(button => {
+        button.addEventListener('click', function(e) {
+            e.preventDefault();
+            // populate data
+            qvImage.src = this.getAttribute('data-img');
+            qvTitle.textContent = this.getAttribute('data-title');
+            qvPrice.innerHTML = this.getAttribute('data-price');
+            qvReadMore.href = this.getAttribute('data-url');
+            qvAddToCart.dataset.product_id = this.getAttribute('data-product_id');
+
+            // show modal
+            modal.classList.remove('hidden');
+            // small delay to allow display:block to apply before animating opacity
+            setTimeout(() => {
+                modal.classList.remove('opacity-0');
+                modalContent.classList.remove('scale-95');
+            }, 10);
+        });
+    });
+
+    function closeModal() {
+        modal.classList.add('opacity-0');
+        modalContent.classList.add('scale-95');
+        setTimeout(() => {
+            modal.classList.add('hidden');
+        }, 300);
+    }
+
+    closeBtn.addEventListener('click', closeModal);
+    modal.addEventListener('click', function(e) {
+        if (e.target === modal) {
+            closeModal();
+        }
+    });
+});
+</script>

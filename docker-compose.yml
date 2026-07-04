@@ -3,7 +3,7 @@ services:
   db:
     image: mysql:8.0
     container_name: ${PROJECT_NAME}-${ENVIRONMENT}-db
-    restart: unless-stopped
+    restart: no
     env_file:
       - .env
     environment:
@@ -19,7 +19,7 @@ services:
     build: .
     depends_on:
       - db
-    restart: always
+    restart: no
     ports:
       - 8001:80
     env_file:

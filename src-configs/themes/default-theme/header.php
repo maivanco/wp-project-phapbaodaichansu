@@ -48,4 +48,4 @@ $heading_tag = is_front_page() ? 'h1' : 'p';
             </div>
           </nav>
         </header>
-        <main id="page-body">
+        <main id="page-body" class="min-h-[calc(100vh-537px)]">

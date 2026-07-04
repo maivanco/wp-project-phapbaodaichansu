@@ -114,37 +114,13 @@ while (have_posts()) :
 	</section>
 
 
-	<section id="books" class="py-24 bg-cream">
-		<div class="lg-container">
-			<?php load_partial('general/section-title', [
-				'section_title' => 'Sản phẩm liên quan',
-				'align' => 'left'
-			])?>
-
-			<div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 lg:gap-6">
-				<?php foreach($green_books as $book): ?>
-				<article class="group">
-					<div class="relative overflow-hidden">
-						<img
-						src="<?php echo $book['img_url_2']; ?>"
-						alt="Book Cover"
-						class=""
-						/>
-					</div>
-					<div class="flex flex-col gap-4 py-4">
-						<p class="uppercase text-sm text-gray">Nguyên thuỷ</p>
-						<h3 class="">
-							<?php echo $book['title']; ?>
-						</h3>
-						<div class="flex items-center justify-between">
-							<?php echo $book['price']?> đ
-						</div>
-					</div>
-				</article>
-				<?php endforeach;?>
-			</div>
-		</div>
-	</section>
+	<?php 
+	load_partial('sections/list_of_products', [
+		'section_title' => __('Các sản phẩm khác', 'pbdcs'),
+		'display_condition' => 'exclude_current_product',
+		'current_product_id' => get_the_ID()
+	]);
+	?>
 
 </div>
 

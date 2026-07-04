@@ -1,6 +1,6 @@
 <section class="sec-intro py-25">
     <div class="lg-container">
-       <div class="flex gap-[14%]">
+       <div class="flex gap-5 lg:gap-[14%]">
             <aside class="w-1/2">
                 <?php load_partial('general/section-title', [
                     'section_title' => 'Pháp Bảo Đại Chân Sư',
@@ -10,13 +10,25 @@
 
                 <div class="wp-editor">
                     <p>
-                        Literature is a vibrant bookstore and publisher in Boston, devoted to bringing readers and writers together through the power of stories.
+                        Pháp Bảo Đại Chân Sư là bộ Pháp Bảo bao gồm những pháp hành thực tế của thầy chúng con - Tỷ kheo Thích Long Viễn, người đã dành trọn đời hiến mình cho pháp để tìm ra chân lý tối thượng, cứu cánh Phạm Hạnh từ những lời dạy của Đức Thế Tôn.
+                        
                     </p>
                     <p>
-                        Our curated book selection and publishing support help readers explore new voices while guiding authors to reach their audience. We blend tradition with innovation, making books accessible for all.
+                        Chúng đệ tử các con đã tập hợp, đúc kết từ những lời dạy quý báu của Thầy thành những quyển kinh sách, được Thầy trùng tuyên lại từ chính lời của Đức Thế Tôn.
+                        Những pháp hành mà giúp hành giả thấy ngay đạo lộ mà ba đời Chư Phật đã và sẽ đi qua, từ Giáo Lý Nguyên Thuỷ mà hành giả không được bỏ qua như <strong>khổ - vô thường - vô ngã; năm cách ly dục, ly ác pháp; thế nào là Bát Chánh Đạo</strong>, 
+                        cho đến <strong>mười sáu chữ vàn</strong> cốt tuỷ của Tịnh Độ Tông, thế nào <strong>Bồ Đề Tâm</strong>? Hành trì và diệu dụng của Bồ Đề Tâm ra sao? <strong>Làm thế nào để niệm Phật vãng sanh?</strong>
+                        hay thậm chí trong pháp môn Mật Tông, thế nào là <strong>"Đương tướng tức đạo, tức sự nhi chân, tức thân thành Phật"</strong>? 
+                        
                     </p>
-                    <p></p>
-                    <p></p>
+
+                    <p>
+                        Dựa trên những pháp hành thực chứng của Thầy chứ không phải lý thuyết suông, bộ Pháp Bảo này sẽ cho hành giả thấy được góc nhìn thâu nhiếp giữa các pháp môn, không những chống trái nhau mà ngược lại, nếu khéo dụng tu tập, các pháp môn này sẽ tương hỗ lẫn nhau, giúp hành giả mau chóng bước lên đạo lộ mà chư Phật ba đời đã đi.
+                        Và con đường đó chính là:
+                    </p>
+
+                    <blockquote>
+                        <p>Trên Tứ Niệm Xứ tu Tứ Chánh Cần, lấy Bát Chánh Đạo làm nền tảng, câu hữu với pháp Như Lý Tác Ý để ly dục và ly tất cả các pháp ác bất thiện, đoạn tất cả các lậu hoặc, thành tựu Chánh Niệm, từ Chánh Niệm sẽ xuất sanh Chánh Định, nhân Định mà Tuệ sanh. Với trí Tuệ anh sẽ thành tựu Bất Động Tâm Định, an trụ trong Thiền Tư. Đó là giải thoát! </p>
+                    </blockquote>
                     
                     <a href="https://www.youtube.com/watch?v=khSGoSIdWDc" target="_blank">
                     <img
@@ -38,39 +50,43 @@
 
             </aside>
             <aside class="w-1/2">
-                <figure class="relative">
-                    <a href="#">
-                        <img
-                            src="<?php echo IMG_URL;?>tieu-su-thay-Thich-Long-Vien.jpg"
-                            alt="Tiểu sử thầy Thích Long Viễn"
-                            class="rounded-xl w-full brightness-50"
-                        />
-                    </a>
-                    <figcaption class="absolute bottom-[30px] right-[50px] text-gold">
-                        <div class="flex items-center gap-3 mb-8">
-                        <span class="block w-12 h-px bg-gradient-to-r from-gold to-transparent"></span>
-                        <svg width="16" height="16" viewBox="0 0 16 16" class="text-gold flex-shrink-0">
-                            <circle cx="8" cy="8" r="2" fill="currentColor"></circle>
-                            <circle cx="8" cy="8" r="5" fill="none" stroke="currentColor" stroke-width="0.5"></circle>
-                            <circle cx="8" cy="8" r="7.5" fill="none" stroke="currentColor" stroke-width="0.3" stroke-dasharray="2 2"></circle>
-                        </svg>
-                        Tỷ kheo Thích Long Viễn
+                <figure class="group relative overflow-hidden">
+                    <img
+                        src="<?php echo IMG_URL;?>tieu-su-thay-Thich-Long-Vien.jpg"
+                        alt="Tiểu sử thầy Thích Long Viễn"
+                        class="rounded-xl w-full brightness-50 transition-[filter] duration-500 group-hover:brightness-30"
+                    />
+                    <div class="poem absolute font-handwriting text-3xl w-full text-white top-[100%] right-1/2 translate-x-1/2 text-center opacity-0 
+                    transition-[top, opacity] duration-[5000ms]
+                    group-hover:top-[70%] group-hover:opacity-100">
+                        <p>Diệu thượng trùng san xuyên vạn kiếp</p>
+                        <p>Pháp toà chi nội trụ thiên tâm</p>
+                        <p>Liên đàng lục đạo hoằng hựu hiệp</p>
+                        <p>Hoa khai bách diệp lý trùng san</p>
+                        <br>
+                        <?php load_partial('general/author-name', [
+                            'name'=> 'Thích Long Viễn',
+                            'extra_class' => 'pl-10 text-center'
+                        ])?>
                     </div>
+                    <figcaption class="absolute bottom-[30px] right-[30px] text-gold transition-[opacity] duration-[5000ms] group-hover:opacity-0">
+                        <?php load_partial('general/author-name', ['name'=> 'Tỷ kheo Thích Long Viễn'])?>
                     </figcaption>
                 </figure>
 
                 <div class="wp-editor mt-8">
                     <p>
-                        Literature is a vibrant bookstore and publisher in Boston, devoted to bringing readers and writers together through the power of stories.
+                        Kể về Thầy chúng con, người từ nhỏ đã luôn luôn buồn vui thủ thỉ với Đức Phật, hay rúc vào tủ thờ ôm hình Phật mà khóc mà cười. 
+                        Thầy hay bảo "Thầy thương ông Phật nhất nhất trên đời". Vậy nên, sau khi hoàn tất chương trình Phổ Thông, Thầy xin phép gia đình cho xuất gia để được gần gũi hơn với "ông Phật". 
+                        Trải qua những tháng ngày rèn luyện, tích lũy tư lương và kiến thức về Phật Pháp tại Đại Tòng Lâm Tự (Bà Rịa-Vũng Tàu) và Trường Phật học Huế, Sài Gòn, Thầy tin chắc vào sự giải thoát của Diệu Pháp mà quyết định về quê, lựa chọn một trú xứ thanh vắng ở chốn núi rừng để sống hạnh độc cư, mong sớm đạt Đạo quả vì sự nghiệp gầy dựng Chánh Pháp, báo đền ơn Phật. 
+                        Thầy chúng con thường hay bảo rằng: "Chỉ cần làm Đức Thế Tôn mỉm cười, dù thân Thầy có nổ tung vỡ thành triệu mảnh ngay tại chỗ thì Thầy cũng cam lòng, chẳng tiếc thân!" 
                     </p>
-                    <p>
-                        Our curated book selection and publishing support help readers explore new voices while guiding authors to reach their audience. We blend tradition with innovation, making books accessible for all.
-                    </p>
-                    <p></p>
-                    <p></p>
-                    <p></p>
-                    
                 </div>
+                <br>
+                <?php load_partial('html/btn-primary', [
+                    'label' => 'Xem thêm về thầy',
+                    'href' => '#',
+                ])?>
             </aside>
         </div>
     </div>

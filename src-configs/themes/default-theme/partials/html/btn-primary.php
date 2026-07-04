@@ -2,7 +2,7 @@
 $btn_label = $args['label'] ?? '';
 $btn_url = $args['url'] ?? '#';
 $btn_target = $args['target'] ?? '_self';
-$btn_class = 'bg-gradient text-white leading-[18px] p-[15px] rounded-[30px] text-center inline-block';
+$btn_class = 'bg-white px-10 py-4 text-xl font-medium shadow-[3px_3px_3px] hover:bg-gold hover:text-white hover:shadow-non';
 if (!empty($args['class'])) {
     $btn_class .= ' ' . $args['class'];
 }
