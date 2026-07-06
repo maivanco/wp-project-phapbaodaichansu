@@ -426,6 +426,7 @@ body {
       border-radius:10px;
       overflow:hidden;
       padding:0 5px;
+      margin-bottom:10px;
     }
   }
 }
@@ -442,4 +443,8 @@ body {
 }
 .added_to_cart.wc-forward{
   display:none;
+}
+.woocommerce-product-gallery__image.flex-active-slide,
+.woocommerce div.product div.images .woocommerce-product-gallery__wrapper .zoomImg{
+  background-color: var(--color-cream2);
 }

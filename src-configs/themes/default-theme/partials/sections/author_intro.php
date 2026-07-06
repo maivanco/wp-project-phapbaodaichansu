@@ -54,20 +54,15 @@
                         alt="Tiểu sử thầy Thích Long Viễn"
                         class="rounded-xl w-full brightness-50 transition-[filter] duration-500 group-hover:brightness-30"
                     />
-                    <div class="poem absolute font-handwriting text-3xl w-full text-white top-[100%] right-1/2 translate-x-1/2 text-center opacity-0 
-                    transition-[top, opacity] duration-[5000ms]
+                    <div class="poem absolute font-handwriting text-3xl w-full text-white top-[70%] right-1/2 translate-x-1/2 text-center
+                    transition-[top, opacity]
                     group-hover:top-[70%] group-hover:opacity-100">
-                        <p>Diệu thượng trùng san xuyên vạn kiếp</p>
-                        <p>Pháp toà chi nội trụ thiên tâm</p>
-                        <p>Liên đàng lục đạo hoằng hựu hiệp</p>
-                        <p>Hoa khai bách diệp lý trùng san</p>
-                        <br>
-                        <?php load_partial('general/author-name', [
-                            'name'=> 'Thích Long Viễn',
-                            'extra_class' => 'pl-10 text-center'
-                        ])?>
+                        <p class="transition-[top, opacity] duration-[4000ms]  opacity-0 group-hover:opacity-100">Diệu thượng trùng san xuyên vạn kiếp</p>
+                        <p class="transition-[top, opacity] duration-[4000ms] delay-[1000ms] opacity-0 group-hover:opacity-100">Pháp toà chi nội trụ thiên tâm</p>
+                        <p class="transition-[top, opacity] duration-[4000ms] delay-[2000ms] opacity-0 group-hover:opacity-100">Liên đàng lục đạo hoằng hựu hiệp</p>
+                        <p class="transition-[top, opacity] duration-[4000ms] delay-[3000ms] opacity-0 group-hover:opacity-100">Hoa khai bách diệp lý trùng san</p>
                     </div>
-                    <figcaption class="absolute bottom-[30px] right-[30px] text-gold transition-[opacity] duration-[5000ms] group-hover:opacity-0">
+                    <figcaption class="absolute bottom-[30px] right-[30px] text-gold transition-[opacity] duration-[5000ms]">
                         <?php load_partial('general/author-name', ['name'=> 'Tỷ kheo Thích Long Viễn'])?>
                     </figcaption>
                 </figure>

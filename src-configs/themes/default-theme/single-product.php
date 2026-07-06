@@ -77,13 +77,8 @@ while (have_posts()) :
 			<aside class="product-info float-right w-[52%] pl-8 max-mobile:w-full max-mobile:pl-0">
 				<?php woocommerce_template_single_title(); ?>
 
-				<div class="my-4 py-6 px-8 bg-cream rounded-2xl">
-					<blockquote class="relative [&_p]:mb-4">
-						<!-- <?php load_partial('html/icon-quote', [
-							'position_class' => 'top-[5px] left-[20px] text-2xl'
-						]);?> -->
-						<?php woocommerce_template_single_excerpt(); ?>
-					</blockquote>
+				<div class="my-4 py-6 px-8 bg-cream2 rounded-2xl wp-editor">
+					<?php woocommerce_template_single_excerpt(); ?>
 				</div>
 
 				<div class="py-2 text-2xl">
