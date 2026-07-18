@@ -10,17 +10,17 @@
 
                 <div class="wp-editor text-justify">
                     <p>
-                        Pháp Bảo Đại Chân Sư là bộ Pháp Bảo bao gồm những pháp hành thực tế của thầy chúng con - Tỷ kheo Thích Long Viễn, người đã dành trọn đời hiến mình cho pháp để tìm ra chân lý tối thượng, cứu cánh Phạm Hạnh từ những lời dạy của Đức Thế Tôn.
-                        
+                    Pháp Bảo Đại Chân Sư là bộ Pháp Bảo bao gồm những pháp hành thực tế của Thầy chúng con, Tỷ kheo Thích Long Viễn, người đã dành trọn đời hiến mình cho Chánh pháp để tìm ra chân lý tối thượng và cứu cánh Phạm hạnh từ những lời dạy của Đức Thế Tôn.
                     </p>
                     <p>
-                        Chúng đệ tử các con đã tập hợp, đúc kết từ những lời dạy quý báu của Thầy thành những quyển kinh sách, được Thầy trùng tuyên lại từ chính lời của Đức Thế Tôn.
-                        Những pháp hành mà giúp hành giả thấy ngay đạo lộ mà ba đời Chư Phật đã và sẽ đi qua, từ Giáo Lý Nguyên Thuỷ mà hành giả không được bỏ qua như <strong>khổ - vô thường - vô ngã; năm cách ly dục, ly ác pháp; thế nào là Bát Chánh Đạo</strong>, 
-                        cho đến <strong>mười sáu chữ vàng</strong> cốt tuỷ của Tịnh Độ Tông, thế nào <strong>Bồ Đề Tâm</strong>? Hành trì và diệu dụng của Bồ Đề Tâm ra sao? <strong>Làm thế nào để niệm Phật vãng sanh?</strong>
-                        hay thậm chí trong pháp môn Mật Tông, thế nào là <strong>"Đương tướng tức đạo, tức sự nhi chân, tức thân thành Phật"</strong>? 
-                        
+                    Chúng đệ tử đã tập hợp, đúc kết những lời dạy quý báu của Thầy thành các quyển kinh sách. Đây là những lời Thầy trùng tuyên lại từ chính giáo pháp của Đức Thế Tôn.
                     </p>
-
+                    <p>
+                    Những pháp hành này giúp hành giả thấy ngay đạo lộ mà chư Phật ba đời đã đi và sẽ đi; từ những giáo lý căn bản của Phật giáo Nguyên thủy như <strong>khổ, vô thường, vô ngã; năm cách ly dục, ly ác pháp; hiểu đúng về Bát Chánh Đạo; cách khéo léo nhập vào Tứ Thiền</strong>...
+                    </p>
+                    <p>
+                    Bên cạnh đó là những pháp yếu như: <strong>Mười sáu chữ vàng </strong> cốt tủy của Tịnh Độ Tông là gì? Thế nào là <strong>Bồ Đề Tâm</strong>? Hành trì và diệu dụng của Bồ Đề Tâm ra sao? Làm thế nào để <strong>niệm Phật vãng sanh</strong>? Thậm chí, trong pháp môn Mật Tông, thế nào là: <strong>"Đương tướng tức đạo, tức sự nhi chân, tức thân thành Phật"</strong>?
+                    </p>
                     <a href="https://www.youtube.com/watch?v=khSGoSIdWDc" target="_blank">
                         <img
                             src="<?php echo IMG_URL;?>thi-ke-de-tu-nhu-lai-thich-long-vien.png"
@@ -57,10 +57,10 @@
                     <div class="poem absolute font-handwriting text-3xl w-full text-white top-[70%] right-1/2 translate-x-1/2 text-center
                     transition-[top, opacity]
                     group-hover:top-[70%] group-hover:opacity-100">
-                        <p class="transition-[top, opacity] duration-[4000ms]  opacity-0 group-hover:opacity-100">Diệu thượng trùng san xuyên vạn kiếp</p>
-                        <p class="transition-[top, opacity] duration-[4000ms] delay-[1000ms] opacity-0 group-hover:opacity-100">Pháp toà chi nội trụ thiên tâm</p>
-                        <p class="transition-[top, opacity] duration-[4000ms] delay-[2000ms] opacity-0 group-hover:opacity-100">Liên đàng lục đạo hoằng hựu hiệp</p>
-                        <p class="transition-[top, opacity] duration-[4000ms] delay-[3000ms] opacity-0 group-hover:opacity-100">Hoa khai bách diệp lý trùng san</p>
+                        <div class="transition-[top, opacity] duration-[4000ms]  opacity-0 group-hover:opacity-100">Diệu thượng trùng san xuyên vạn kiếp</div>
+                        <div class="transition-[top, opacity] duration-[4000ms] delay-[1000ms] opacity-0 group-hover:opacity-100">Pháp toà chi nội trụ thiên tâm</div>
+                        <div class="transition-[top, opacity] duration-[4000ms] delay-[2000ms] opacity-0 group-hover:opacity-100">Liên đàng lục đạo hoằng hựu hiệp</div>
+                        <div class="transition-[top, opacity] duration-[4000ms] delay-[3000ms] opacity-0 group-hover:opacity-100">Hoa khai bách diệp lý trùng san</div>
                     </div>
                     <figcaption class="absolute bottom-[30px] right-[30px] text-gold transition-[opacity] duration-[5000ms]">
                         <?php load_partial('general/author-name', ['name'=> 'Tỷ kheo Thích Long Viễn'])?>
