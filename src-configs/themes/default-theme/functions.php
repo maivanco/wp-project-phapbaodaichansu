@@ -345,3 +345,12 @@ function wptheme_update_mini_cart_item_qty() {
     }
     wp_die();
 }
+function has_special_intro(){
+	global $product;
+	
+	if (!$product){
+		return false;
+	}
+	$has_special_intro = get_field('has_special_intro', $product->get_id());
+	return (bool) $has_special_intro;
+}

@@ -6,34 +6,40 @@ if (empty($slides) ) {
 }
 ?>
 
-<section class="sec-product-slider max-w-[1920px] mx-auto">
-    <?php foreach($slides as $slide): $img_info = $slide['banner_setup']?>
+<section class="sec-product-slider relative bg-cover bg-fixed bg-no-repeat bg-center"
+    style="background-image: url('<?php echo IMG_URL . 'bg-carousel.webp';?>');">
+    <?php 
+    foreach($slides as $slide): 
+        $img_info = $slide['banner_setup'];
+        $product_id = $slide['linked_product'];
+        $product = wc_get_product($product_id);
+        $product_desc = $product->get_short_description();
+    ?>
 
     <div class="slide-slick">
-        <div class="grid grid-cols-[1fr_350px] px-[15px]
-        max-mobile:grid-cols-1
-        ">
-            <div class="left pr-[15px] relative min-h-screen flex items-center
-            max-mobile:block max-mobile:min-h-[auto]
-            after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-2/3 after:h-[1px] after:bg-gold
+        <div class="container">
+            <div class="min-h-[calc(100vh-80px)] grid grid-cols-2 gap-10 px-[15px] justify-items-center items-center
+            max-mobile:grid-cols-1-off
             ">
-                <div class="banner-wrapper <?php echo $img_info['image_wrapper_class'];?>">
-                    <?php render_img_by_id($img_info['image'], '1536x1536', ['class' => $img_info['image_class']]);?>
-                </div>
 
-                <?php load_partial('product/product-btn-group', [
-                    'product_id' => $slide['linked_product'],
-                    'extra_classes' => 'absolute bottom-[30px] left-[30px]'
-                ])?>
-            </div>
-            <div class="right bg-cream2 py-8 md:py-12 lg:py-20 px-8 flex flex-col justify-center
-            max-mobile:hidden">
-                <div class="content">
-                    <h3 class="text-3xl font-medium mb-4">
-                    <?php echo get_the_title($slide['linked_product']); ?>
-                    </h3>
+                <div class="thumb <?php echo $img_info['image_wrapper_class'];?>">
+                    <?php render_img_by_id($img_info['image'], 'large', [
+                        'class' => 'max-h-[80vh] w-auto rounded-lg' . $img_info['image_class']
+                    ]);?>
                 </div>
-                <?php echo get_the_post_thumbnail($slide['linked_product'], 'medium', ['class' => 'mt-10']); ?>
+                <div class="desc">
+                    <h2 class="text-3xl font-light uppercase mb-4">
+                        <?php echo $product->get_title();?>
+                    </h2>
+                    <div class="wp-editor">
+                        <blockquote class="mb-4 py-4 px-6 relative !bg-[rgba(255,255,255,0.5)]">
+                            <?php echo $product_desc;?>
+                        </blockquote>
+                    </div>
+                    <?php load_partial('product/product-btn-group', [
+                        'product_id' => $product_id,
+                    ])?>
+                </div>
             </div>
         </div>
     </div>

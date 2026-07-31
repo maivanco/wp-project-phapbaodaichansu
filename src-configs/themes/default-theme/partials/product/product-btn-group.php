@@ -1,20 +1,28 @@
 <?php 
 $product_id = $args['product_id'] ?? 0;
 $extra_classes = $args['extra_classes'] ?? '';
+$button_style = $args['button_style'] ?? '';
+
+$read_more_btn_style = 'bg-main text-white hover:bg-white hover:text-main';
+$add_to_cart_btn_style = 'bg-white text-main hover:bg-main hover:text-white';
+if ($button_style === 's2'){
+    $read_more_btn_style = 'bg-[#0184b7] border-1 border-[#0184b7] text-white hover:bg-white hover:text-[#0184b7]';
+    $add_to_cart_btn_style = 'bg-[#e73f5c] border-1 border-[#e73f5c] text-white hover:bg-white hover:text-[#e73f5c]';
+}
 ?>
 <div class="btns flex gap-4 mt-8 <?php echo $extra_classes?> 
 max-mobile:static max-mobile:flex-wrap max-mobile:max-w-[220px] max-mobile:mx-auto
 max-mobile:[&>a]:w-full max-mobile:[&>a]:text-center">
-    <a href="<?php echo get_permalink($product_id)?>" class="bg-gold text-white px-10 py-4 text-xl font-medium
-    hover:bg-white hover:text-gold hover:shadow-[3px_3px_3px]
-    ">
+    <a href="<?php echo get_permalink($product_id)?>" class="px-10 py-4 text-xl font-medium
+    hover:shadow-[3px_3px_3px_rgba(0,0,0,0.3)]
+    <?php echo $read_more_btn_style;?>">
         <?php _e('Xem thêm', 'pbdcs');?>
     </a>
     <a href="#" data-product_id="<?php echo $product_id?>" data-quantity="1" class="
     button product_type_simple add_to_cart_button ajax_add_to_cart 
-    bg-white px-10 py-4 text-xl font-medium shadow-[3px_3px_3px]
-    hover:bg-gold hover:text-white hover:shadow-none
-    ">
-        <?php _e('Thêm vào giỏ', 'pbdcs');?>
+     px-10 py-4 text-xl font-medium shadow-[3px_3px_3px_rgba(0,0,0,0.3)]
+    hover:shadow-none
+    <?php echo $add_to_cart_btn_style;?>">
+        <?php _e('Đặt sách', 'pbdcs');?>
     </a>
 </div>

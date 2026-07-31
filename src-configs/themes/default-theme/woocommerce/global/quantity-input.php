@@ -34,6 +34,7 @@ $label = ! empty( $args['product_name'] ) ? sprintf( esc_html__( '%s quantity', 
 	do_action( 'woocommerce_before_quantity_input_field' );
 	?>
 	<label class="screen-reader-text" for="<?php echo esc_attr( $input_id ); ?>"><?php echo esc_attr( $label ); ?></label>
+	<button type="button" class="qty-btn minus" aria-label="<?php esc_attr_e( 'Decrease quantity', 'woocommerce' ); ?>"><i class="fa-solid fa-minus"></i></button>
 	<input
 		type="<?php echo esc_attr( $type ); ?>"
 		<?php echo $readonly ? 'readonly="readonly"' : ''; ?>
@@ -56,6 +57,7 @@ $label = ! empty( $args['product_name'] ) ? sprintf( esc_html__( '%s quantity', 
 			autocomplete="<?php echo esc_attr( isset( $autocomplete ) ? $autocomplete : 'on' ); ?>"
 		<?php endif; ?>
 	/>
+	<button type="button" class="qty-btn plus" aria-label="<?php esc_attr_e( 'Increase quantity', 'woocommerce' ); ?>"><i class="fa-solid fa-plus"></i></button>
 	<?php
 	/**
 	 * Hook to output something after quantity input field

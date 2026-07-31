@@ -13,7 +13,7 @@
                     Pháp Bảo Đại Chân Sư là bộ Pháp Bảo bao gồm những pháp hành thực tế của Thầy chúng con, Tỷ kheo Thích Long Viễn, người đã dành trọn đời hiến mình cho Chánh pháp để tìm ra chân lý tối thượng và cứu cánh Phạm hạnh từ những lời dạy của Đức Thế Tôn.
                     </p>
                     <p>
-                    Chúng đệ tử đã tập hợp, đúc kết những lời dạy quý báu của Thầy thành các quyển kinh sách. Đây là những lời Thầy trùng tuyên lại từ chính giáo pháp của Đức Thế Tôn.
+                    Chúng đệ tử tụi con đã tập hợp, đúc kết những lời dạy quý báu của Thầy thành các quyển kinh sách. Đây là những lời Thầy trùng tuyên lại từ chính giáo pháp của Đức Thế Tôn.
                     </p>
                     <p>
                     Những pháp hành này giúp hành giả thấy ngay đạo lộ mà chư Phật ba đời đã đi và sẽ đi; từ những giáo lý căn bản của Phật giáo Nguyên thủy như <strong>khổ, vô thường, vô ngã; năm cách ly dục, ly ác pháp; hiểu đúng về Bát Chánh Đạo; cách khéo léo nhập vào Tứ Thiền</strong>...
@@ -34,9 +34,10 @@
                         Con đường đó chính là:
                     </p>
 
-                    <blockquote>
+                    <div class="bg-blockquote">
                         <p>Trên Tứ Niệm Xứ tu Tứ Chánh Cần, lấy Bát Chánh Đạo làm nền tảng, câu hữu với pháp Như Lý Tác Ý để ly dục và ly tất cả các pháp ác bất thiện, đoạn tất cả các lậu hoặc, thành tựu Chánh Niệm, từ Chánh Niệm sẽ xuất sanh Chánh Định, nhân Định mà Tuệ sanh. Với trí Tuệ anh sẽ thành tựu Bất Động Tâm Định, an trụ trong Thiền Tư. Đó là giải thoát! </p>
-                    </blockquote>
+                    </div>
+
                     <!-- <img
                         src="<?php echo IMG_URL;?>anh-thay-Thich-Long-Vien.jpg"
                         alt="Ảnh Thầy Thích Long Viễn"
@@ -72,8 +73,12 @@
                         Kể về Thầy chúng con, người từ nhỏ đã luôn luôn buồn vui thủ thỉ với Đức Phật, hay rúc vào tủ thờ ôm hình Phật mà khóc mà cười. 
                         Thầy hay bảo "Thầy thương ông Phật nhất nhất trên đời". Vậy nên, sau khi hoàn tất chương trình Phổ Thông, Thầy xin phép gia đình cho xuất gia để được gần gũi hơn với "ông Phật". 
                         Trải qua những tháng ngày rèn luyện, tích lũy tư lương và kiến thức về Phật Pháp tại Đại Tòng Lâm Tự (Bà Rịa-Vũng Tàu) và Trường Phật học Huế, Sài Gòn, Thầy tin chắc vào sự giải thoát của Diệu Pháp mà quyết định về quê, lựa chọn một trú xứ thanh vắng ở chốn núi rừng để sống hạnh độc cư, mong sớm đạt Đạo quả vì sự nghiệp gầy dựng Chánh Pháp, báo đền ơn Phật. 
-                        Thầy chúng con thường hay bảo rằng: "Chỉ cần làm Đức Thế Tôn mỉm cười, dù thân Thầy có nổ tung vỡ thành triệu mảnh ngay tại chỗ thì Thầy cũng cam lòng, chẳng tiếc thân!" 
+                        Thầy chúng con thường hay bảo rằng:
                     </p>
+                    <blockquote>
+                        "Chỉ cần làm Đức Thế Tôn mỉm cười, dù thân Thầy có nổ tung vỡ thành triệu mảnh ngay tại chỗ thì Thầy cũng cam lòng, chẳng tiếc thân!"
+                        <div class="text-end text-sm mt-4"><em>Tỷ kheo Thích Long Viễn</em></div>
+                    </blockquote>
                 </div>
                 <br>
                 <?php load_partial('html/btn-primary', [

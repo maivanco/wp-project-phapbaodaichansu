@@ -1,5 +1,24 @@
 jQuery(document).ready(function ($) {
 
+    let headerScripts = function(){
+        
+        if(!$('#site-header').hasClass('has-special-intro')) {
+            return;
+        }
+
+        let offsetPointToTrigger = $(window).height() / 2;
+
+        $(window).on('scroll', function(){
+            let activeClass = 'opacity-0 h-0';
+            if($(this).scrollTop() > offsetPointToTrigger) {
+                $('#site-header').removeClass(activeClass);
+            }else {
+                $('#site-header').addClass(activeClass);
+            }
+        });
+    }
+    headerScripts();
+    
     $('#hero-carousel').slick({
         slidesToShow: 1,
         slidesToScroll: 1,
@@ -12,10 +31,11 @@ jQuery(document).ready(function ($) {
         nextArrow: '<button type="button" class="slick-next"><i class="fa-solid fa-chevron-right"></i></button>',
     });
 
-    $('#featured-book-slider').slick({
+    $('#featured-product-slider').slick({
         speed: 20000,
         autoplay: true,
         autoplaySpeed: 200,
+        infinite:false,
         cssEase: 'linear',
         slidesToShow: 1,
         slidesToScroll: 1,
@@ -30,15 +50,21 @@ jQuery(document).ready(function ($) {
         fade: true,
         arrows: true,
         dots: false,
-        prevArrow: '<button type="button" class="slick-prev bg-gold"><i class="fa-solid fa-chevron-left"></i></button>',
-        nextArrow: '<button type="button" class="slick-next bg-gold"><i class="fa-solid fa-chevron-right"></i></button>',
+        prevArrow: '<button type="button" class="slick-prev"><i class="fa-solid fa-chevron-left"></i></button>',
+        nextArrow: '<button type="button" class="slick-next"><i class="fa-solid fa-chevron-right"></i></button>',
     });
 
-    $('#toggle-featured-book-content').click(function(){
-        $('#featured-book .wysiwyg').toggleClass('open');
+    $('#toggle-featured-product-content').click(function(){
+        $('#featured-product .wysiwyg').toggleClass('open');
         $(this).toggleClass('bg-[#23307f] bg-[#e73f5c]');
         $(this).find('i').toggleClass('fa-chevron-right fa-chevron-left');
     });
+    setTimeout(function(){
+        if($(window).width() > 991){
+            $('#toggle-featured-product-content').trigger('click');
+        }
+        
+    },3000);
 
 
     
@@ -94,10 +120,40 @@ jQuery(document).ready(function ($) {
                 }
                 $cartPopup.removeClass('opacity-50 pointer-events-none');
             },
-            error: function() {
-                $cartPopup.removeClass('opacity-50 pointer-events-none');
-            }
         });
+    });
+
+    // Quantity Plus/Minus Buttons
+    $(document).on('click', '.quantity .minus, .quantity .plus', function(e) {
+        e.preventDefault();
+        var $btn = $(this);
+        var $input = $btn.siblings('.qty');
+        if (!$input.length) {
+            $input = $btn.closest('.quantity').find('.qty');
+        }
+        if (!$input.length) return;
+
+        var val = parseFloat($input.val()) || 0;
+        var max = parseFloat($input.attr('max'));
+        var min = parseFloat($input.attr('min'));
+        var step = parseFloat($input.attr('step'));
+
+        if (isNaN(min) || min < 0) min = 1;
+        if (isNaN(step) || step <= 0) step = 1;
+
+        if ($btn.hasClass('minus')) {
+            if (val > min) {
+                var newVal = val - step;
+                if (newVal < min) newVal = min;
+                $input.val(newVal).trigger('change');
+            }
+        } else if ($btn.hasClass('plus')) {
+            if (isNaN(max) || val < max) {
+                var newVal = val + step;
+                if (!isNaN(max) && newVal > max) newVal = max;
+                $input.val(newVal).trigger('change');
+            }
+        }
     });
 
 })

@@ -2,11 +2,11 @@
 
     <footer id="site-footer" class="bg-black text-cream pt-16 pb-8">
       <div class="container">
-        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-10 mb-12">
+        <div class="grid lg:grid-cols-3 gap-10 mb-12">
 
           <div class="lg:col-span-1">
             <p class="">Pháp Tạng</p>
-            <ul class="text-sm flex flex-wrap gap-5 mt-5">
+            <ul class="text-sm flex flex-col flex-wrap gap-5 mt-5">
               <li>Trụ sở: 764 Nguyễn Chí Thanh, Q.11, TPHCM.</li>
               <li>CN1: 11A Tôn Đức Thắng, Q.1, TPHCM.</li>
               <li>CN2: 240 Xã Đàn, Đống Đa, Hà Nội.</li>
@@ -16,7 +16,7 @@
 
           <div>
             <h4 class="font-serif text-lg font-medium mb-6">Pháp Bảo</h4>
-            <p class="text-gradient font-handwriting text-3xl">Ngọc Lệ Bi Tâm <br>Quán Thế Âm</p>
+            <p class="text-gold-gradient font-handwriting text-3xl">Ngọc Lệ Bi Tâm <br>Quán Thế Âm</p>
           </div>
 
           <div>

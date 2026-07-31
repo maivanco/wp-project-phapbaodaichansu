@@ -3,6 +3,27 @@
     "title": "Product extra fields",
     "fields": [
         {
+            "key": "field_6a6a1d04cdd29",
+            "label": "Has special intro",
+            "name": "has_special_intro",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "Check this option if you would like to have a highlight layout for the product detail page",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 0,
+            "allow_in_bindings": 0,
+            "ui": 0,
+            "ui_on_text": "",
+            "ui_off_text": ""
+        },
+        {
             "key": "field_6a565aac62367",
             "label": "PDF Preview",
             "name": "pdf_preview",
@@ -43,5 +64,5 @@
     "description": "",
     "show_in_rest": 0,
     "display_title": "",
-    "modified": 1784044250
+    "modified": 1785485233
 }

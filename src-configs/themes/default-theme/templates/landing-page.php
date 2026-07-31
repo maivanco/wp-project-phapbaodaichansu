@@ -186,7 +186,7 @@ get_header(); ?>
     before:absolute before:z-10 before:inset-y-0 before:left-[-128px] before:w-32 before:bg-gradient-to-r before:from-transparent before:to-[#0d0a08]
     max-tablet:max-w-[100%] max-tablet:relative max-tablet:px-0
     ">
-        <button id="toggle-featured-book-content" type="button" class="absolute z-10 top-[50px] -left-[48px] cursor-pointer w-12 h-12 bg-[#e73f5c] text-white"><i class="fa-solid fa-chevron-right"></i></button>
+        <button id="toggle-featured-product-content" type="button" class="absolute z-10 top-[50px] -left-[48px] cursor-pointer w-12 h-12 bg-[#e73f5c] text-white"><i class="fa-solid fa-chevron-right"></i></button>
         <div class="wrapper h-screen overflow-y-auto p-[50px_20px] text-justify
         max-tablet:h-auto max-tablet:overflow-visible
         ">
@@ -264,7 +264,6 @@ get_header(); ?>
                 <br>
                 <p>    
                     Thệ nguyện ấy như Kim Cang bất thối, hùng chí ấy như Tu-di bất hoại, soi đường dẫn lối cho hậu học tịnh tín nơi Tam Bảo mà dấn thân thực hành Phật đạo chiến thắng ma quân, viên thành tuệ giác vô lậu, làm chủ sống chết, lợi ích trời người. <br>
-                    Và giờ đây, không để đại chúng chờ đợi thêm nữa, thỉnh đại chúng cùng hướng về phía màn hình xem đoạn phim ngắn giới thiệu về Pháp bảo NGỌC LỆ BI TÂM - QUÁN THẾ ÂM.
                 </p>
                 <iframe width="100%" height="800" src="https://www.youtube.com/embed/gBWR9sAKsLo?si=xWDRs-MSL1CA7INJ" title="NGỌC LỆ BI TÂM - QUÁN THẾ ÂM" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 

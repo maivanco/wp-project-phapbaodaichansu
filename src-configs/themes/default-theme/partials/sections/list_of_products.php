@@ -94,7 +94,7 @@ $products = wc_get_products( $product_args );
                     bg-white px-6 py-2 text-sm font-medium shadow-[3px_3px_3px]
                     hover:bg-gold hover:text-white hover:shadow-none
                     ">
-                        <?php _e('Thêm vào giỏ', 'pbdcs');?>
+                        <?php _e('Đặt sách', 'pbdcs');?>
                     </a>
                 </div>
             </div>

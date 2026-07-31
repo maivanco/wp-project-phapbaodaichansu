@@ -20,7 +20,7 @@ $heading_tag = is_front_page() ? 'h1' : 'p';
     <div id="page" class="site">
 
 
-        <header class="sticky top-0 left-0 right-0 z-50 shadow-lg bg-white/95">
+        <header id="site-header" class="sticky top-0 left-0 right-0 z-50 shadow-lg bg-white/95 transition-[opacity,height] duration-[1000ms] <?php echo has_special_intro() ? 'has-special-intro opacity-0 h-0' : '';?>">
           <nav class="container">
             <div class="flex items-center justify-between h-20 max-mobile:h-[60px]">
 
