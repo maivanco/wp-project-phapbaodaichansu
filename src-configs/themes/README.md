@@ -16,53 +16,32 @@ To use Vite with your theme, follow these steps:
    }
    ```
 
-3. **In your theme's `functions.php`**, enqueue Vite assets:
+3. **In your theme's `functions.php`**, enqueue Vite assets from `manifest.json`:
    ```php
    <?php
    function enqueue_vite_assets() {
-       $is_dev = defined('WP_DEBUG') && WP_DEBUG;
+       $manifest = json_decode(
+           file_get_contents(get_template_directory() . '/dist/.vite/manifest.json'),
+           true
+       );
 
-       if ($is_dev) {
-           // Development: Use Vite dev server
+       if (isset($manifest['vite/main.js'])) {
            wp_enqueue_script(
-               'vite-client',
-               'http://localhost:5173/@vite/client',
+               'main',
+               get_template_directory_uri() . '/dist/' . $manifest['vite/main.js']['file'],
                [],
                null,
                true
            );
-           wp_enqueue_script(
-               'main',
-               'http://localhost:5173/vite/main.js',
-               ['vite-client'],
-               null,
-               true
-           );
-       } else {
-           // Production: Use built assets
-           $manifest = json_decode(
-               file_get_contents(get_template_directory() . '/dist/.vite/manifest.json'),
-               true
-           );
 
-           if (isset($manifest['vite/main.js'])) {
-               wp_enqueue_script(
-                   'main',
-                   get_template_directory_uri() . '/dist/' . $manifest['vite/main.js']['file'],
-                   [],
-                   null,
-                   true
-               );
-
-               if (isset($manifest['vite/main.js']['css'])) {
-                   foreach ($manifest['vite/main.js']['css'] as $css) {
-                       wp_enqueue_style(
-                           'main',
-                           get_template_directory_uri() . '/dist/' . $css,
-                           [],
-                           null
-                       );
-                   }
+           if (isset($manifest['vite/main.js']['css'])) {
+               foreach ($manifest['vite/main.js']['css'] as $css) {
+                   wp_enqueue_style(
+                       'main',
+                       get_template_directory_uri() . '/dist/' . $css,
+                       [],
+                       null
+                   );
                }
            }
        }
@@ -70,12 +49,7 @@ To use Vite with your theme, follow these steps:
    add_action('wp_enqueue_scripts', 'enqueue_vite_assets');
    ```
 
-4. **Run Vite dev server** when developing:
-   ```bash
-   npm run dev
-   ```
-
-5. **Build for production**:
+4. **Build assets**:
    ```bash
    npm run build
    ```

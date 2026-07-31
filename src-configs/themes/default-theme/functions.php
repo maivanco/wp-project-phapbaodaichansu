@@ -91,6 +91,12 @@ function wptheme_scripts()
 
 	wp_enqueue_script('jquery');
 	wp_enqueue_script('slick', JS_URL . 'slick.min.js', array(), '1.0', true);
+
+	if (is_front_page()) {
+		wp_enqueue_style('aos', 'https://unpkg.com/aos@2.3.1/dist/aos.css');
+		wp_enqueue_script('aos', 'https://unpkg.com/aos@2.3.1/dist/aos.js', array(), '2.3.1', true);
+		wp_add_inline_script('aos', 'AOS.init();');
+	}
 	
 	wp_enqueue_script('theme-functions', JS_URL . 'theme-functions.js', array(), $themeVer, true);
 
@@ -197,68 +203,52 @@ add_filter('script_loader_tag', 'wptheme_vite_module_script_tag', 10, 3);
 
 
 /**
- * Vite HMR integration for WordPress.
- *
- * In local/dev environment: injects the Vite client and entry point as ES modules
- * from the dev server running on localhost:5173, enabling Hot Module Replacement.
- *
+ * Load built Vite assets from manifest.json, and inject vite-client on local.
  */
 function wptheme_vite_scripts()
 {
 	$is_dev = defined('WP_ENVIRONMENT_TYPE') && WP_ENVIRONMENT_TYPE === 'local';
 
 	if ($is_dev) {
-		// Vite client (HMR engine)
-        wp_enqueue_script(
-            'vite-client',
-            'http://localhost:5173/@vite/client',
-            [],
-            null,
-            true
-        );
+		// Vite client (HMR & live reload engine)
+		wp_enqueue_script(
+			'vite-client',
+			'http://localhost:5173/@vite/client',
+			[],
+			null,
+			true
+		);
+	}
 
-        // Your main JS
-        wp_enqueue_script(
-            'main-js',
-            'http://localhost:5173/src-configs/themes/default-theme/assets/js/vite.js',
-            [],
-            null,
-            true
-        );
-
-		// Vite requires ES module script tags
-	} else {
-        // Production: load built assets from manifest.json
-        $manifest_path = get_template_directory() . '/dist/.vite/manifest.json';
-        
-        if (file_exists($manifest_path)) {
-            $manifest = json_decode(file_get_contents($manifest_path), true);
-            $entry = 'src-configs/themes/default-theme/assets/js/vite.js';
-            
-            if (isset($manifest[$entry])) {
-                // Enqueue JS
-                wp_enqueue_script(
-                    'main-js',
-                    get_template_directory_uri() . '/dist/' . $manifest[$entry]['file'],
-                    [],
-                    null,
-                    true
-                );
-                
-                // Enqueue CSS
-                if (isset($manifest[$entry]['css'])) {
-                    foreach ($manifest[$entry]['css'] as $css_file) {
-                        wp_enqueue_style(
-                            'main-style',
-                            get_template_directory_uri() . '/dist/' . $css_file,
-                            [],
-                            null
-                        );
-                    }
-                }
-            }
-        }
-    }
+	$manifest_path = get_template_directory() . '/dist/.vite/manifest.json';
+	
+	if (file_exists($manifest_path)) {
+		$manifest = json_decode(file_get_contents($manifest_path), true);
+		$entry = 'src-configs/themes/default-theme/assets/js/vite.js';
+		
+		if (isset($manifest[$entry])) {
+			// Enqueue JS
+			wp_enqueue_script(
+				'main-js',
+				get_template_directory_uri() . '/dist/' . $manifest[$entry]['file'],
+				[],
+				null,
+				true
+			);
+			
+			// Enqueue CSS
+			if (isset($manifest[$entry]['css'])) {
+				foreach ($manifest[$entry]['css'] as $css_file) {
+					wp_enqueue_style(
+						'main-style',
+						get_template_directory_uri() . '/dist/' . $css_file,
+						[],
+						null
+					);
+				}
+			}
+		}
+	}
 }
 
 function load_partial($slug, $args = []){

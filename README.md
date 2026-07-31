@@ -119,7 +119,7 @@ Configured via `src-configs/configs/php.ini`:
 
 ### 1. Start the project
 
-For **local development** (includes Vite dev server and phpMyAdmin):
+For **local development** (starts Docker services & Vite dev server with auto-build):
 ```bash
 ./start.local
 ```
@@ -135,7 +135,7 @@ For **production** (only core services, no dev tools):
 |---|---|
 | WordPress | http://localhost:8001 |
 | phpMyAdmin | http://localhost:8080 |
-| Vite dev server | http://localhost:5173 |
+| Vite HMR | http://localhost:5173 |
 
 ---
 

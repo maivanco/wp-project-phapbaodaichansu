@@ -17,8 +17,6 @@
 		path /wp-config.php
 		path /.ht*
 	}
-	error @forbidden 403
-
 	# Vite HMR proxy — forward dev server routes (JS modules, WebSocket, ping)
 	@vite {
 		path /@vite/*

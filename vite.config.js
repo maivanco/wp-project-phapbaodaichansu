@@ -1,5 +1,30 @@
-import { defineConfig } from 'vite'
+import { defineConfig, build } from 'vite'
 import tailwindcss from '@tailwindcss/vite'
+
+let isBuilding = false
+async function runBuild() {
+  if (isBuilding) return
+  isBuilding = true
+  try {
+    await build({
+      configFile: false,
+      root: '.',
+      base: '',
+      plugins: [tailwindcss()],
+      build: {
+        outDir: 'src-configs/themes/default-theme/dist',
+        manifest: true,
+        rollupOptions: {
+          input: 'src-configs/themes/default-theme/assets/js/vite.js',
+        },
+      },
+    })
+  } catch (err) {
+    console.error('Build error:', err)
+  } finally {
+    isBuilding = false
+  }
+}
 
 export default defineConfig(({ command }) => ({
   root: '.', // Change this to your desired directory
@@ -7,10 +32,19 @@ export default defineConfig(({ command }) => ({
   plugins: [
     tailwindcss(),
     {
-      name: 'theme-php-full-reload',
-      handleHotUpdate({ file, server }) {
+      name: 'theme-php-full-reload-and-build',
+      configureServer() {
+        // Run build once when Vite dev server starts
+        runBuild()
+      },
+      async handleHotUpdate({ file, server }) {
+        if (file.includes('/dist/')) return
+
         const inTheme = file.includes('/src-configs/themes/default-theme/')
-        if (inTheme && file.endsWith('.php')) {
+        if (inTheme) {
+          // Re-run build for all theme edits (including PHP templates) so dist CSS stays updated
+          await runBuild()
+          // Send live reload signal via vite-client
           server.ws.send({ type: 'full-reload', path: '*' })
         }
       },
