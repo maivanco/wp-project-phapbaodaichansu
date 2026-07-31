@@ -19,19 +19,19 @@ if (empty($slides) ) {
     <div class="slide-slick">
         <div class="container">
             <div class="min-h-[calc(100vh-80px)] grid grid-cols-2 gap-10 px-[15px] justify-items-center items-center
-            max-mobile:grid-cols-1-off
+            max-mobile:min-h-auto max-mobile:grid-cols-1 max-mobile:gap-0 max-mobile:px-0 max-mobile:py-[30px]
             ">
 
-                <div class="thumb <?php echo $img_info['image_wrapper_class'];?>">
+                <div class="thumb <?php echo $img_info['image_wrapper_class'];?>" data-aos="fade-right" data-aos-offset="300" data-aos-easing="ease-in-sine">
                     <?php render_img_by_id($img_info['image'], 'large', [
-                        'class' => 'max-h-[80vh] w-auto rounded-lg' . $img_info['image_class']
+                        'class' => 'max-mobile:max-h-[70vh] max-h-[80vh] w-auto rounded-lg ' . $img_info['image_class']
                     ]);?>
                 </div>
-                <div class="desc">
-                    <h2 class="text-3xl font-light uppercase mb-4">
+                <div class="desc max-mobile:w-full" data-aos="fade-up" data-aos-duration="5000" data-aos-offset="200">
+                    <h2 class="text-3xl font-light uppercase mb-4 max-mobile:hidden">
                         <?php echo $product->get_title();?>
                     </h2>
-                    <div class="wp-editor">
+                    <div class="wp-editor max-mobile:hidden">
                         <blockquote class="mb-4 py-4 px-6 relative !bg-[rgba(255,255,255,0.5)]">
                             <?php echo $product_desc;?>
                         </blockquote>

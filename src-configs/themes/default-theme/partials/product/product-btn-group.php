@@ -11,10 +11,11 @@ if ($button_style === 's2'){
 }
 ?>
 <div class="btns flex gap-4 mt-8 <?php echo $extra_classes?> 
-max-mobile:static max-mobile:flex-wrap max-mobile:max-w-[220px] max-mobile:mx-auto
+max-mobile:mx-auto
 max-mobile:[&>a]:w-full max-mobile:[&>a]:text-center">
     <a href="<?php echo get_permalink($product_id)?>" class="px-10 py-4 text-xl font-medium
     hover:shadow-[3px_3px_3px_rgba(0,0,0,0.3)]
+    max-tablet:text-sm max-tablet:px-4 max-tablet:py-4
     <?php echo $read_more_btn_style;?>">
         <?php _e('Xem thêm', 'pbdcs');?>
     </a>
@@ -22,6 +23,7 @@ max-mobile:[&>a]:w-full max-mobile:[&>a]:text-center">
     button product_type_simple add_to_cart_button ajax_add_to_cart 
      px-10 py-4 text-xl font-medium shadow-[3px_3px_3px_rgba(0,0,0,0.3)]
     hover:shadow-none
+    max-tablet:text-sm max-tablet:px-4 max-tablet:py-4
     <?php echo $add_to_cart_btn_style;?>">
         <?php _e('Đặt sách', 'pbdcs');?>
     </a>

@@ -97,6 +97,79 @@ body {
   color: transparent;
   -webkit-text-fill-color: transparent;
 }
+
+/* Blockquote styling */
+blockquote {
+  position: relative;
+  margin: 2rem 0;
+  padding: 1.5rem 2rem;
+  background-color: #f8fafc; /* slate-50 */
+  color:#0f172a;
+  box-shadow:3px 3px 10px rgba(0,0,0,0.2);
+  font-weight:400;
+  &:before{
+    content: "";
+    position: absolute;
+    inset: -2px;
+    width:4px;
+    background: linear-gradient(
+        145deg,
+        #8C6A12,
+        #C9A227,
+        #FFE27A,
+        #C9A227,
+        #8C6A12
+    );
+  }
+  &.s2{
+    &:before{
+      background: linear-gradient(
+          180deg,
+          hsl(339 100% 55%) 0%,
+          #47cbff 100%
+      );
+    }
+    
+  }
+  &.s3{
+    background:url('../img/blockquote-lines.webp') no-repeat;
+    padding: 80px 70px 60px;
+    background-size: 100% 100%;
+    background-position: 0px 0px;
+    border-radius: 20px;
+    position:relative;
+    p {
+      font-weight:400;
+    }
+    
+    &:before{
+      background:none;
+      content:'“';
+      position:absolute;
+      top: -70px;
+      left: 60px;
+      font-size: 180px;
+      font-weight: normal;
+      color: var(--color-gold);
+      opacity: 0.2;
+    }
+    &:after{
+      content:'';
+      background:url('../img/blockquote-lotus.webp') no-repeat;
+      position:absolute;
+      bottom:0;
+      right:0;
+      width: 100px;
+      height: 100px;
+      background-size: contain;
+      opacity: 0.3;
+      transition:opacity 1s;
+    }
+    &:hover:after{
+      opacity:1;
+    }
+  }
+}
 /* WYSIWYG Editor Content Styling */
 .wp-editor {
   color: #334155; /* slate-700 */
@@ -211,60 +284,6 @@ body {
   margin-bottom: 0.5rem;
   text-wrap: pretty;
   padding-left: 0.25rem;
-}
-.bg-blockquote{
-  background:url('../img/blockquote-lines.webp') no-repeat;
-  padding: 80px 70px 60px;
-  background-size: 100% 100%;
-  background-position: 0px 0px;
-  border-radius: 20px;
-  position:relative;
-  font-weight:400;
-  &:before{
-    content:'“';
-    position:absolute;
-    top: -10px;
-    left: 60px;
-    font-size: 100px;
-    font-weight: normal;
-    color: var(--color-gold);
-    opacity: 0.2;
-  }
-}
-/* Blockquote styling */
-.wp-editor{
-  blockquote {
-    position: relative;
-    margin: 2rem 0;
-    padding: 1.5rem 2rem;
-    background-color: #f8fafc; /* slate-50 */
-    box-shadow:3px 3px 10px rgba(0,0,0,0.2);
-    font-weight:400;
-    &:before{
-      content: "";
-      position: absolute;
-      inset: -2px;
-      width:4px;
-      background: linear-gradient(
-          145deg,
-          #8C6A12,
-          #C9A227,
-          #FFE27A,
-          #C9A227,
-          #8C6A12
-      );
-    }
-    &.s2{
-      &:before{
-        background: linear-gradient(
-            180deg,
-            hsl(339 100% 55%) 0%,
-            #47cbff 100%
-        );
-      }
-      
-    }
-  }
 }
 
 .wp-editor blockquote p {

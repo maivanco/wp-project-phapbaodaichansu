@@ -6,13 +6,13 @@ $align = $args['align'] ?? 'center';
 ?>
 <div class="section-title-wrapper text-<?php echo $align ?> <?php echo $class ?> mb-8">
   <?php if (!empty($subtitle)) : ?>
-    <h4 class="text-[16px] font-semi-bold mb-[10px] font-title ">
+    <p class="text-[16px] font-semi-bold mb-[10px] font-title ">
       <?= $subtitle ?>
-    </h4>
+    </p>
   <?php endif; ?>
   <?php if (!empty($section_title)) : ?>
-    <h3 class="text-[48px] leading-[68px] font-title">
+    <h2 class="text-[48px] leading-[68px] font-title">
       <?= $section_title ?>
-    </h3>
+    </h2>
   <?php endif; ?>
 </div>

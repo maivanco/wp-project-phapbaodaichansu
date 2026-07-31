@@ -35,7 +35,7 @@ jQuery(document).ready(function ($) {
         speed: 20000,
         autoplay: true,
         autoplaySpeed: 200,
-        infinite:false,
+        infinite: true,  
         cssEase: 'linear',
         slidesToShow: 1,
         slidesToScroll: 1,

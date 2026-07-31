@@ -34,9 +34,9 @@
                         Con đường đó chính là:
                     </p>
 
-                    <div class="bg-blockquote">
+                    <blockquote class="s3">
                         <p>Trên Tứ Niệm Xứ tu Tứ Chánh Cần, lấy Bát Chánh Đạo làm nền tảng, câu hữu với pháp Như Lý Tác Ý để ly dục và ly tất cả các pháp ác bất thiện, đoạn tất cả các lậu hoặc, thành tựu Chánh Niệm, từ Chánh Niệm sẽ xuất sanh Chánh Định, nhân Định mà Tuệ sanh. Với trí Tuệ anh sẽ thành tựu Bất Động Tâm Định, an trụ trong Thiền Tư. Đó là giải thoát! </p>
-                    </div>
+                    </blockquote>
 
                     <!-- <img
                         src="<?php echo IMG_URL;?>anh-thay-Thich-Long-Vien.jpg"
@@ -55,15 +55,17 @@
                         alt="Tiểu sử thầy Thích Long Viễn"
                         class="rounded-xl w-full brightness-50 transition-[filter] duration-500 group-hover:brightness-30"
                     />
-                    <div class="poem absolute font-handwriting text-3xl w-full text-white top-[70%] right-1/2 translate-x-1/2 text-center
+                    <div class="poem absolute font-handwriting text-3xl w-full text-white bottom-[100px] right-1/2 translate-x-1/2 text-center
                     transition-[top, opacity]
-                    group-hover:top-[70%] group-hover:opacity-100">
+                    group-hover:opacity-100
+                    max-mobile:text-xl">
                         <div class="transition-[top, opacity] duration-[4000ms]  opacity-0 group-hover:opacity-100">Diệu thượng trùng san xuyên vạn kiếp</div>
                         <div class="transition-[top, opacity] duration-[4000ms] delay-[1000ms] opacity-0 group-hover:opacity-100">Pháp toà chi nội trụ thiên tâm</div>
                         <div class="transition-[top, opacity] duration-[4000ms] delay-[2000ms] opacity-0 group-hover:opacity-100">Liên đàng lục đạo hoằng hựu hiệp</div>
                         <div class="transition-[top, opacity] duration-[4000ms] delay-[3000ms] opacity-0 group-hover:opacity-100">Hoa khai bách diệp lý trùng san</div>
                     </div>
-                    <figcaption class="absolute bottom-[30px] right-[30px] text-gold transition-[opacity] duration-[5000ms]">
+                    <figcaption class="absolute bottom-[30px] right-[30px] text-gold transition-[opacity] duration-[5000ms]
+                    max-mobile:text-sm">
                         <?php load_partial('general/author-name', ['name'=> 'Tỷ kheo Thích Long Viễn'])?>
                     </figcaption>
                 </figure>
@@ -77,7 +79,6 @@
                     </p>
                     <blockquote>
                         "Chỉ cần làm Đức Thế Tôn mỉm cười, dù thân Thầy có nổ tung vỡ thành triệu mảnh ngay tại chỗ thì Thầy cũng cam lòng, chẳng tiếc thân!"
-                        <div class="text-end text-sm mt-4"><em>Tỷ kheo Thích Long Viễn</em></div>
                     </blockquote>
                 </div>
                 <br>

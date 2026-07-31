@@ -25,7 +25,7 @@ $heading_tag = is_front_page() ? 'h1' : 'p';
             <div class="flex items-center justify-between h-20 max-mobile:h-[60px]">
 
               <<?php echo $heading_tag;?>>
-                <a class="block text-[48px] max-tablet:text-[36px] max-mobile:text-[32px] font-handwriting text-gradient pr-3" href="<?php echo home_url();?>" data-discover="true">
+                <a class="block text-[48px] max-tablet:text-[36px] max-mobile:text-[28px] font-handwriting text-gradient pr-3" href="<?php echo home_url();?>" data-discover="true">
                   <?php bloginfo('name');?>
                 </a>
               </<?php echo $heading_tag;?>>
