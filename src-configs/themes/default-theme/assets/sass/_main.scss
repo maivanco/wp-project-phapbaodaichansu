@@ -7,9 +7,19 @@
   --color-white:#fff;
   --color-gray:#A39F98;
   --container-width: 1200px;
-
   --breakpoint-tablet: 991px;
   --breakpoint-mobile: 767px;
+
+  --animate-bg-slide: bg-slide 1000s linear infinite;
+}
+
+@keyframes bg-slide {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: -1000vw 0;
+  }
 }
 @utility color-text-body {
   color: var(--color-text-body);
@@ -31,18 +41,8 @@
 
 @source inline("h-[{10,20,30,40,50,60,70,80,90,100}px]");
 
-@source inline("mt-[{10,20,30,40,50,60,70,80,90,100}px]");
 @source inline("mb-[{10,20,30,40,50,60,70,80,90,100}px]");
-
-@keyframes marquee-content {
-  from {
-    transform: translateX( 100% );
-  }
-  to {
-    transform: translateX( -100% );
-  }
-}
-
+@source inline("animate-bg-slide");
 
 /* width */
 ::-webkit-scrollbar {

@@ -1,4 +1,5 @@
 @import "tailwindcss";
-@source "../../**/*.php";
+@source "../../";
 @import "./slick.css";
 @import "../sass/_main.scss";
+

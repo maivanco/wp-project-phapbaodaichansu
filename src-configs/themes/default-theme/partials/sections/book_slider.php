@@ -6,7 +6,7 @@ if (empty($slides) ) {
 }
 ?>
 
-<section class="sec-product-slider relative bg-cover bg-fixed bg-no-repeat bg-center"
+<section class="sec-product-slider relative bg-repeat-x bg-cover animate-bg-slide"
     style="background-image: url('<?php echo IMG_URL . 'bg-carousel.webp';?>');">
     <?php 
     foreach($slides as $slide): 
@@ -22,12 +22,12 @@ if (empty($slides) ) {
             max-mobile:min-h-auto max-mobile:grid-cols-1 max-mobile:gap-0 max-mobile:px-0 max-mobile:py-[30px]
             ">
 
-                <div class="thumb <?php echo $img_info['image_wrapper_class'];?>" data-aos="fade-right" data-aos-offset="300" data-aos-easing="ease-in-sine">
+                <div class="thumb <?php echo $img_info['image_wrapper_class'];?>">
                     <?php render_img_by_id($img_info['image'], 'large', [
                         'class' => 'max-mobile:max-h-[70vh] max-h-[80vh] w-auto rounded-lg ' . $img_info['image_class']
                     ]);?>
                 </div>
-                <div class="desc max-mobile:w-full" data-aos="fade-up" data-aos-duration="5000" data-aos-offset="200">
+                <div class="desc max-mobile:w-full">
                     <h2 class="text-3xl font-light uppercase mb-4 max-mobile:hidden">
                         <?php echo $product->get_title();?>
                     </h2>

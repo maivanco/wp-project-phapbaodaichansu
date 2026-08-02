@@ -56,8 +56,10 @@ if (!function_exists('wptheme_setup')) {
 
 		register_nav_menus(
 			array(
-				'primary' => esc_html__('Primary menu', 'sourcecode'),
-				'footer'  => esc_html__('Secondary menu', 'sourcecode'),
+				'primary'  => esc_html__('Primary Menu', 'pbdcs'),
+				'footer-1' => esc_html__('Footer Menu 1', 'pbdcs'),
+				'footer-2' => esc_html__('Footer Menu 2', 'pbdcs'),
+				'footer-3' => esc_html__('Footer Menu 3', 'pbdcs'),
 			)
 		);
 
@@ -93,9 +95,9 @@ function wptheme_scripts()
 	wp_enqueue_script('slick', JS_URL . 'slick.min.js', array(), '1.0', true);
 
 	if (is_front_page()) {
-		wp_enqueue_style('aos', 'https://unpkg.com/aos@2.3.1/dist/aos.css');
-		wp_enqueue_script('aos', 'https://unpkg.com/aos@2.3.1/dist/aos.js', array(), '2.3.1', true);
-		wp_add_inline_script('aos', 'AOS.init();');
+		// wp_enqueue_style('aos', 'https://unpkg.com/aos@2.3.1/dist/aos.css');
+		// wp_enqueue_script('aos', 'https://unpkg.com/aos@2.3.1/dist/aos.js', array(), '2.3.1', true);
+		// wp_add_inline_script('aos', 'AOS.init({ once: true });');
 	}
 	
 	wp_enqueue_script('theme-functions', JS_URL . 'theme-functions.js', array(), $themeVer, true);

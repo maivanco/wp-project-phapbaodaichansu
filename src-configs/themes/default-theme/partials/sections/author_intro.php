@@ -1,7 +1,7 @@
 <section class="sec-intro py-25">
     <div class="md-container">
        <div class="flex max-tablet:flex-wrap gap-5 lg:gap-[7%]">
-            <aside class="w-1/2 max-tablet:w-full">
+            <aside class="w-1/2 max-tablet:w-full" data-aos="fade-right" data-aos-offset="-500" data-aos-duration="2000" data-aos-once="true">
                 <?php load_partial('general/section-title', [
                     'section_title' => 'Pháp Bảo <br> Đại Chân Sư',
                     'subtitle' => 'GIỚI THIỆU',
@@ -21,7 +21,8 @@
                     <p>
                     Bên cạnh đó là những pháp yếu như: <strong>Mười sáu chữ vàng </strong> cốt tủy của Tịnh Độ Tông là gì? Thế nào là <strong>Bồ Đề Tâm</strong>? Hành trì và diệu dụng của Bồ Đề Tâm ra sao? Làm thế nào để <strong>niệm Phật vãng sanh</strong>? Thậm chí, trong pháp môn Mật Tông, thế nào là: <strong>"Đương tướng tức đạo, tức sự nhi chân, tức thân thành Phật"</strong>?
                     </p>
-                    <a href="https://www.youtube.com/watch?v=khSGoSIdWDc" target="_blank">
+                    <a href="https://www.youtube.com/watch?v=khSGoSIdWDc" target="_blank" class="block"
+                    data-aos="fade-up" data-aos-offset="-500" data-aos-duration="2000">
                         <img
                             src="<?php echo IMG_URL;?>thi-ke-de-tu-nhu-lai-thich-long-vien.png"
                             alt="Ảnh Thầy Thích Long Viễn"
@@ -34,7 +35,7 @@
                         Con đường đó chính là:
                     </p>
 
-                    <blockquote class="s3">
+                    <blockquote class="s3" data-aos="fade-up" data-aos-offset="-1000" data-aos-duration="5000" data-aos-easing="ease-in-sine">
                         <p>Trên Tứ Niệm Xứ tu Tứ Chánh Cần, lấy Bát Chánh Đạo làm nền tảng, câu hữu với pháp Như Lý Tác Ý để ly dục và ly tất cả các pháp ác bất thiện, đoạn tất cả các lậu hoặc, thành tựu Chánh Niệm, từ Chánh Niệm sẽ xuất sanh Chánh Định, nhân Định mà Tuệ sanh. Với trí Tuệ anh sẽ thành tựu Bất Động Tâm Định, an trụ trong Thiền Tư. Đó là giải thoát! </p>
                     </blockquote>
 
@@ -48,7 +49,7 @@
                 </div>
 
             </aside>
-            <aside class="w-1/2 max-tablet:w-full">
+            <aside class="w-1/2 max-tablet:w-full" data-aos="fade-left" data-aos-offset="-500" data-aos-duration="2000" data-aos-once="true">
                 <figure class="group relative overflow-hidden">
                     <img
                         src="<?php echo IMG_URL;?>tieu-su-thay-Thich-Long-Vien.jpg"
@@ -77,7 +78,7 @@
                         Trải qua những tháng ngày rèn luyện, tích lũy tư lương và kiến thức về Phật Pháp tại Đại Tòng Lâm Tự (Bà Rịa-Vũng Tàu) và Trường Phật học Huế, Sài Gòn, Thầy tin chắc vào sự giải thoát của Diệu Pháp mà quyết định về quê, lựa chọn một trú xứ thanh vắng ở chốn núi rừng để sống hạnh độc cư, mong sớm đạt Đạo quả vì sự nghiệp gầy dựng Chánh Pháp, báo đền ơn Phật. 
                         Thầy chúng con thường hay bảo rằng:
                     </p>
-                    <blockquote>
+                    <blockquote data-aos="fade-up" data-aos-offset="-500" data-aos-duration="5000">
                         "Chỉ cần làm Đức Thế Tôn mỉm cười, dù thân Thầy có nổ tung vỡ thành triệu mảnh ngay tại chỗ thì Thầy cũng cam lòng, chẳng tiếc thân!"
                     </blockquote>
                 </div>

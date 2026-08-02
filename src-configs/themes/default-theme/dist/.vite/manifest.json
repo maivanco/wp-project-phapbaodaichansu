@@ -8,12 +8,12 @@
     "src": "src-configs/themes/default-theme/assets/img/blockquote-lotus.webp"
   },
   "src-configs/themes/default-theme/assets/js/vite.js": {
-    "file": "assets/vite-B-xwFAxO.js",
+    "file": "assets/vite-o2OcEGuM.js",
     "name": "vite",
     "src": "src-configs/themes/default-theme/assets/js/vite.js",
     "isEntry": true,
     "css": [
-      "assets/vite-DVAJSekV.css"
+      "assets/vite-BDOU8Blh.css"
     ],
     "assets": [
       "assets/blockquote-lines-BeJTbbjq.webp",
