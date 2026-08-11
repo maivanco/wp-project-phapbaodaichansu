@@ -18,7 +18,7 @@ if (empty($slides) ) {
 
     <div class="slide-slick">
         <div class="container">
-            <div class="min-h-[calc(100vh-80px)] grid grid-cols-2 gap-10 px-[15px] justify-items-center items-center
+            <div class="min-h-[calc(100vh-80px)] grid grid-cols-2 gap-10 p-[60px_15px] justify-items-center items-center
             max-mobile:min-h-auto max-mobile:grid-cols-1 max-mobile:gap-0 max-mobile:px-0 max-mobile:py-[30px]
             ">
 

@@ -44,6 +44,12 @@
 @source inline("mb-[{10,20,30,40,50,60,70,80,90,100}px]");
 @source inline("animate-bg-slide");
 
+@mixin mobile {
+  @media (max-width: 767px) {
+    @content;
+  }
+}
+
 /* width */
 ::-webkit-scrollbar {
   width: 7px;
@@ -78,10 +84,10 @@ body {
   font-family: 'Google Sans Flex', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-weight: 400;
 }
-.bg-gold-gradient{
+.bg-gold{
   background:linear-gradient(90deg,#8C6A12,#C9A227,#FFE27A,#C9A227,#8C6A12);
 }
-.text-gold-gradient{
+.text-gold{
   background: linear-gradient(
       90deg,
       #8C6A12,
@@ -141,7 +147,9 @@ blockquote {
     p {
       font-weight:400;
     }
-    
+    @include mobile {
+      padding: 20px;
+    }
     &:before{
       background:none;
       content:'“';
@@ -174,7 +182,6 @@ blockquote {
 .wp-editor {
   color: #334155; /* slate-700 */
   line-height: 1.8;
-  font-size: 1.1rem; /* readable base size */
 }
 
 /* Headings with gradient highlight */

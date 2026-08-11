@@ -60,10 +60,10 @@
                     transition-[top, opacity]
                     group-hover:opacity-100
                     max-mobile:text-xl">
-                        <div class="transition-[top, opacity] duration-[4000ms]  opacity-0 group-hover:opacity-100">Diệu thượng trùng san xuyên vạn kiếp</div>
-                        <div class="transition-[top, opacity] duration-[4000ms] delay-[1000ms] opacity-0 group-hover:opacity-100">Pháp toà chi nội trụ thiên tâm</div>
-                        <div class="transition-[top, opacity] duration-[4000ms] delay-[2000ms] opacity-0 group-hover:opacity-100">Liên đàng lục đạo hoằng hựu hiệp</div>
-                        <div class="transition-[top, opacity] duration-[4000ms] delay-[3000ms] opacity-0 group-hover:opacity-100">Hoa khai bách diệp lý trùng san</div>
+                        <div class="transition-[top, opacity] duration-[4000ms]  opacity-0 group-hover:opacity-100 max-tablet:opacity-70">Diệu thượng trùng san xuyên vạn kiếp</div>
+                        <div class="transition-[top, opacity] duration-[4000ms] delay-[1000ms] opacity-0 group-hover:opacity-100 max-tablet:opacity-70">Pháp toà chi nội trụ thiên tâm</div>
+                        <div class="transition-[top, opacity] duration-[4000ms] delay-[2000ms] opacity-0 group-hover:opacity-100 max-tablet:opacity-70">Liên đàng lục đạo hoằng hựu hiệp</div>
+                        <div class="transition-[top, opacity] duration-[4000ms] delay-[3000ms] opacity-0 group-hover:opacity-100 max-tablet:opacity-70">Hoa khai bách diệp lý trùng san</div>
                     </div>
                     <figcaption class="absolute bottom-[30px] right-[30px] text-gold transition-[opacity] duration-[5000ms]
                     max-mobile:text-sm">

@@ -35,7 +35,7 @@ get_header();
           </div>
         </div>
         <p class="text-xs md:text-sm text-gray-500 italic mt-3 border-l-2 border-[#c9922a] pl-3 py-1">
-          Chùa Phật Đảnh Bảo Vương (Nha Trang - Khánh Hòa) - Nơi lưu dấu hành trạng tu tập và hoằng dương Chánh pháp của Đại Đức Thích Long Viễn.
+          Ảnh thầy Thích Long Viễn
         </p>
       </div>
 

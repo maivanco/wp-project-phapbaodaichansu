@@ -25,16 +25,30 @@ $heading_tag = is_front_page() ? 'h1' : 'p';
             <div class="flex items-center justify-between h-20 max-mobile:h-[60px]">
 
               <<?php echo $heading_tag;?>>
-                <a class="block text-[48px] max-tablet:text-[36px] max-mobile:text-[28px] font-handwriting text-gradient pr-3" href="<?php echo home_url();?>" data-discover="true">
+                <a class="block text-[48px] max-tablet:text-[36px] max-mobile:text-[28px] font-handwriting text-gold pr-3" href="<?php echo home_url();?>" data-discover="true">
                   <?php bloginfo('name');?>
                 </a>
               </<?php echo $heading_tag;?>>
               <div class="flex items-center gap-4 md:gap-10">
-                <div class="hidden md:flex items-center gap-10">
-                  <a class="text-sm font-medium text-warmGray-600 hover:text-charcoal transition-colors duration-200 uppercase tracking-wider" href="/" data-discover="true">Trang chủ</a>
-                  <a class="text-sm font-medium text-warmGray-600 hover:text-charcoal transition-colors duration-200 uppercase tracking-wider" href="/#about" data-discover="true">Giới thiệu</a>
-                  <a class="text-sm font-medium text-warmGray-600 hover:text-charcoal transition-colors duration-200 uppercase tracking-wider" href="/#books" data-discover="true">Đặt sách</a>
-                </div>
+                <?php
+                if (has_nav_menu('primary')) {
+                  wp_nav_menu(array(
+                    'theme_location' => 'primary',
+                    'menu_id'        => 'primary-menu',
+                    'container'      => false,
+                    'menu_class'     => 'hidden md:flex items-center gap-10 text-sm font-medium text-warmGray-600 uppercase tracking-wider [&>li>a]:hover:text-charcoal [&>li>a]:transition-colors [&>li>a]:duration-200',
+                    'fallback_cb'    => false,
+                  ));
+                } else {
+                  ?>
+                  <div class="hidden md:flex items-center gap-10">
+                    <a class="text-sm font-medium text-warmGray-600 hover:text-charcoal transition-colors duration-200 uppercase tracking-wider" href="/" data-discover="true">Trang chủ</a>
+                    <a class="text-sm font-medium text-warmGray-600 hover:text-charcoal transition-colors duration-200 uppercase tracking-wider" href="/#about" data-discover="true">Giới thiệu</a>
+                    <a class="text-sm font-medium text-warmGray-600 hover:text-charcoal transition-colors duration-200 uppercase tracking-wider" href="/#books" data-discover="true">Đặt sách</a>
+                  </div>
+                  <?php
+                }
+                ?>
                 <button class="toggle-cart relative p-2 text-charcoal hover:text-warmGray-600 transition-colors duration-200" aria-label="Giỏ hàng">
                   <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6"><circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/></svg>
                   <span class="cart-count absolute top-0 right-0 inline-flex items-center justify-center w-5 h-5 text-[10px] font-bold text-white bg-red-500 rounded-full border-2 border-white -mt-1 -mr-1">

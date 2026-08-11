@@ -31,7 +31,7 @@ $product_gallery = $product->get_gallery_image_ids();
     before:absolute before:z-10 before:inset-y-0 before:left-[-128px] before:w-32 before:bg-gradient-to-r before:from-transparent before:to-[#0d0a08]
     max-tablet:max-w-full max-tablet:relative max-tablet:px-0 max-tablet:col-[1/-1]
     ">
-        <button id="toggle-featured-product-content" type="button" class="absolute z-20 top-[50px] -left-[48px] cursor-pointer w-12 h-12 bg-[#e73f5c] text-white"><i class="fa-solid fa-chevron-right"></i></button>
+        <button id="toggle-featured-product-content" type="button" class="absolute z-20 top-[100px] -left-[48px] cursor-pointer w-12 h-12 bg-[#e73f5c] text-white"><i class="fa-solid fa-chevron-right"></i></button>
         <div class="wrapper h-screen overflow-y-auto p-[50px_20px] text-justify
         max-tablet:h-auto max-tablet:overflow-visible
         ">
