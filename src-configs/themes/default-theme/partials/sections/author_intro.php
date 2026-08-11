@@ -83,9 +83,16 @@
                     </blockquote>
                 </div>
                 <br>
+                <?php 
+                $intro_page = get_pages(array(
+                    'meta_key'   => '_wp_page_template',
+                    'meta_value' => 'templates/personal-intro.php'
+                ));
+                $intro_page_link = !empty($intro_page) ? get_permalink($intro_page[0]->ID) : '#';
+                ?>
                 <?php load_partial('html/btn-primary', [
-                    'label' => 'Xem thêm về thầy',
-                    'href' => '#',
+                    'label' => 'Tiểu sử về thầy',
+                    'href' => $intro_page_link,
                 ])?>
             </aside>
         </div>
