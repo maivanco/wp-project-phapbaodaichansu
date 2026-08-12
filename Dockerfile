@@ -29,5 +29,12 @@ COPY ./src-configs/configs/wp-config.php .
 # Copy PHP configuration
 COPY ./src-configs/configs/php.ini /usr/local/etc/php/
 
-# Set permissions for the WordPress files
-RUN chown -R www-data:www-data /app/public
+# Copy Caddy server configuration
+COPY ./Caddyfile /etc/caddy/Caddyfile
+
+# Set permissions for the WordPress files (root-owned application code, write access only for uploads)
+RUN chown -R root:root /app/public && \
+    find /app/public -type d -exec chmod 755 {} + && \
+    find /app/public -type f -exec chmod 644 {} + && \
+    mkdir -p /app/public/wp-content/uploads && \
+    chown -R www-data:www-data /app/public/wp-content/uploads

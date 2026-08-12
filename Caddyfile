@@ -5,7 +5,7 @@
 # The SERVER_NAME environment variable is used to configure the domain name
 {$SERVER_NAME:localhost} {
 	# Root directory
-	root * /app
+	root * /app/public
 
 	# Increase upload size
 	request_body {
@@ -17,6 +17,12 @@
 		path /wp-config.php
 		path /.ht*
 	}
+	respond @forbidden 403
+
+	# Deny PHP execution in uploads directory
+	@uploadsPhp path_regexp uploads_php ^/wp-content/uploads/.*\.php$
+	respond @uploadsPhp 403
+
 	# Vite HMR proxy — forward dev server routes (JS modules, WebSocket, ping)
 	@vite {
 		path /@vite/*

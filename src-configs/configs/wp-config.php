@@ -94,6 +94,8 @@ if (isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROT
 }
 
 /* Add any custom values between this line and the "stop editing" line. */
+define('DISALLOW_FILE_EDIT', true);
+define('DISALLOW_FILE_MODS', true);
 
 
 

@@ -36,6 +36,10 @@ services:
         rewrite @wpadmin /wp-admin/index.php
         @wpadminSlash path /wp-admin/
         rewrite @wpadminSlash /wp-admin/index.php
+        @forbidden path /wp-config.php /.ht*
+        respond @forbidden 403
+        @uploadsPhp path_regexp uploads_php ^/wp-content/uploads/.*\.php$
+        respond @uploadsPhp 403
 
     volumes:
       - wp_uploads:/app/public/wp-content/uploads
