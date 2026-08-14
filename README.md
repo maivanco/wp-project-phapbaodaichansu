@@ -48,7 +48,7 @@ A modern, containerised WordPress local development environment powered by **Fra
 | Technology | Role |
 |---|---|
 | [Docker](https://www.docker.com/) | Container engine |
-| [Docker Compose](https://docs.docker.com/compose/) | Multi-service orchestration (`docker-compose.yml` + override) |
+| [Docker Compose](https://docs.docker.com/compose/) | Multi-service orchestration (`docker-compose.prod.yml` + `docker-compose.local.yml`) |
 
 ---
 
@@ -58,8 +58,8 @@ A modern, containerised WordPress local development environment powered by **Fra
 wp-local-dev/
 ├── Dockerfile                    # Builds the WordPress + FrankenPHP image
 ├── Caddyfile                     # Caddy / FrankenPHP server configuration
-├── docker-compose.yml            # Core services: WordPress + MySQL
-├── docker-compose.override.yml   # Additional service: phpMyAdmin
+├── docker-compose.prod.yml       # Production base configuration
+├── docker-compose.local.yml      # Local development overrides & phpMyAdmin
 ├── env.default                   # Environment variable template
 ├── .env                          # Local environment variables (git-ignored)
 ├── start.local                   # Local development startup script
@@ -82,9 +82,9 @@ wp-local-dev/
 
 | Service | Container Name | Port | Description |
 |---|---|---|---|
-| `wordpress` | `local-wordpress` | `8001` | WordPress via FrankenPHP |
-| `db` | `local-db` | — (internal) | MySQL 8.0 database |
-| `phpmyadmin` | `local-phpmyadmin` | `8080` | phpMyAdmin UI |
+| `wordpress` | `pbdcs-local-wordpress` | `80` (`pbdcs.localhost`) | WordPress via FrankenPHP |
+| `db` | `pbdcs-local-db` | — (internal) | MySQL 8.0 database |
+| `phpmyadmin` | `pbdcs-local-phpmyadmin` | `8081` | phpMyAdmin UI |
 
 ### Volumes
 
@@ -133,8 +133,8 @@ For **production** (only core services, no dev tools):
 
 | Service | URL |
 |---|---|
-| WordPress | http://localhost:8001 |
-| phpMyAdmin | http://localhost:8080 |
+| WordPress | http://pbdcs.localhost |
+| phpMyAdmin | http://localhost:8081 |
 | Vite HMR | http://localhost:5173 |
 
 ---
@@ -182,17 +182,17 @@ WORDPRESS_DB_ROOT_PASSWORD=default_root_password
 ./start.prod
 
 # Stop all services
-docker compose down
+docker compose -f docker-compose.prod.yml -f docker-compose.local.yml down
 
 # Reset database (⚠️ destroys all data)
-docker compose down -v
+docker compose -f docker-compose.prod.yml -f docker-compose.local.yml down -v
 
 # Rebuild the WordPress image
-docker compose build --no-cache
+docker compose -f docker-compose.prod.yml -f docker-compose.local.yml build --no-cache
 
 # View logs
-docker compose logs -f wordpress
-docker compose logs -f db
+docker compose -f docker-compose.prod.yml -f docker-compose.local.yml logs -f wordpress
+docker compose -f docker-compose.prod.yml -f docker-compose.local.yml logs -f db
 ```
 
 ## Intro

@@ -1,0 +1,53 @@
+services:
+
+  db:
+    restart: "no"
+
+  wordpress:
+    restart: "no"
+    environment:
+      SERVER_NAME: http://pbdcs.localhost
+    volumes:
+      - ./src-configs/themes/default-theme:/app/public/wp-content/themes/default-theme
+      - ./src-configs/plugins:/app/public/wp-content/plugins
+      - ./src-configs/configs/wp-config.php:/app/public/wp-config.php
+
+  cli:
+    image: wordpress:cli
+    container_name: ${PROJECT_NAME}-${ENVIRONMENT}-cli
+    restart: "no"
+    depends_on:
+      - db
+      - wordpress
+    user: "33:33"
+    working_dir: /app/public
+    volumes:
+      - ./src-configs/themes/default-theme:/app/public/wp-content/themes/default-theme
+      - ./src-configs/plugins:/app/public/wp-content/plugins
+      - ./src-configs/configs/wp-config.php:/app/public/wp-config.php
+    volumes_from:
+      - wordpress
+    env_file:
+      - .env
+    environment:
+      WORDPRESS_DB_HOST: ${WORDPRESS_DB_HOST}
+      WORDPRESS_DB_USER: ${WORDPRESS_DB_USER}
+      WORDPRESS_DB_PASSWORD: ${WORDPRESS_DB_PASSWORD}
+      WORDPRESS_DB_NAME: ${WORDPRESS_DB_NAME}
+
+
+  phpmyadmin:
+    image: phpmyadmin:latest
+    container_name: ${PROJECT_NAME}-${ENVIRONMENT}-phpmyadmin
+    restart: "no"
+    depends_on:
+      - db
+    ports:
+      - "8081:80"
+    env_file:
+      - .env
+    environment:
+      PMA_HOST: ${WORDPRESS_DB_HOST}
+      PMA_USER: ${WORDPRESS_DB_USER}
+      PMA_PASSWORD: ${WORDPRESS_DB_PASSWORD}
+      UPLOAD_LIMIT: 64M

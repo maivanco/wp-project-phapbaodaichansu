@@ -64,7 +64,7 @@ export default defineConfig(({ command }) => ({
     strictPort: true,
     cors: true,
     origin: 'http://localhost:5173',
-    allowedHosts: ['host.docker.internal', 'localhost'],
+    allowedHosts: ['host.docker.internal', 'localhost', 'pbdcs.localhost'],
     hmr: {
       host: 'localhost',
       port: 5173,

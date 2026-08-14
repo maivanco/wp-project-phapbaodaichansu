@@ -11,7 +11,7 @@ else
     echo "✅ .env file already exists"
 fi
 
-docker compose -f docker-compose.yml -f docker-compose.override.yml up -d "$@"
+docker compose -f docker-compose.prod.yml -f docker-compose.local.yml up -d "$@"
 
 # Check if npm is installed
 if ! command -v npm &> /dev/null; then
@@ -42,7 +42,7 @@ fi
 
 echo ""
 echo "🚀 Services are running:"
-echo "   WordPress   → http://localhost:8001"
+echo "   WordPress   → http://pbdcs.localhost"
 echo "   phpMyAdmin  → http://localhost:8081"
 echo "   Vite HMR    → http://localhost:5173"
 echo ""
