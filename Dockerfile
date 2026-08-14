@@ -1,7 +1,8 @@
 FROM dunglas/frankenphp
 
-# Install required PHP extensions for WordPress
-RUN install-php-extensions mysqli
+# Install required PHP extensions for WordPress (including GD and Imagick for WebP/AVIF image support)
+RUN install-php-extensions mysqli gd imagick exif zip intl opcache bcmath
+
 
 # Set the working directory to FrankenPHP's public directory
 WORKDIR /app/public
