@@ -1,0 +1,23 @@
+{
+  "src-configs/wp-content/themes/default-theme/assets/img/blockquote-lines.webp": {
+    "file": "assets/blockquote-lines-BeJTbbjq.webp",
+    "src": "src-configs/wp-content/themes/default-theme/assets/img/blockquote-lines.webp"
+  },
+  "src-configs/wp-content/themes/default-theme/assets/img/blockquote-lotus.webp": {
+    "file": "assets/blockquote-lotus-DEWNgrN2.webp",
+    "src": "src-configs/wp-content/themes/default-theme/assets/img/blockquote-lotus.webp"
+  },
+  "src-configs/wp-content/themes/default-theme/assets/js/vite.js": {
+    "file": "assets/vite-Dd9Cvihj.js",
+    "name": "vite",
+    "src": "src-configs/wp-content/themes/default-theme/assets/js/vite.js",
+    "isEntry": true,
+    "css": [
+      "assets/vite-p9bWRcma.css"
+    ],
+    "assets": [
+      "assets/blockquote-lines-BeJTbbjq.webp",
+      "assets/blockquote-lotus-DEWNgrN2.webp"
+    ]
+  }
+}

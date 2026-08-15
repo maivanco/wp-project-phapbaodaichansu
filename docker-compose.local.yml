@@ -12,7 +12,7 @@ services:
     restart: "no"
 
   cli:
-    image: wordpress:cli
+    build: .
     container_name: ${PROJECT_NAME}-${ENVIRONMENT}-cli
     restart: "no"
     depends_on:
@@ -20,12 +20,11 @@ services:
       - wordpress
     user: "33:33"
     working_dir: /app/public
+    command: tail -f /dev/null
     volumes:
-      - ./src-configs/themes/default-theme:/app/public/wp-content/themes/default-theme
-      - ./src-configs/plugins:/app/public/wp-content/plugins
       - ./src-configs/configs/wp-config.php:/app/public/wp-config.php
-    volumes_from:
-      - wordpress
+      - ./src-configs/wp-content:/app/public/wp-content
+      - wp_uploads:/app/public/wp-content/uploads
     env_file:
       - .env
     environment:

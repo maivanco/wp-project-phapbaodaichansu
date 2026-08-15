@@ -226,7 +226,7 @@ function wptheme_vite_scripts()
 	
 	if (file_exists($manifest_path)) {
 		$manifest = json_decode(file_get_contents($manifest_path), true);
-		$entry = 'src-configs/themes/default-theme/assets/js/vite.js';
+		$entry = 'src-configs/wp-content/themes/default-theme/assets/js/vite.js';
 		
 		if (isset($manifest[$entry])) {
 			// Enqueue JS

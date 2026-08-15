@@ -72,8 +72,7 @@ wp-local-dev/
     ├── configs/
     │   ├── wp-config.php         # WordPress configuration
     │   └── php.ini               # Custom PHP settings
-    ├── themes/                   # Custom WordPress themes (copied into image)
-    └── plugins/                  # Custom WordPress plugins (copied into image)
+    └── wp-content/               # Custom WordPress content (themes, plugins, languages)
 ```
 
 ---
@@ -145,7 +144,7 @@ For **production** (only core services, no dev tools):
 npm run build
 ```
 
-Built assets are output to `src-configs/themes/default-theme/dist` with the following structure:
+Built assets are output to `src-configs/wp-content/themes/default-theme/dist` with the following structure:
 
 ```
 dist/

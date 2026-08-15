@@ -43,17 +43,14 @@ services:
         respond @uploadsPhp 403
 
     volumes:
-      - wp_core:/app/public
-      - ./src-configs/themes/default-theme:/app/public/wp-content/themes/default-theme
-      - ./src-configs/plugins:/app/public/wp-content/plugins
       - ./src-configs/configs/wp-config.php:/app/public/wp-config.php
-      - ./src-configs/configs/languages:/app/public/wp-content/languages
+      - ./src-configs/wp-content:/app/public/wp-content
       - wp_uploads:/app/public/wp-content/uploads
       - caddy_data:/data
       - caddy_config:/config
 
   cron:
-    image: wordpress:cli
+    build: .
     container_name: ${PROJECT_NAME}-${ENVIRONMENT}-cron
     restart: unless-stopped
     depends_on:
@@ -61,8 +58,10 @@ services:
       - wordpress
     user: "33:33"
     working_dir: /app/public
-    volumes_from:
-      - wordpress
+    volumes:
+      - ./src-configs/configs/wp-config.php:/app/public/wp-config.php
+      - ./src-configs/wp-content:/app/public/wp-content
+      - wp_uploads:/app/public/wp-content/uploads
     env_file:
       - .env
     environment:
@@ -79,7 +78,6 @@ services:
         done
 
 volumes:
-  wp_core:
   db_data:
   wp_uploads:
   caddy_data:

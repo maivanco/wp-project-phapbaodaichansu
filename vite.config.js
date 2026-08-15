@@ -12,10 +12,10 @@ async function runBuild() {
       base: '',
       plugins: [tailwindcss()],
       build: {
-        outDir: 'src-configs/themes/default-theme/dist',
+        outDir: 'src-configs/wp-content/themes/default-theme/dist',
         manifest: true,
         rollupOptions: {
-          input: 'src-configs/themes/default-theme/assets/js/vite.js',
+          input: 'src-configs/wp-content/themes/default-theme/assets/js/vite.js',
         },
       },
     })
@@ -40,7 +40,7 @@ export default defineConfig(({ command }) => ({
       async handleHotUpdate({ file, server }) {
         if (file.includes('/dist/')) return
 
-        const inTheme = file.includes('/src-configs/themes/default-theme/')
+        const inTheme = file.includes('/src-configs/wp-content/themes/default-theme/')
         if (inTheme) {
           // Re-run build for all theme edits (including PHP templates) so dist CSS stays updated
           await runBuild()
@@ -51,10 +51,10 @@ export default defineConfig(({ command }) => ({
     },
   ],
   build: {
-    outDir: 'src-configs/themes/default-theme/dist',
+    outDir: 'src-configs/wp-content/themes/default-theme/dist',
     manifest: true,
     rollupOptions: {
-      input: 'src-configs/themes/default-theme/assets/js/vite.js',
+      input: 'src-configs/wp-content/themes/default-theme/assets/js/vite.js',
     },
   },
   server: {

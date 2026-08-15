@@ -3,6 +3,11 @@ FROM dunglas/frankenphp
 # Install required PHP extensions for WordPress (including GD and Imagick for WebP/AVIF image support)
 RUN install-php-extensions mysqli gd imagick exif zip intl opcache bcmath
 
+# Install WP-CLI
+RUN curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar && \
+    chmod +x wp-cli.phar && \
+    mv wp-cli.phar /usr/local/bin/wp
+
 
 # Set the working directory to FrankenPHP's public directory
 WORKDIR /app/public
@@ -18,11 +23,8 @@ RUN rm latest.tar.gz
 
 RUN rm -rf wp-content/themes/*
 
-# Copy custom themes
-COPY ./src-configs/themes/ wp-content/themes/
-
-# Copy custom plugins
-COPY ./src-configs/plugins/ wp-content/plugins/
+# Copy custom wp-content (themes, plugins, languages)
+COPY ./src-configs/wp-content/ wp-content/
 
 # Copy wp-config.php from project root
 COPY ./src-configs/configs/wp-config.php .
