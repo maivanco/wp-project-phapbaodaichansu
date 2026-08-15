@@ -44,6 +44,9 @@ services:
 
     volumes:
       - wp_core:/app/public
+      - ./src-configs/themes/default-theme:/app/public/wp-content/themes/default-theme
+      - ./src-configs/plugins:/app/public/wp-content/plugins
+      - ./src-configs/configs/wp-config.php:/app/public/wp-config.php
       - wp_uploads:/app/public/wp-content/uploads
       - caddy_data:/data
       - caddy_config:/config
