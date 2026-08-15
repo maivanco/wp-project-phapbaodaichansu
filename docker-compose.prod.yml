@@ -47,9 +47,36 @@ services:
       - ./src-configs/themes/default-theme:/app/public/wp-content/themes/default-theme
       - ./src-configs/plugins:/app/public/wp-content/plugins
       - ./src-configs/configs/wp-config.php:/app/public/wp-config.php
+      - ./src-configs/configs/languages:/app/public/wp-content/languages
       - wp_uploads:/app/public/wp-content/uploads
       - caddy_data:/data
       - caddy_config:/config
+
+  cron:
+    image: wordpress:cli
+    container_name: ${PROJECT_NAME}-${ENVIRONMENT}-cron
+    restart: unless-stopped
+    depends_on:
+      - db
+      - wordpress
+    user: "33:33"
+    working_dir: /app/public
+    volumes_from:
+      - wordpress
+    env_file:
+      - .env
+    environment:
+      WORDPRESS_DB_HOST: ${WORDPRESS_DB_HOST}
+      WORDPRESS_DB_USER: ${WORDPRESS_DB_USER}
+      WORDPRESS_DB_PASSWORD: ${WORDPRESS_DB_PASSWORD}
+      WORDPRESS_DB_NAME: ${WORDPRESS_DB_NAME}
+    entrypoint: [ "/bin/sh", "-c" ]
+    command:
+      - |
+        while true; do
+          wp cron event run --due-now
+          sleep 60
+        done
 
 volumes:
   wp_core:

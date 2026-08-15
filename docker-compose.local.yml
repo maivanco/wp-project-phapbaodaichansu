@@ -7,10 +7,9 @@ services:
     restart: "no"
     environment:
       SERVER_NAME: http://pbdcs.localhost
-    volumes:
-      - ./src-configs/themes/default-theme:/app/public/wp-content/themes/default-theme
-      - ./src-configs/plugins:/app/public/wp-content/plugins
-      - ./src-configs/configs/wp-config.php:/app/public/wp-config.php
+
+  cron:
+    restart: "no"
 
   cli:
     image: wordpress:cli
