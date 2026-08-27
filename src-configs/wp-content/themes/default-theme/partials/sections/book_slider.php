@@ -6,8 +6,8 @@ if (empty($slides) ) {
 }
 ?>
 
-<section class="sec-product-slider relative bg-repeat-x bg-cover animate-bg-slide"
-    style="background-image: url('<?php echo IMG_URL . 'bg-carousel.webp';?>');">
+<section class="sec-product-slider relative bg-repeat-x bg-cover animate-bg-slide-off"
+    style="background-image: url('<?php echo IMG_URL . 'bg-carousel-02.avif';?>');">
     <?php 
     foreach($slides as $slide): 
         $img_info = $slide['banner_setup'];

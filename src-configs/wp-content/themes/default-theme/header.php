@@ -25,7 +25,7 @@ $heading_tag = is_front_page() ? 'h1' : 'p';
             <div class="flex items-center justify-between h-20 max-mobile:h-[60px]">
 
               <<?php echo $heading_tag;?>>
-                <a class="block text-[48px] max-tablet:text-[36px] max-mobile:text-[28px] font-handwriting text-gold pr-3" href="<?php echo home_url();?>" data-discover="true">
+                <a class="block text-[48px] max-tablet:text-[36px] max-mobile:text-[24px] font-handwriting text-gold pr-3" href="<?php echo home_url();?>" data-discover="true">
                   <?php bloginfo('name');?>
                 </a>
               </<?php echo $heading_tag;?>>
@@ -35,7 +35,7 @@ $heading_tag = is_front_page() ? 'h1' : 'p';
                   'theme_location' => 'primary',
                   'menu_id'        => 'primary-menu',
                   'container'      => false,
-                  'menu_class'     => 'hidden md:flex items-center gap-10 text-sm font-medium text-warmGray-600 uppercase tracking-wider [&>li>a]:hover:text-charcoal [&>li>a]:transition-colors [&>li>a]:duration-200',
+                  'menu_class'     => 'hidden md:flex items-center gap-10 text-sm font-medium uppercase',
                   'fallback_cb'    => false,
                 ));
                 ?>
@@ -45,10 +45,22 @@ $heading_tag = is_front_page() ? 'h1' : 'p';
                       <?php echo class_exists('WooCommerce') && is_object(WC()->cart) ? WC()->cart->get_cart_contents_count() : 0; ?>
                   </span>
                 </button>
-                <button class="md:hidden p-2 text-charcoal" aria-label="Toggle menu">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-menu w-6 h-6"><line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="6" y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line></svg>
+                <button id="toggle-menu" class="md:hidden p-2 text-charcoal cursor-pointer" aria-label="Toggle menu" aria-expanded="false" aria-controls="mobile-menu">
+                  <svg class="menu-icon-open w-6 h-6" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="6" y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line></svg>
+                  <svg class="menu-icon-close w-6 h-6 hidden" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
                 </button>
               </div>
+            </div>
+            <div id="mobile-menu" class="hidden md:hidden border-t border-gray-100 py-3">
+              <?php
+              wp_nav_menu(array(
+                'theme_location' => 'primary',
+                'menu_id'        => 'mobile-primary-menu',
+                'container'      => false,
+                'menu_class'     => 'flex flex-col gap-2 text-sm font-medium uppercase py-2',
+                'fallback_cb'    => false,
+              ));
+              ?>
             </div>
           </nav>
         </header>

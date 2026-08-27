@@ -38,7 +38,10 @@ $products = wc_get_products( $product_args );
             <li class="group">
                 <div class="relative overflow-hidden group/thumb bg-cream2 p-4">
                     <a href="<?php echo get_permalink($product->get_id()); ?>">
-                    <?php echo $product->get_image('woocommerce_thumbnail', ['class' => 'w-full h-auto transition-transform duration-300 group-hover/thumb:scale-105']); ?>
+                        <?php echo $product->get_image('medium_large', [
+                            'class' => 'w-full h-auto transition-transform duration-300 group-hover/thumb:scale-105',
+                            'loading' => 'lazy'
+                        ]); ?>
                     </a>
                     <button 
                         type="button"

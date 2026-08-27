@@ -139,6 +139,8 @@ blockquote {
     background-position: 0px 0px;
     border-radius: 20px;
     position:relative;
+    max-width:fit-content;
+    margin:30px auto;
     p {
       font-weight:400;
     }
@@ -230,13 +232,6 @@ blockquote {
   font-weight: 300;
 }
 
-/* Strong & Bold */
-.wp-editor strong,
-.wp-editor b {
-  font-weight: 600;
-  color: #0f172a; /* slate-900 */
-}
-
 /* Link styling */
 .wp-editor a {
   color: var(--color-main);
@@ -316,6 +311,9 @@ blockquote {
   padding: 0;
   color: inherit;
   font-size: 0.875rem;
+}
+strong, b{
+  font-weight: bold;
 }
 .font-title{
   font-family: "Space Grotesk", sans-serif;
@@ -437,6 +435,73 @@ blockquote {
   a{
     color: var(--color-main);
     text-decoration: underline;
+  }
+}
+#primary-menu{
+  > li > a{
+    &:hover{
+      color: var(--color-main);
+    }
+  }
+  .sub-menu{
+    opacity:0;
+    visibility: hidden;
+    transition:all .2s ease-in-out;
+    width:200px;
+    position:absolute;
+    top:100%;
+    background:rgba(255,255,255 ,0.8);
+    a{
+      display:block;
+      padding:10px 15px;
+      &:hover{
+        background:var(--color-main);
+        color:#fff;
+      }
+    }
+    .sub-menu{
+      top:0;
+      left:-100%;
+    }
+  }
+  .menu-item-has-children{
+    position:relative;
+    &:hover{
+      > .sub-menu{
+        opacity:1;
+        visibility: visible;
+      }
+    }
+  }
+}
+
+#mobile-primary-menu {
+  > li > a {
+    display: block;
+    padding: 8px 0;
+    color: var(--color-text-body);
+    transition: color 0.2s ease;
+    &:hover {
+      color: var(--color-main);
+    }
+  }
+  .sub-menu {
+    padding-left: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-top: 0.25rem;
+    margin-bottom: 0.5rem;
+    a {
+      display: block;
+      padding: 4px 0;
+      color: #64748b;
+      font-size: 0.875rem;
+      text-transform: none;
+      &:hover {
+        color: var(--color-main);
+      }
+    }
   }
 }
 

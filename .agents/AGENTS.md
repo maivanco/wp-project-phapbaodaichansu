@@ -125,3 +125,12 @@ docker compose -f docker-compose.prod.yml -f docker-compose.local.yml exec cli w
    - Execution of PHP scripts inside `/wp-content/uploads/` is strictly prohibited by Caddy.
 4. **Vite Hot Module Reloading (HMR)**:
    - `vite.config.js` includes a custom plugin (`theme-php-full-reload-and-build`) that listens for changes to `.php` files inside `default-theme`. Editing PHP files automatically triggers asset re-building and live reloads the browser.
+
+---
+
+## 🎨 Basic Design & Typography Rules
+
+1. **Font Consistency & Single Font Family**:
+   - **Do NOT use secondary or custom font family classes** (such as `font-serif`, `font-mono`, etc.) across sections, headings, or components unless explicitly instructed.
+   - **Inherit from `body`**: All sections, templates, headings (`h1`-`h6`), paragraphs, cards, buttons, and UI components MUST inherit the primary font family set on `body`.
+   - Maintain clean, cohesive, and uniform typography across all pages and partial templates.

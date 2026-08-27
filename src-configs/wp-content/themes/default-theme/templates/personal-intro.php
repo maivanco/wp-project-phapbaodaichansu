@@ -5,7 +5,7 @@
 get_header(); 
 ?>
 
-<div class="bg-[#faf8f5] min-h-screen py-12 md:py-20 font-serif text-[#2d2a26]">
+<div class="bg-[#faf8f5] min-h-screen py-12 md:py-20 text-[#2d2a26]">
   <div class="container mx-auto px-4 max-w-6xl">
     
     <!-- Masthead Section -->
@@ -145,41 +145,167 @@ get_header();
       </div>
     </section>
 
-    <!-- Editorial Gallery / Photo Essay Grid -->
-    <section class="mb-16 md:mb-24">
-      <div class="text-center mb-12">
-        <h2 class="font-title text-2xl md:text-3xl font-bold mb-4 uppercase tracking-wider">Hình Ảnh</h2>
+  </div>
+</div>
+
+<?php /*
+<!-- Editorial Gallery / Photo Essay Grid (Full-Width Masonry Gallery) -->
+<section class="w-full bg-gradient-to-b from-[#faf8f5] via-[#f5efe4] to-[#faf8f5] text-[#2d2a26] py-16 md:py-24 relative overflow-hidden border-y border-[#2d2a26]/10 my-8">
+  <!-- Subtle ambient background glowing elements -->
+  <div class="absolute -top-32 left-1/2 -translate-x-1/2 w-[800px] h-[350px] bg-[#c9922a]/10 rounded-full blur-3xl pointer-events-none"></div>
+  <div class="absolute -bottom-32 left-1/4 w-[500px] h-[300px] bg-[#1a747a]/8 rounded-full blur-3xl pointer-events-none"></div>
+
+  <div class="container mx-auto px-4 max-w-7xl relative z-10">
+    <!-- Section Header -->
+    <div class="text-center max-w-3xl mx-auto mb-12">
+      <div class="flex items-center justify-center gap-4 mb-4">
+        <span class="h-[1px] w-10 bg-[#c9922a]"></span>
+        <span class="text-xs md:text-sm uppercase tracking-[0.25em] text-[#1a747a] font-semibold">Tư Liệu & Thắng Cảnh</span>
+        <span class="h-[1px] w-10 bg-[#c9922a]"></span>
+      </div>
+      <h2 class="text-3xl md:text-5xl font-bold uppercase tracking-wider text-[#2d2a26] mb-4">
+        Bộ Sưu Tập Hình Ảnh
+      </h2>
+      <p class="text-[#5a544d] text-sm md:text-base leading-relaxed">
+        Những khoảnh khắc thanh tịnh, hình ảnh chốn trú xứ Phật Đảnh Bảo Vương và hành trình hoằng pháp lợi sinh của Thầy Thích Long Viễn.
+      </p>
+    </div>
+
+    <!-- Masonry Grid Layout -->
+    <div class="columns-1 sm:columns-2 md:columns-3 lg:columns-4 gap-4 md:gap-6 space-y-4 md:space-y-6">
+      
+      <!-- Photo Item 1 -->
+      <div class="break-inside-avoid inline-block w-full group relative rounded-2xl p-2 bg-white border border-[#e5dec9] shadow-sm transition-all duration-500 hover:-translate-y-1.5 hover:shadow-xl hover:border-[#c9922a]/50">
+        <div class="overflow-hidden rounded-xl bg-[#ede7dc] relative">
+          <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiWrG8QMgmeOqWImQBYvu5PEp2LE5oIu_3q938ARdpnHt7v0efkwYytoOcQXQefWg3aD2SXi3ibTcvC5EngUp1V6jx0ROoVMHTjiFIoG5FBZivkDK9YcET5TbxM4AR5X_342-aylc1x0gAREkXRFDDySolJ5g9YystX1o4U_tF2ZogSVootU7CyB-SD/w1200-h630-p-k-no-nu/z3616887510472_80195938836eed2327021a205e04bf40.jpg" 
+               alt="Thầy Thích Long Viễn" 
+               class="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-105 block" />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-75 group-hover:opacity-90 transition-opacity duration-300"></div>
+          <div class="absolute bottom-0 left-0 right-0 p-4 transform translate-y-1 group-hover:translate-y-0 transition-transform duration-300">
+            <h3 class="text-sm font-semibold text-white group-hover:text-[#f4d084] transition-colors duration-300">Đại Đức Thích Long Viễn</h3>
+            <p class="text-xs text-gray-200 mt-1 opacity-0 group-hover:opacity-100 transition-opacity duration-300">Chùa Phật Đảnh Bảo Vương</p>
+          </div>
+        </div>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <!-- Photo 1 -->
-        <div class="group border border-[#2d2a26]/10 p-2 bg-white shadow-sm transition-all duration-300 hover:-translate-y-1">
-          <div class="aspect-[4/3] overflow-hidden bg-gray-100 mb-3">
-            <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiWrG8QMgmeOqWImQBYvu5PEp2LE5oIu_3q938ARdpnHt7v0efkwYytoOcQXQefWg3aD2SXi3ibTcvC5EngUp1V6jx0ROoVMHTjiFIoG5FBZivkDK9YcET5TbxM4AR5X_342-aylc1x0gAREkXRFDDySolJ5g9YystX1o4U_tF2ZogSVootU7CyB-SD/w1200-h630-p-k-no-nu/z3616887510472_80195938836eed2327021a205e04bf40.jpg" 
-                 alt="Chùa Phật Đảnh Bảo Vương" 
-                 class="w-full h-full object-cover grayscale contrast-110 transition-transform duration-500 group-hover:scale-103" />
-          </div>
-        </div>
-
-        <!-- Photo 2 -->
-        <div class="group border border-[#2d2a26]/10 p-2 bg-white shadow-sm transition-all duration-300 hover:-translate-y-1">
-          <div class="aspect-[4/3] overflow-hidden bg-gray-100 mb-3">
-            <img src="https://blogger.googleusercontent.com/img/a/AVvXsEiJxUOaJhD3KisMEPRXgZKuVkajLbAY8X7AcK0xqgJTT0fwgbWm1FYQSp5HK7zwhqL46PjHo99chz9dMIeez5CWMBRb-XI_NarVs3gasJHaqfVxG6Yl6mj3t-Cdn86TU66ECJL3KKGDDLV6_5U_LZMJAh8SHtacs7_seEGAPmV77KkK-yELlR15QjzjC3I=s600" 
-                 alt="Đại Đức Thích Long Viễn" 
-                 class="w-full h-full object-cover grayscale contrast-110 transition-transform duration-500 group-hover:scale-103" />
-          </div>
-        </div>
-
-        <!-- Photo 3 -->
-        <div class="group border border-[#2d2a26]/10 p-2 bg-white shadow-sm transition-all duration-300 hover:-translate-y-1">
-          <div class="aspect-[4/3] overflow-hidden bg-gray-100 mb-3">
-            <img src="https://images.unsplash.com/photo-1506880018603-83d5b814b5a6?q=80&w=600&auto=format&fit=crop" 
-                 alt="Kinh sách và biên dịch" 
-                 class="w-full h-full object-cover grayscale contrast-110 transition-transform duration-500 group-hover:scale-103" />
+      <!-- Photo Item 2 -->
+      <div class="break-inside-avoid inline-block w-full group relative rounded-2xl p-2 bg-white border border-[#e5dec9] shadow-sm transition-all duration-500 hover:-translate-y-1.5 hover:shadow-xl hover:border-[#c9922a]/50">
+        <div class="overflow-hidden rounded-xl bg-[#ede7dc] relative">
+          <img src="https://images.unsplash.com/photo-1545389336-cf090694435e?q=80&w=800&auto=format&fit=crop" 
+               alt="Thiền Định Độc Cư" 
+               class="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-105 block" />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-75 group-hover:opacity-90 transition-opacity duration-300"></div>
+          <div class="absolute bottom-0 left-0 right-0 p-4 transform translate-y-1 group-hover:translate-y-0 transition-transform duration-300">
+            <h3 class="text-sm font-semibold text-white group-hover:text-[#f4d084] transition-colors duration-300">Thiền Định Độc Cư</h3>
+            <p class="text-xs text-gray-200 mt-1 opacity-0 group-hover:opacity-100 transition-opacity duration-300">Không gian an tịnh nơi núi rừng</p>
           </div>
         </div>
       </div>
-    </section>
+
+      <!-- Photo Item 3 -->
+      <div class="break-inside-avoid inline-block w-full group relative rounded-2xl p-2 bg-white border border-[#e5dec9] shadow-sm transition-all duration-500 hover:-translate-y-1.5 hover:shadow-xl hover:border-[#c9922a]/50">
+        <div class="overflow-hidden rounded-xl bg-[#ede7dc] relative">
+          <img src="https://images.unsplash.com/photo-1518241353330-0f7941c2d9b5?q=80&w=800&auto=format&fit=crop" 
+               alt="Trú Xứ Núi Rừng" 
+               class="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-105 block" />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-75 group-hover:opacity-90 transition-opacity duration-300"></div>
+          <div class="absolute bottom-0 left-0 right-0 p-4 transform translate-y-1 group-hover:translate-y-0 transition-transform duration-300">
+            <h3 class="text-sm font-semibold text-white group-hover:text-[#f4d084] transition-colors duration-300">Trú Xứ Thanh Vắng</h3>
+            <p class="text-xs text-gray-200 mt-1 opacity-0 group-hover:opacity-100 transition-opacity duration-300">Sương gió núi rừng Khánh Hòa</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Photo Item 4 -->
+      <div class="break-inside-avoid inline-block w-full group relative rounded-2xl p-2 bg-white border border-[#e5dec9] shadow-sm transition-all duration-500 hover:-translate-y-1.5 hover:shadow-xl hover:border-[#c9922a]/50">
+        <div class="overflow-hidden rounded-xl bg-[#ede7dc] relative">
+          <img src="https://images.unsplash.com/photo-1506880018603-83d5b814b5a6?q=80&w=800&auto=format&fit=crop" 
+               alt="Kinh Sách & Biên Dịch" 
+               class="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-105 block" />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-75 group-hover:opacity-90 transition-opacity duration-300"></div>
+          <div class="absolute bottom-0 left-0 right-0 p-4 transform translate-y-1 group-hover:translate-y-0 transition-transform duration-300">
+            <h3 class="text-sm font-semibold text-white group-hover:text-[#f4d084] transition-colors duration-300">Biên Dịch & Trùng Tuyên</h3>
+            <p class="text-xs text-gray-200 mt-1 opacity-0 group-hover:opacity-100 transition-opacity duration-300">Các tác phẩm giáo lý Chánh Pháp</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Photo Item 5 -->
+      <div class="break-inside-avoid inline-block w-full group relative rounded-2xl p-2 bg-white border border-[#e5dec9] shadow-sm transition-all duration-500 hover:-translate-y-1.5 hover:shadow-xl hover:border-[#c9922a]/50">
+        <div class="overflow-hidden rounded-xl bg-[#ede7dc] relative">
+          <img src="https://blogger.googleusercontent.com/img/a/AVvXsEiJxUOaJhD3KisMEPRXgZKuVkajLbAY8X7AcK0xqgJTT0fwgbWm1FYQSp5HK7zwhqL46PjHo99chz9dMIeez5CWMBRb-XI_NarVs3gasJHaqfVxG6Yl6mj3t-Cdn86TU66ECJL3KKGDDLV6_5U_LZMJAh8SHtacs7_seEGAPmV77KkK-yELlR15QjzjC3I=s600" 
+               alt="Chân dung Thầy Thích Long Viễn" 
+               class="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-105 block" />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-75 group-hover:opacity-90 transition-opacity duration-300"></div>
+          <div class="absolute bottom-0 left-0 right-0 p-4 transform translate-y-1 group-hover:translate-y-0 transition-transform duration-300">
+            <h3 class="text-sm font-semibold text-[#f4d084]">Lương Sơn Long Viễn</h3>
+            <p class="text-xs text-gray-200 mt-1 opacity-0 group-hover:opacity-100 transition-opacity duration-300">Hình ảnh hoằng pháp</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Photo Item 6 -->
+      <div class="break-inside-avoid inline-block w-full group relative rounded-2xl p-2 bg-white border border-[#e5dec9] shadow-sm transition-all duration-500 hover:-translate-y-1.5 hover:shadow-xl hover:border-[#c9922a]/50">
+        <div class="overflow-hidden rounded-xl bg-[#ede7dc] relative">
+          <img src="https://images.unsplash.com/photo-1609137144813-7d9921338f24?q=80&w=800&auto=format&fit=crop" 
+               alt="Hoa Sen Hạ Sanh" 
+               class="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-105 block" />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-75 group-hover:opacity-90 transition-opacity duration-300"></div>
+          <div class="absolute bottom-0 left-0 right-0 p-4 transform translate-y-1 group-hover:translate-y-0 transition-transform duration-300">
+            <h3 class="text-sm font-semibold text-white group-hover:text-[#f4d084] transition-colors duration-300">Liên Hoa Hạ Sanh</h3>
+            <p class="text-xs text-gray-200 mt-1 opacity-0 group-hover:opacity-100 transition-opacity duration-300">Biểu tượng điềm lành ứng mộng</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Photo Item 8 -->
+      <div class="break-inside-avoid inline-block w-full group relative rounded-2xl p-2 bg-white border border-[#e5dec9] shadow-sm transition-all duration-500 hover:-translate-y-1.5 hover:shadow-xl hover:border-[#c9922a]/50">
+        <div class="overflow-hidden rounded-xl bg-[#ede7dc] relative">
+          <img src="https://images.unsplash.com/photo-1599839575945-a9e5af0c3fa5?q=80&w=800&auto=format&fit=crop" 
+               alt="Hương Trầm Thanh Tịnh" 
+               class="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-105 block" />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-75 group-hover:opacity-90 transition-opacity duration-300"></div>
+          <div class="absolute bottom-0 left-0 right-0 p-4 transform translate-y-1 group-hover:translate-y-0 transition-transform duration-300">
+            <h3 class="text-sm font-semibold text-white group-hover:text-[#f4d084] transition-colors duration-300">Hương Trầm Thanh Khiết</h3>
+            <p class="text-xs text-gray-200 mt-1 opacity-0 group-hover:opacity-100 transition-opacity duration-300">Tĩnh tâm niệm Phật</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Photo Item 9 -->
+      <div class="break-inside-avoid inline-block w-full group relative rounded-2xl p-2 bg-white border border-[#e5dec9] shadow-sm transition-all duration-500 hover:-translate-y-1.5 hover:shadow-xl hover:border-[#c9922a]/50">
+        <div class="overflow-hidden rounded-xl bg-[#ede7dc] relative">
+          <img src="https://images.unsplash.com/photo-1563245372-f21724e3856d?q=80&w=800&auto=format&fit=crop" 
+               alt="Phong Cảnh Khánh Hòa" 
+               class="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-105 block" />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-75 group-hover:opacity-90 transition-opacity duration-300"></div>
+          <div class="absolute bottom-0 left-0 right-0 p-4 transform translate-y-1 group-hover:translate-y-0 transition-transform duration-300">
+            <h3 class="text-sm font-semibold text-white group-hover:text-[#f4d084] transition-colors duration-300">Núi Rừng Ninh Hòa</h3>
+            <p class="text-xs text-gray-200 mt-1 opacity-0 group-hover:opacity-100 transition-opacity duration-300">Quê hương & Chốn tu tập</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Photo Item 10 -->
+      <div class="break-inside-avoid inline-block w-full group relative rounded-2xl p-2 bg-white border border-[#e5dec9] shadow-sm transition-all duration-500 hover:-translate-y-1.5 hover:shadow-xl hover:border-[#c9922a]/50">
+        <div class="overflow-hidden rounded-xl bg-[#ede7dc] relative">
+          <img src="https://images.unsplash.com/photo-1519817650390-64a93db51149?q=80&w=800&auto=format&fit=crop" 
+               alt="Đèn Đạo Bát Chánh Đạo" 
+               class="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-105 block" />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-75 group-hover:opacity-90 transition-opacity duration-300"></div>
+          <div class="absolute bottom-0 left-0 right-0 p-4 transform translate-y-1 group-hover:translate-y-0 transition-transform duration-300">
+            <h3 class="text-sm font-semibold text-white group-hover:text-[#f4d084] transition-colors duration-300">Ngọn Đuốc Chánh Pháp</h3>
+            <p class="text-xs text-gray-200 mt-1 opacity-0 group-hover:opacity-100 transition-opacity duration-300">Soi rọi đêm đen vô minh</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div class="bg-[#faf8f5] py-12 md:py-20 text-[#2d2a26]">
+  <div class="container mx-auto px-4 max-w-6xl">
 
     <!-- Featured Book Section / Introduction to Author's Special Work -->
     <?php
@@ -207,7 +333,7 @@ get_header();
     }
     ?>
 
-<?php /*
+
     <section class="bg-white border border-[#2d2a26]/15 rounded-2xl p-6 md:p-10 max-w-5xl mx-auto shadow-sm relative overflow-hidden my-16 md:my-24">
       <!-- Background subtle glows -->
       <div class="absolute -top-16 -left-16 w-48 h-48 rounded-full bg-[#1a747a]/5 blur-3xl pointer-events-none"></div>
@@ -272,8 +398,13 @@ get_header();
         </div>
       </div>
     </section>
-  */ ?>
+  
+
+  <!-- Testimonials Section -->
+  <?php get_template_part('partials/sections/testimonials'); ?>
+*/ ?>
   </div>
 </div>
+
 
 <?php get_footer(); ?>

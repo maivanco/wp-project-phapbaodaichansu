@@ -54,6 +54,36 @@ jQuery(document).ready(function ($) {
         nextArrow: '<button type="button" class="slick-next"><i class="fa-solid fa-chevron-right"></i></button>',
     });
 
+    $('#youtube-marquee-slider').slick({
+        dots: false,
+        arrows: true,
+        infinite: true,
+        speed: 300,
+        slidesToShow: 4,
+        prevArrow: '<button type="button" class="slick-prev"><i class="fa-solid fa-chevron-left"></i></button>',
+        nextArrow: '<button type="button" class="slick-next"><i class="fa-solid fa-chevron-right"></i></button>',
+        responsive: [
+            {
+                breakpoint: 1600,
+                settings: {
+                    slidesToShow: 3,
+                }
+            },
+            {
+                breakpoint: 1199,
+                settings: {
+                    slidesToShow: 2,
+                }
+            },
+            {
+                breakpoint: 767,
+                settings: {
+                    slidesToShow: 1,
+                }
+            }
+        ]
+    });
+
     $('#toggle-featured-product-content').click(function(){
         $('#featured-product .wysiwyg').toggleClass('open');
         $(this).toggleClass('bg-[#23307f] bg-[#e73f5c]');
@@ -67,8 +97,27 @@ jQuery(document).ready(function ($) {
     },3000);
 
 
-    
-    
+    // Mobile Menu Toggle Logic
+    $('#toggle-menu').on('click', function(e) {
+        e.preventDefault();
+        var $btn = $(this);
+        var $mobileMenu = $('#mobile-menu');
+        
+        $mobileMenu.toggleClass('hidden');
+        var isExpanded = !$mobileMenu.hasClass('hidden');
+        $btn.attr('aria-expanded', isExpanded);
+        $btn.find('.menu-icon-open').toggleClass('hidden', isExpanded);
+        $btn.find('.menu-icon-close').toggleClass('hidden', !isExpanded);
+    });
+
+    // Close mobile menu when clicking a link inside it
+    $('#mobile-menu a').on('click', function() {
+        $('#mobile-menu').addClass('hidden');
+        $('#toggle-menu').attr('aria-expanded', 'false');
+        $('#toggle-menu .menu-icon-open').removeClass('hidden');
+        $('#toggle-menu .menu-icon-close').addClass('hidden');
+    });
+
     // Cart Popup Logic
     $('.toggle-cart').on('click', function(e) {
         e.preventDefault();
