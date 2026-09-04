@@ -83,15 +83,7 @@ body {
   background:linear-gradient(90deg,#8C6A12,#C9A227,#FFE27A,#C9A227,#8C6A12);
 }
 .text-gold{
-  background: linear-gradient(
-      90deg,
-      #8C6A12,
-      #C9A227,
-      #FFE27A,
-      #C9A227,
-      #8C6A12
-  );
-
+  background: linear-gradient(90deg, #f5e409, #efb600, #ffe27a, #fddd00, #dea105);
   background-clip: text;
   -webkit-background-clip: text;
 
@@ -189,6 +181,7 @@ blockquote {
 .wp-editor h5,
 .wp-editor h6 {
   margin-bottom:30px;
+  scroll-margin-top: 6rem;
 }
 
 .wp-editor h1 {
@@ -666,4 +659,26 @@ strong, b{
 .woocommerce-product-gallery__image.flex-active-slide,
 .woocommerce div.product div.images .woocommerce-product-gallery__wrapper .zoomImg{
   background-color: var(--color-cream2);
+}
+
+/* Table of Contents (TOC) Component */
+.toc-sidebar {
+  &::-webkit-scrollbar {
+    width: 4px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: #cbd5e1;
+    border-radius: 4px;
+  }
+}
+
+.toc-link {
+  transition: all 0.15s ease-in-out;
+
+  &.is-active {
+    color: var(--color-main, #1a747a) !important;
+    font-weight: 600 !important;
+    border-color: var(--color-main, #1a747a) !important;
+    background-color: rgb(26 116 122 / 0.08) !important;
+  }
 }

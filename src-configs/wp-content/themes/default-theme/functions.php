@@ -346,3 +346,80 @@ function has_special_intro(){
 	$has_special_intro = get_field('has_special_intro', $product->get_id());
 	return (bool) $has_special_intro;
 }
+
+/**
+ * Extract Table of Contents from HTML content and inject unique IDs into heading tags.
+ *
+ * @param string $content Post HTML content.
+ * @param array $levels Heading levels to extract (e.g. [2, 3, 4]).
+ * @return array Array containing 'content' (modified HTML) and 'toc' (list of headings).
+ */
+function pbdcs_extract_toc($content, $levels = [2, 3, 4])
+{
+	$toc = [];
+	if (empty($content)) {
+		return [
+			'content' => $content,
+			'toc'     => $toc,
+		];
+	}
+
+	$levels_regex = implode('', array_map('intval', $levels));
+	$pattern = '/<h([' . $levels_regex . '])([^>]*)>(.*?)<\/h\1>/is';
+	$slug_counts = [];
+
+	$modified_content = preg_replace_callback($pattern, function ($matches) use (&$toc, &$slug_counts) {
+		$level = (int)$matches[1];
+		$attrs = $matches[2];
+		$title_html = $matches[3];
+		$clean_title = trim(strip_tags($title_html));
+
+		if ($clean_title === '') {
+			return $matches[0];
+		}
+
+		$id = '';
+		if (preg_match('/\bid=[\'"]([^\'"]+)[\'"]/i', $attrs, $id_match)) {
+			$id = $id_match[1];
+			$slug_counts[$id] = ($slug_counts[$id] ?? 0) + 1;
+		} else {
+			$base_slug = sanitize_title($clean_title);
+			if (empty($base_slug)) {
+				$base_slug = 'section-' . (count($toc) + 1);
+			}
+
+			if (isset($slug_counts[$base_slug])) {
+				$slug_counts[$base_slug]++;
+				$id = $base_slug . '-' . $slug_counts[$base_slug];
+			} else {
+				$slug_counts[$base_slug] = 1;
+				$id = $base_slug;
+			}
+
+			$attrs .= ' id="' . esc_attr($id) . '"';
+		}
+
+		// Ensure scroll margin for smooth navigation with fixed/sticky header
+		if (preg_match('/\bclass=[\'"]([^\'"]*)[\'"]/i', $attrs, $class_match)) {
+			if (strpos($class_match[1], 'scroll-mt-') === false) {
+				$new_classes = trim($class_match[1] . ' scroll-mt-28');
+				$attrs = preg_replace('/\bclass=[\'"][^\'"]*[\'"]/i', 'class="' . esc_attr($new_classes) . '"', $attrs);
+			}
+		} else {
+			$attrs .= ' class="scroll-mt-28"';
+		}
+
+		$toc[] = [
+			'id'    => $id,
+			'title' => $clean_title,
+			'level' => $level,
+		];
+
+		return "<h{$level}{$attrs}>{$title_html}</h{$level}>";
+	}, $content);
+
+	return [
+		'content' => $modified_content,
+		'toc'     => $toc,
+	];
+}

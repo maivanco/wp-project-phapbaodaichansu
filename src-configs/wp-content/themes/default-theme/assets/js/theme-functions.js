@@ -205,4 +205,98 @@ jQuery(document).ready(function ($) {
         }
     });
 
+    // Table of Contents Scrollspy & Interactive Navigation
+    function initTableOfContents() {
+        const $tocLinks = $('.toc-link');
+        if (!$tocLinks.length) return;
+
+        const targets = [];
+        $tocLinks.each(function () {
+            const targetId = $(this).data('target');
+            const targetEl = document.getElementById(targetId);
+            if (targetEl) {
+                targets.push({
+                    id: targetId,
+                    el: targetEl,
+                    $link: $(this)
+                });
+            }
+        });
+
+        if (!targets.length) return;
+
+        let ticking = false;
+
+        function updateActiveHeading() {
+            const scrollPos = window.scrollY + 130;
+            let current = null;
+
+            for (let i = 0; i < targets.length; i++) {
+                const elTop = targets[i].el.getBoundingClientRect().top + window.scrollY;
+                if (elTop <= scrollPos) {
+                    current = targets[i];
+                } else {
+                    break;
+                }
+            }
+
+            if (current) {
+                $tocLinks.removeClass('is-active');
+                current.$link.addClass('is-active');
+            } else if (window.scrollY < 200 && targets.length > 0) {
+                $tocLinks.removeClass('is-active');
+                targets[0].$link.addClass('is-active');
+            }
+        }
+
+        $(window).on('scroll resize', function () {
+            if (!ticking) {
+                window.requestAnimationFrame(function () {
+                    updateActiveHeading();
+                    ticking = false;
+                });
+                ticking = true;
+            }
+        });
+
+        // Initial active link calculation
+        updateActiveHeading();
+
+        // Smooth scroll on click
+        $tocLinks.on('click', function (e) {
+            const targetId = $(this).data('target');
+            const targetEl = document.getElementById(targetId);
+            if (targetEl) {
+                e.preventDefault();
+                const offset = 100;
+                const bodyRect = document.body.getBoundingClientRect().top;
+                const elementRect = targetEl.getBoundingClientRect().top;
+                const offsetPosition = elementRect - bodyRect - offset;
+
+                window.scrollTo({
+                    top: offsetPosition,
+                    behavior: 'smooth'
+                });
+
+                if (window.history && window.history.pushState) {
+                    window.history.pushState(null, null, '#' + targetId);
+                }
+
+                $tocLinks.removeClass('is-active');
+                $(this).addClass('is-active');
+            }
+        });
+
+        // Mobile toggle collapse/expand
+        $(document).on('click', '.toc-toggle-btn', function (e) {
+            e.preventDefault();
+            const $nav = $('.toc-navigation');
+            const $icon = $(this).find('svg');
+            $nav.slideToggle(200);
+            $icon.toggleClass('rotate-180');
+        });
+    }
+
+    initTableOfContents();
+
 })

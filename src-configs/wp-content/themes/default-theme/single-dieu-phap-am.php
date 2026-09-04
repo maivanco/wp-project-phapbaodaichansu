@@ -20,6 +20,25 @@ while (have_posts()) :
         $current_desc = __('Lời khai thị chân thực và thi kệ vi diệu được Thầy trùng tuyên nhằm khai sáng tâm thức trên đạo lộ giác ngộ.', 'pbdcs');
     }
 
+    // Extract ACF video_transcript repeater for the current post
+    $curr_t_rows = get_field('video_transcript', $current_post_id);
+    $current_transcripts = [];
+    if (!empty($curr_t_rows) && is_array($curr_t_rows)) {
+        foreach ($curr_t_rows as $row) {
+            $time = isset($row['start_from']) && $row['start_from'] !== '' ? (int)$row['start_from'] : 0;
+            $text = isset($row['description']) ? trim($row['description']) : '';
+            if (!empty($text)) {
+                $current_transcripts[] = [
+                    'time' => $time,
+                    'text' => $text,
+                ];
+            }
+        }
+    }
+
+    // Default video ID fallback if none set
+    $display_video_id = !empty($current_video_id) ? $current_video_id : 'oDICquOoJ6c';
+
     // Query all dieu-phap-am posts for the playlist / related section
     $related_query = new WP_Query([
         'post_type'      => 'dieu-phap-am',
@@ -29,9 +48,7 @@ while (have_posts()) :
         'order'          => 'DESC',
     ]);
 
-    $all_transcripts = [];
     $playlist_items = [];
-
     if ($related_query->have_posts()) {
         while ($related_query->have_posts()) {
             $related_query->the_post();
@@ -41,67 +58,22 @@ while (have_posts()) :
             $v_permalink = get_permalink($p_id);
             $v_date = get_the_date('d/m/Y', $p_id);
 
-            $v_excerpt = get_the_excerpt($p_id);
-            if (empty($v_excerpt)) {
-                $raw_content = get_the_content(null, false, $p_id);
-                $v_excerpt = !empty($raw_content) ? wp_trim_words(wp_strip_all_tags($raw_content), 24, '...') : '';
-            }
-
-            // Extract ACF video_transcript repeater
-            $t_rows = get_field('video_transcript', $p_id);
-            $transcripts = [];
-            if (!empty($t_rows) && is_array($t_rows)) {
-                foreach ($t_rows as $row) {
-                    $time = isset($row['start_from']) && $row['start_from'] !== '' ? (int)$row['start_from'] : 0;
-                    $text = isset($row['description']) ? trim($row['description']) : '';
-                    if (!empty($text)) {
-                        $transcripts[] = [
-                            'time' => $time,
-                            'text' => $text,
-                        ];
-                    }
-                }
-            }
-
-            if (!empty($v_id)) {
-                $all_transcripts[$v_id] = $transcripts;
-            }
+            $thumb_src = !empty($v_id)
+                ? 'https://img.youtube.com/vi/' . esc_attr($v_id) . '/hqdefault.jpg'
+                : (has_post_thumbnail($p_id) ? get_the_post_thumbnail_url($p_id, 'medium_large') : IMG_URL . 'anh-thay-Thich-Long-Vien.jpg');
 
             $playlist_items[] = [
-                'post_id'     => $p_id,
-                'id'          => $v_id,
-                'title'       => $v_title,
-                'desc'        => $v_excerpt,
-                'permalink'   => $v_permalink,
-                'date'        => $v_date,
-                'transcript'  => $transcripts,
-                'is_current'  => ($p_id === $current_post_id),
+                'post_id'    => $p_id,
+                'id'         => $v_id,
+                'title'      => $v_title,
+                'permalink'  => $v_permalink,
+                'date'       => $v_date,
+                'thumb'      => $thumb_src,
+                'is_current' => ($p_id === $current_post_id),
             ];
         }
         wp_reset_postdata();
     }
-
-    // Ensure current post transcript is registered in transcripts map
-    if (!empty($current_video_id) && !isset($all_transcripts[$current_video_id])) {
-        $curr_t_rows = get_field('video_transcript', $current_post_id);
-        $curr_transcripts = [];
-        if (!empty($curr_t_rows) && is_array($curr_t_rows)) {
-            foreach ($curr_t_rows as $row) {
-                $time = isset($row['start_from']) && $row['start_from'] !== '' ? (int)$row['start_from'] : 0;
-                $text = isset($row['description']) ? trim($row['description']) : '';
-                if (!empty($text)) {
-                    $curr_transcripts[] = [
-                        'time' => $time,
-                        'text' => $text,
-                    ];
-                }
-            }
-        }
-        $all_transcripts[$current_video_id] = $curr_transcripts;
-    }
-
-    // Default video ID fallback if none set
-    $display_video_id = !empty($current_video_id) ? $current_video_id : 'oDICquOoJ6c';
 ?>
 
 <?php if (function_exists('yoast_breadcrumb')) : ?>
@@ -141,7 +113,7 @@ while (have_posts()) :
                     <span><?php _e('Tuyển Tập Pháp Âm • Thi Kệ', 'pbdcs'); ?></span>
                 </div>
 
-                <!-- Dynamic Video Title -->
+                <!-- Video Title -->
                 <h1 id="hero-video-title" class="text-2xl sm:text-3xl md:text-4xl text-white font-light leading-snug tracking-wide transition-all duration-300 drop-shadow-md">
                     <?php echo esc_html($current_title); ?>
                 </h1>
@@ -151,11 +123,6 @@ while (have_posts()) :
                     <span class="flex items-center gap-2">
                         <i class="fa-solid fa-user-nib text-[#c9922a]"></i>
                         <?php _e('Diễn đọc: Tỷ kheo Thích Long Viễn', 'pbdcs'); ?>
-                    </span>
-                    <span class="text-neutral-400">•</span>
-                    <span class="text-neutral-300">
-                        <i class="fa-regular fa-calendar-days text-[#c9922a] mr-1"></i>
-                        <?php echo get_the_date('d/m/Y', $current_post_id); ?>
                     </span>
                 </div>
             </div>
@@ -208,9 +175,22 @@ while (have_posts()) :
                         <!-- Static Transcript Box (Matching Video Height) -->
                         <div id="script-wrapper" class="flex-1 min-h-0 border border-white/10 rounded-xl bg-[#faf8f5] text-slate-800 relative shadow-inner overflow-hidden" style="background-image: url('<?php echo esc_url(IMG_URL . 'parchment-bg.png'); ?>'); background-size: cover; background-position: center;">
                             <div id="script-scroll-container" class="h-full overflow-y-auto px-5 py-4 scrollbar-thin relative flex flex-col max-h-[300px]">
-                                <p class="text-3xl font-handwriting"><?php echo esc_html($current_title); ?></p>
-								<div id="script-paragraphs" class="w-full space-y-3 text-center my-auto">
-                                    <!-- Populated via Javascript -->
+                                <div id="script-paragraphs" class="w-full space-y-3 text-center my-auto">
+                                    <?php if (!empty($current_transcripts)) : ?>
+                                        <?php foreach ($current_transcripts as $index => $item) : ?>
+                                            <div 
+                                                class="script-para text-slate-700 py-1.5 text-sm md:text-base leading-relaxed opacity-85 hover:opacity-100 transition-all cursor-pointer rounded-lg px-2"
+                                                data-time="<?php echo esc_attr($item['time']); ?>"
+                                                data-index="<?php echo esc_attr($index); ?>"
+                                            >
+                                                <?php echo nl2br(esc_html($item['text'])); ?>
+                                            </div>
+                                        <?php endforeach; ?>
+                                    <?php else : ?>
+                                        <p class="text-neutral-400 italic text-xs font-light py-8">
+                                            <?php _e('Đang cập nhật lời kệ / kịch bản cho video này.', 'pbdcs'); ?>
+                                        </p>
+                                    <?php endif; ?>
                                 </div>
                             </div>
                         </div>
@@ -238,65 +218,56 @@ while (have_posts()) :
                 </span>
             </div>
 
-            <!-- 4 Columns Video Grid -->
+            <!-- 4 Columns Video Grid (Standard <a> Navigation) -->
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
                 <?php foreach ($playlist_items as $item) : 
                     $isActive = $item['is_current'];
-                    $activeClass = $isActive ? 'active border-[#c9922a] ring-2 ring-[#c9922a]/30 bg-[#faf8f5]' : 'border-neutral-200/80 hover:border-neutral-300 bg-white hover:shadow-md';
-                    $indicatorClass = $isActive ? '' : 'hidden';
-                    
-                    $initialBlockquote = !empty($item['transcript']) ? $item['transcript'][0]['text'] : $item['desc'];
-                    $thumb_src = !empty($item['id']) 
-                        ? 'https://img.youtube.com/vi/' . esc_attr($item['id']) . '/hqdefault.jpg' 
-                        : (has_post_thumbnail($item['post_id']) ? get_the_post_thumbnail_url($item['post_id'], 'medium_large') : IMG_URL . 'anh-thay-Thich-Long-Vien.jpg');
+                    $activeClass = $isActive 
+                        ? 'border-[#c9922a] ring-2 ring-[#c9922a]/30 bg-[#faf8f5] shadow-sm' 
+                        : 'border-neutral-200/80 hover:border-neutral-300 bg-white hover:shadow-lg hover:-translate-y-0.5';
                 ?>
-                    <button 
-                        type="button" 
-                        class="video-card group flex flex-col h-full rounded-2xl border overflow-hidden transition-all duration-300 text-left cursor-pointer focus:outline-none focus:ring-2 focus:ring-[#1a747a]/50 <?php echo $activeClass; ?>"
-                        data-video-id="<?php echo esc_attr($item['id']); ?>"
-                        data-title="<?php echo esc_attr($item['title']); ?>"
-                        data-desc="<?php echo esc_attr($item['desc']); ?>"
-                        data-blockquote="<?php echo esc_attr($initialBlockquote); ?>"
-                        data-permalink="<?php echo esc_url($item['permalink']); ?>"
+                    <a 
+                        href="<?php echo esc_url($item['permalink']); ?>" 
+                        class="video-card group flex flex-col h-full rounded-2xl border overflow-hidden transition-all duration-300 text-left <?php echo $activeClass; ?>"
                     >
                         <!-- Thumbnail Container (16:9) -->
                         <div class="relative w-full aspect-video bg-neutral-900 overflow-hidden shrink-0">
-                            <a href="<?php echo esc_url($item['permalink']); ?>">
-                                <img 
-                                    src="<?php echo esc_url($thumb_src); ?>" 
-                                    alt="<?php echo esc_attr($item['title']); ?>" 
-                                    loading="lazy"
-                                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
-                                />
-                            </a>
+                            <img 
+                                src="<?php echo esc_url($item['thumb']); ?>" 
+                                alt="<?php echo esc_attr($item['title']); ?>" 
+                                loading="lazy"
+                                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
+                            />
+                            
                             <!-- Play Overlay Icon -->
                             <div class="absolute inset-0 bg-black/30 group-hover:bg-black/15 flex items-center justify-center transition-all duration-300">
                                 <span class="w-11 h-11 rounded-full bg-[#c9922a]/90 group-hover:bg-[#c9922a] text-white flex items-center justify-center shadow-lg transform group-hover:scale-110 transition-transform duration-300">
                                     <i class="fa-solid fa-play text-xs ml-0.5"></i>
                                 </span>
                             </div>
+
                             <!-- Active Badge -->
-                            <div class="active-dot absolute top-3 right-3 px-2.5 py-1 rounded-full bg-[#c9922a] text-white text-[10px] font-bold tracking-wider shadow-md <?php echo $indicatorClass; ?>">
-                                <?php _e('Đang phát', 'pbdcs'); ?>
-                            </div>
+                            <?php if ($isActive) : ?>
+                                <div class="absolute top-3 right-3 px-2.5 py-1 rounded-full bg-[#c9922a] text-white text-[10px] font-bold tracking-wider shadow-md">
+                                    <?php _e('Đang phát', 'pbdcs'); ?>
+                                </div>
+                            <?php endif; ?>
                         </div>
 
                         <!-- Video Content / Info -->
                         <div class="p-5 flex flex-col justify-between flex-1 space-y-3">
                             <h4 class="text-base font-semibold text-slate-800 line-clamp-2 leading-snug group-hover:text-[#1a747a] transition-colors duration-200">
-                                <a href="<?php echo esc_url($item['permalink']); ?>">
-                                    <?php echo esc_html($item['title']); ?>
-                                </a>
+                                <?php echo esc_html($item['title']); ?>
                             </h4>
                             
                             <div class="pt-3 border-t border-neutral-100 flex items-center justify-between text-[11px] text-neutral-400">
                                 <span><?php _e('Thích Long Viễn', 'pbdcs'); ?></span>
-                                <a href="<?php echo esc_url($item['permalink']); ?>" class="text-[#1a747a] font-medium group-hover:translate-x-0.5 transition-transform duration-200 flex items-center gap-1">
+                                <span class="text-[#1a747a] font-medium group-hover:translate-x-0.5 transition-transform duration-200 flex items-center gap-1">
                                     <?php _e('Nghe thi kệ', 'pbdcs'); ?> <i class="fa-solid fa-chevron-right text-[9px]"></i>
-                                </a>
+                                </span>
                             </div>
                         </div>
-                    </button>
+                    </a>
                 <?php endforeach; ?>
             </div>
 
@@ -314,92 +285,23 @@ while (have_posts()) :
 }
 </style>
 
-<!-- Interaction Script -->
+<!-- YouTube Player Interaction Script for Current Video -->
 <script>
-// Pass PHP transcript data to JavaScript
-const videoTranscripts = <?php echo json_encode($all_transcripts, JSON_UNESCAPED_UNICODE); ?>;
-const initialVideoId = '<?php echo esc_js($display_video_id); ?>';
-
 document.addEventListener('DOMContentLoaded', function () {
-    const videoCards = document.querySelectorAll('.video-card');
-    const playerFrame = document.getElementById('active-video-frame');
-    const playerDesc = document.getElementById('active-video-desc');
-    
-    const heroBgLayer = document.getElementById('hero-bg-layer');
-    const heroTitle = document.getElementById('hero-video-title');
     const scriptContainer = document.getElementById('script-paragraphs');
-
+    const paras = scriptContainer ? scriptContainer.querySelectorAll('.script-para') : [];
     let player;
     let progressInterval;
     let activeIndex = -1;
 
-    // Helper to update hero banner based on selected video
-    function updateHeroBanner(videoId, title, desc) {
-        if (heroTitle) {
-            heroTitle.classList.add('opacity-0');
-            setTimeout(() => {
-                heroTitle.textContent = title;
-                heroTitle.classList.remove('opacity-0');
-            }, 150);
-        }
-        
-        if (heroBgLayer && videoId) {
-            const maxresUrl = `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`;
-            const hqUrl = `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`;
-            
-            const img = new Image();
-            img.onload = function () {
-                if (img.naturalWidth > 120) {
-                    heroBgLayer.style.backgroundImage = `url('${maxresUrl}')`;
-                } else {
-                    heroBgLayer.style.backgroundImage = `url('${hqUrl}')`;
-                }
-            };
-            img.onerror = function () {
-                heroBgLayer.style.backgroundImage = `url('${hqUrl}')`;
-            };
-            img.src = maxresUrl;
-        }
-    }
-
-    // Render transcript for active video
-    function renderTranscript(transcript) {
-        if (!scriptContainer) return;
-        scriptContainer.innerHTML = '';
-        
-        if (!transcript || transcript.length === 0) {
-            scriptContainer.innerHTML = '<p class="text-neutral-400 italic text-xs font-light py-8"><?php echo esc_js(__('Đang cập nhật lời kệ / kịch bản cho video này.', 'pbdcs')); ?></p>';
-            return;
-        }
-        
-        transcript.forEach((para, index) => {
-            const paraEl = document.createElement('div');
-            paraEl.className = 'script-para text-slate-700 py-1.5 text-sm md:text-base leading-relaxed opacity-85 hover:opacity-100 transition-all cursor-pointer';
-            paraEl.setAttribute('data-time', para.time);
-            paraEl.setAttribute('data-index', index);
-            
-            paraEl.innerHTML = (para.text || '').replace(/\n/g, '<br>');
-            
-            paraEl.addEventListener('click', () => {
-                if (player && typeof player.seekTo === 'function') {
-                    player.seekTo(para.time, true);
-                    highlightParagraph(index);
-                }
-            });
-            
-            scriptContainer.appendChild(paraEl);
-        });
-    }
-
     function highlightParagraph(index) {
         if (index === activeIndex) return;
         
-        const paras = scriptContainer.querySelectorAll('.script-para');
         paras.forEach((para, idx) => {
             if (idx === index) {
                 para.className = 'script-para text-[#9e6f1a] font-bold text-sm md:text-base opacity-100 bg-[#c9922a]/15 rounded-lg px-3 py-1.5 transition-all shadow-xs';
             } else {
-                para.className = 'script-para text-slate-700 py-1.5 text-sm md:text-base leading-relaxed opacity-85 hover:opacity-100 transition-all cursor-pointer';
+                para.className = 'script-para text-slate-700 py-1.5 text-sm md:text-base leading-relaxed opacity-85 hover:opacity-100 transition-all cursor-pointer rounded-lg px-2';
             }
         });
         
@@ -424,8 +326,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function syncTranscript(time) {
-        const paras = scriptContainer.querySelectorAll('.script-para');
-        if (paras.length === 0) return;
+        if (!paras || paras.length === 0) return;
         
         let targetIndex = -1;
         for (let i = 0; i < paras.length; i++) {
@@ -442,6 +343,17 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
+    // Attach click to seek on transcript lines
+    paras.forEach((para, index) => {
+        para.addEventListener('click', function () {
+            const time = parseFloat(this.getAttribute('data-time'));
+            if (player && typeof player.seekTo === 'function') {
+                player.seekTo(time, true);
+                highlightParagraph(index);
+            }
+        });
+    });
+
     // Initialize YouTube Player
     window.onYouTubeIframeAPIReady = function () {
         initYoutubePlayer();
@@ -450,16 +362,9 @@ document.addEventListener('DOMContentLoaded', function () {
     function initYoutubePlayer() {
         player = new YT.Player('active-video-frame', {
             events: {
-                'onStateChange': onPlayerStateChange,
-                'onReady': onPlayerReady
+                'onStateChange': onPlayerStateChange
             }
         });
-    }
-
-    function onPlayerReady(event) {
-        const activeCard = document.querySelector('.video-card.active');
-        const vId = activeCard ? activeCard.getAttribute('data-video-id') : initialVideoId;
-        renderTranscript(videoTranscripts[vId] || []);
     }
 
     function onPlayerStateChange(event) {
@@ -479,65 +384,6 @@ document.addEventListener('DOMContentLoaded', function () {
     } else {
         initYoutubePlayer();
     }
-
-    // Handle card clicks in playlist grid
-    videoCards.forEach(card => {
-        card.addEventListener('click', function () {
-            if (this.classList.contains('active')) return;
-
-            stopProgressTracking();
-
-            const videoId = this.getAttribute('data-video-id');
-            const title = this.getAttribute('data-title');
-            const desc = this.getAttribute('data-desc');
-            const permalink = this.getAttribute('data-permalink');
-
-            // Update URL in browser history
-            if (permalink && window.history.pushState) {
-                window.history.pushState({ videoId: videoId }, title, permalink);
-            }
-
-            // Update hero banner dynamically
-            updateHeroBanner(videoId, title, desc);
-
-            // Reset active states on all cards
-            videoCards.forEach(c => {
-                c.classList.remove('active', 'border-[#c9922a]', 'ring-2', 'ring-[#c9922a]/30', 'bg-[#faf8f5]');
-                c.classList.add('border-neutral-200/80', 'bg-white');
-                const dot = c.querySelector('.active-dot');
-                if (dot) dot.classList.add('hidden');
-            });
-
-            // Add active state to clicked card
-            this.classList.add('active', 'border-[#c9922a]', 'ring-2', 'ring-[#c9922a]/30', 'bg-[#faf8f5]');
-            this.classList.remove('border-neutral-200/80', 'bg-white');
-            const activeDot = this.querySelector('.active-dot');
-            if (activeDot) activeDot.classList.remove('hidden');
-
-            // Update description
-            if (playerDesc) playerDesc.textContent = desc;
-
-            // Load new transcript
-            renderTranscript(videoTranscripts[videoId] || []);
-            activeIndex = -1;
-
-            // Load video in YouTube player
-            if (player && typeof player.loadVideoById === 'function') {
-                player.loadVideoById(videoId);
-            } else if (playerFrame && videoId) {
-                playerFrame.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&enablejsapi=1&rel=0`;
-            }
-
-            // Scroll smoothly to hero player
-            const heroBanner = document.getElementById('hero-playlist-banner');
-            if (heroBanner) {
-                heroBanner.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            }
-        });
-    });
-
-    // Render initial transcript immediately
-    renderTranscript(videoTranscripts[initialVideoId] || []);
 });
 </script>
 
@@ -545,4 +391,3 @@ document.addEventListener('DOMContentLoaded', function () {
 endwhile;
 
 get_footer();
-

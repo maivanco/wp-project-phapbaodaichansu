@@ -18,7 +18,7 @@ if (empty($section_title)) {
 
 $description = $args['description'] ?? get_sub_field('description');
 if (empty($description)) {
-    $description = __('Những bài pháp giảng, khai thị chân thực và thi kệ vi diệu được Thầy trùng tuyên nhằm khai sáng tâm thức trên đạo lộ giác ngộ.', 'pbdcs');
+    $description = __('Tuyển tập những bài thi kệ được diễn đọc bởi giọng của Tỷ kheo Thích Long Viễn', 'pbdcs');
 }
 
 // Query all dieu-phap-am posts
