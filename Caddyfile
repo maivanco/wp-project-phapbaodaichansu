@@ -42,3 +42,7 @@
 	# PHP handler
 	php_server
 }
+
+course.vienkhongni.com {
+    reverse_proxy host.docker.internal:8080
+}
