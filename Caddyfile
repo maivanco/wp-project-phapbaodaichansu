@@ -43,6 +43,6 @@
 	php_server
 }
 
-course.vienkhongni.com {
+vkn.mike-tran.dev {
     reverse_proxy host.docker.internal:8080
 }
