@@ -28,7 +28,7 @@ get_header();
       <div class="lg:col-span-8 flex flex-col justify-between">
         <div class="group overflow-hidden border border-[#2d2a26]/10 p-2 bg-white shadow-sm transition-all duration-500 hover:shadow-md">
           <div class="aspect-video w-full overflow-hidden bg-gray-100 relative">
-            <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiWrG8QMgmeOqWImQBYvu5PEp2LE5oIu_3q938ARdpnHt7v0efkwYytoOcQXQefWg3aD2SXi3ibTcvC5EngUp1V6jx0ROoVMHTjiFIoG5FBZivkDK9YcET5TbxM4AR5X_342-aylc1x0gAREkXRFDDySolJ5g9YystX1o4U_tF2ZogSVootU7CyB-SD/w1200-h630-p-k-no-nu/z3616887510472_80195938836eed2327021a205e04bf40.jpg" 
+            <img src="<?php echo IMG_URL;?>thi-ke-de-tu-nhu-lai-thich-long-vien.webp" 
                  alt="Đại Đức Thích Long Viễn" 
                  class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
             <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
@@ -148,25 +148,174 @@ get_header();
   </div>
 </div>
 
-<?php /*
-<!-- Editorial Gallery / Photo Essay Grid (Full-Width Masonry Gallery) -->
-<section class="w-full bg-gradient-to-b from-[#faf8f5] via-[#f5efe4] to-[#faf8f5] text-[#2d2a26] py-16 md:py-24 relative overflow-hidden border-y border-[#2d2a26]/10 my-8">
-  <!-- Subtle ambient background glowing elements -->
-  <div class="absolute -top-32 left-1/2 -translate-x-1/2 w-[800px] h-[350px] bg-[#c9922a]/10 rounded-full blur-3xl pointer-events-none"></div>
-  <div class="absolute -bottom-32 left-1/4 w-[500px] h-[300px] bg-[#1a747a]/8 rounded-full blur-3xl pointer-events-none"></div>
+<!-- Editorial Gallery / Photo Essay Grid (Full-Width Masonry Gallery with Wet Glass & Raindrop Mirror Background) -->
+<section class="w-full wet-glass-section text-[#2d2a26] py-16 md:py-24 my-8">
+
+  <!-- Wet Glass & Atmospheric Reflection Backdrop -->
+  <div class="wet-glass-backdrop">
+    <!-- Ambient blurred background image for organic depth -->
+    <div class="wet-glass-ambient-image" style="background-image: url('<?php echo IMG_URL;?>anh-thay-Thich-Long-Vien.jpg');"></div>
+    
+    <!-- Atmospheric glowing spheres: temple amber & teal mist -->
+    <div class="absolute -top-32 left-1/2 -translate-x-1/2 w-[900px] h-[450px] bg-[#c9922a]/20 rounded-full blur-3xl pointer-events-none"></div>
+    <div class="absolute top-1/4 -left-32 w-[600px] h-[400px] bg-[#1a747a]/15 rounded-full blur-3xl pointer-events-none"></div>
+    <div class="absolute -bottom-32 right-10 w-[700px] h-[450px] bg-[#c9922a]/15 rounded-full blur-3xl pointer-events-none"></div>
+
+    <!-- Frosted Glass Surface (blur & translucency) -->
+    <div class="wet-glass-surface"></div>
+
+    <!-- Mirror-like Diagonal Specular Light Sheen -->
+    <div class="wet-glass-mirror-sheen"></div>
+
+    <!-- SVG Small Raindrops & Water Droplets Pattern -->
+    <svg class="wet-glass-droplets-layer w-full h-full" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <!-- Light refraction within water droplet -->
+        <radialGradient id="wetGlassDropCaustic" cx="45%" cy="75%" r="65%">
+          <stop offset="0%" stop-color="#ffffff" stop-opacity="0.85" />
+          <stop offset="45%" stop-color="#ffffff" stop-opacity="0.25" />
+          <stop offset="78%" stop-color="#2c3e50" stop-opacity="0.10" />
+          <stop offset="100%" stop-color="#1a252f" stop-opacity="0.30" />
+        </radialGradient>
+        <!-- Soft shadow beneath droplet -->
+        <radialGradient id="wetGlassDropShadow" cx="50%" cy="50%" r="50%">
+          <stop offset="50%" stop-color="#1e293b" stop-opacity="0.25" />
+          <stop offset="100%" stop-color="#1e293b" stop-opacity="0" />
+        </radialGradient>
+        
+        <!-- Repeating Raindrop & Water Droplets Pattern -->
+        <pattern id="wetGlassDrops" width="380" height="380" patternUnits="userSpaceOnUse">
+          <!-- Fine condensation mist beads (clusters of tiny moisture) -->
+          <circle cx="28" cy="42" r="1.2" fill="#ffffff" opacity="0.8" />
+          <circle cx="34" cy="48" r="1" fill="#ffffff" opacity="0.6" />
+          <circle cx="112" cy="22" r="1.3" fill="#ffffff" opacity="0.75" />
+          <circle cx="118" cy="26" r="0.9" fill="#ffffff" opacity="0.6" />
+          <circle cx="165" cy="85" r="1.1" fill="#ffffff" opacity="0.7" />
+          <circle cx="215" cy="38" r="1.4" fill="#ffffff" opacity="0.8" />
+          <circle cx="221" cy="43" r="1" fill="#ffffff" opacity="0.6" />
+          <circle cx="310" cy="55" r="1.2" fill="#ffffff" opacity="0.75" />
+          <circle cx="348" cy="115" r="1.3" fill="#ffffff" opacity="0.7" />
+          <circle cx="75" cy="165" r="1.2" fill="#ffffff" opacity="0.8" />
+          <circle cx="82" cy="170" r="1" fill="#ffffff" opacity="0.55" />
+          <circle cx="142" cy="195" r="1.4" fill="#ffffff" opacity="0.75" />
+          <circle cx="240" cy="180" r="1.1" fill="#ffffff" opacity="0.7" />
+          <circle cx="285" cy="220" r="1.3" fill="#ffffff" opacity="0.8" />
+          <circle cx="355" cy="245" r="1.2" fill="#ffffff" opacity="0.65" />
+          <circle cx="45" cy="290" r="1.4" fill="#ffffff" opacity="0.75" />
+          <circle cx="120" cy="315" r="1" fill="#ffffff" opacity="0.6" />
+          <circle cx="195" cy="335" r="1.3" fill="#ffffff" opacity="0.8" />
+          <circle cx="265" cy="320" r="1.1" fill="#ffffff" opacity="0.7" />
+          <circle cx="330" cy="350" r="1.4" fill="#ffffff" opacity="0.8" />
+          <circle cx="337" cy="356" r="0.9" fill="#ffffff" opacity="0.6" />
+
+          <!-- Vertical subtle drip run trails -->
+          <!-- Trail 1 -->
+          <path d="M 64 60 Q 65 85 63 105 Q 65 125 64 140" stroke="rgba(255,255,255,0.35)" stroke-width="1.2" fill="none" stroke-linecap="round" />
+          <!-- Trail 2 -->
+          <path d="M 235 120 Q 234 145 236 170 Q 235 195 236 215" stroke="rgba(255,255,255,0.32)" stroke-width="1" fill="none" stroke-linecap="round" />
+          <!-- Trail 3 -->
+          <path d="M 324 230 Q 325 255 323 275 Q 324 295 323 310" stroke="rgba(255,255,255,0.28)" stroke-width="1" fill="none" stroke-linecap="round" />
+
+          <!-- Droplet 1 (Small) -->
+          <ellipse cx="64" cy="141" rx="3.5" ry="3" fill="url(#wetGlassDropShadow)" />
+          <circle cx="64" cy="140" r="3.2" fill="url(#wetGlassDropCaustic)" stroke="rgba(255,255,255,0.6)" stroke-width="0.5" />
+          <circle cx="62.8" cy="138.8" r="1" fill="#ffffff" opacity="0.95" />
+          <ellipse cx="64.8" cy="141.5" rx="1.1" ry="0.6" fill="#ffffff" opacity="0.45" />
+
+          <!-- Droplet 2 (Medium bead) -->
+          <ellipse cx="148" cy="52" rx="5" ry="4.2" fill="url(#wetGlassDropShadow)" />
+          <circle cx="148" cy="51" r="4.5" fill="url(#wetGlassDropCaustic)" stroke="rgba(255,255,255,0.65)" stroke-width="0.5" />
+          <circle cx="146.4" cy="49.4" r="1.4" fill="#ffffff" opacity="0.95" />
+          <ellipse cx="149.2" cy="53" rx="1.6" ry="0.8" fill="#ffffff" opacity="0.5" />
+
+          <!-- Droplet 3 (Micro-droplet with glint) -->
+          <circle cx="190" cy="98" r="2.2" fill="url(#wetGlassDropCaustic)" stroke="rgba(255,255,255,0.55)" stroke-width="0.4" />
+          <circle cx="189.2" cy="97.2" r="0.8" fill="#ffffff" opacity="0.9" />
+
+          <!-- Droplet 4 (Teardrop / Gravity pulled) -->
+          <ellipse cx="236" cy="216.5" rx="4.8" ry="4" fill="url(#wetGlassDropShadow)" />
+          <path d="M 236 211 C 238.5 211 240.5 213.5 240.5 216 C 240.5 218.5 238.5 220.5 236 220.5 C 233.5 220.5 231.5 218.5 231.5 216 C 231.5 213.5 233.5 211 236 211 Z" fill="url(#wetGlassDropCaustic)" stroke="rgba(255,255,255,0.65)" stroke-width="0.5" />
+          <circle cx="234.5" cy="214.5" r="1.3" fill="#ffffff" opacity="0.95" />
+          <ellipse cx="237.2" cy="218.2" rx="1.4" ry="0.7" fill="#ffffff" opacity="0.5" />
+
+          <!-- Droplet 5 (Subtle medium) -->
+          <ellipse cx="282" cy="85" rx="3.8" ry="3.2" fill="url(#wetGlassDropShadow)" />
+          <circle cx="282" cy="84" r="3.5" fill="url(#wetGlassDropCaustic)" stroke="rgba(255,255,255,0.6)" stroke-width="0.5" />
+          <circle cx="280.8" cy="82.8" r="1.1" fill="#ffffff" opacity="0.95" />
+          <ellipse cx="283" cy="85.5" rx="1.2" ry="0.6" fill="#ffffff" opacity="0.45" />
+
+          <!-- Droplet 6 (Larger water bead) -->
+          <ellipse cx="340" cy="175" rx="6.2" ry="5.2" fill="url(#wetGlassDropShadow)" />
+          <circle cx="340" cy="174" r="5.8" fill="url(#wetGlassDropCaustic)" stroke="rgba(255,255,255,0.7)" stroke-width="0.5" />
+          <circle cx="338" cy="172" r="1.8" fill="#ffffff" opacity="0.95" />
+          <ellipse cx="341.5" cy="176.8" rx="2" ry="0.9" fill="#ffffff" opacity="0.5" />
+
+          <!-- Droplet 7 (Small dew) -->
+          <ellipse cx="88" cy="245" rx="3.2" ry="2.6" fill="url(#wetGlassDropShadow)" />
+          <circle cx="88" cy="244" r="2.8" fill="url(#wetGlassDropCaustic)" stroke="rgba(255,255,255,0.55)" stroke-width="0.4" />
+          <circle cx="87" cy="243" r="0.9" fill="#ffffff" opacity="0.9" />
+
+          <!-- Droplet 8 (Medium teardrop) -->
+          <ellipse cx="160" cy="265" rx="4.5" ry="3.8" fill="url(#wetGlassDropShadow)" />
+          <circle cx="160" cy="264" r="4.2" fill="url(#wetGlassDropCaustic)" stroke="rgba(255,255,255,0.65)" stroke-width="0.5" />
+          <circle cx="158.5" cy="262.5" r="1.3" fill="#ffffff" opacity="0.95" />
+          <ellipse cx="161.2" cy="266" rx="1.5" ry="0.7" fill="#ffffff" opacity="0.45" />
+
+          <!-- Droplet 9 (Drip end) -->
+          <ellipse cx="323" cy="311" rx="4" ry="3.4" fill="url(#wetGlassDropShadow)" />
+          <circle cx="323" cy="310" r="3.6" fill="url(#wetGlassDropCaustic)" stroke="rgba(255,255,255,0.6)" stroke-width="0.5" />
+          <circle cx="321.7" cy="308.7" r="1.1" fill="#ffffff" opacity="0.95" />
+          <ellipse cx="324" cy="311.5" rx="1.2" ry="0.6" fill="#ffffff" opacity="0.45" />
+
+          <!-- Droplet 10 (Gentle dew) -->
+          <ellipse cx="230" cy="350" rx="3.5" ry="3" fill="url(#wetGlassDropShadow)" />
+          <circle cx="230" cy="349" r="3.2" fill="url(#wetGlassDropCaustic)" stroke="rgba(255,255,255,0.6)" stroke-width="0.5" />
+          <circle cx="228.8" cy="347.8" r="1" fill="#ffffff" opacity="0.9" />
+
+          <!-- Droplet 11 (Fine droplet) -->
+          <circle cx="28" cy="205" r="2.4" fill="url(#wetGlassDropCaustic)" stroke="rgba(255,255,255,0.55)" stroke-width="0.4" />
+          <circle cx="27.2" cy="204.2" r="0.8" fill="#ffffff" opacity="0.9" />
+
+          <!-- Droplet 12 (Fine droplet) -->
+          <circle cx="360" cy="68" r="2.5" fill="url(#wetGlassDropCaustic)" stroke="rgba(255,255,255,0.55)" stroke-width="0.4" />
+          <circle cx="359.2" cy="67.2" r="0.8" fill="#ffffff" opacity="0.9" />
+        </pattern>
+
+        <!-- Secondary offset pattern for organic non-repeating depth -->
+        <pattern id="wetGlassDropsSecondary" width="460" height="460" patternUnits="userSpaceOnUse">
+          <circle cx="85" cy="95" r="3.4" fill="url(#wetGlassDropCaustic)" stroke="rgba(255,255,255,0.6)" stroke-width="0.5" />
+          <circle cx="83.8" cy="93.8" r="1" fill="#ffffff" opacity="0.95" />
+          <circle cx="195" cy="160" r="2.2" fill="url(#wetGlassDropCaustic)" stroke="rgba(255,255,255,0.5)" stroke-width="0.4" />
+          <circle cx="194.2" cy="159.2" r="0.8" fill="#ffffff" opacity="0.9" />
+          <circle cx="380" cy="120" r="4" fill="url(#wetGlassDropCaustic)" stroke="rgba(255,255,255,0.6)" stroke-width="0.5" />
+          <circle cx="378.5" cy="118.5" r="1.2" fill="#ffffff" opacity="0.95" />
+          <circle cx="130" cy="380" r="3.2" fill="url(#wetGlassDropCaustic)" stroke="rgba(255,255,255,0.55)" stroke-width="0.4" />
+          <circle cx="128.8" cy="378.8" r="1" fill="#ffffff" opacity="0.9" />
+          <circle cx="290" cy="410" r="4.6" fill="url(#wetGlassDropCaustic)" stroke="rgba(255,255,255,0.65)" stroke-width="0.5" />
+          <circle cx="288.4" cy="408.4" r="1.4" fill="#ffffff" opacity="0.95" />
+          <circle cx="415" cy="340" r="2" fill="url(#wetGlassDropCaustic)" stroke="rgba(255,255,255,0.5)" stroke-width="0.4" />
+          <circle cx="414.2" cy="339.2" r="0.7" fill="#ffffff" opacity="0.9" />
+        </pattern>
+      </defs>
+
+      <!-- Fill layers with SVG patterns -->
+      <rect width="100%" height="100%" fill="url(#wetGlassDrops)" />
+      <rect width="100%" height="100%" fill="url(#wetGlassDropsSecondary)" opacity="0.65" />
+    </svg>
+  </div>
 
   <div class="container mx-auto px-4 max-w-7xl relative z-10">
     <!-- Section Header -->
-    <div class="text-center max-w-3xl mx-auto mb-12">
-      <div class="flex items-center justify-center gap-4 mb-4">
-        <span class="h-[1px] w-10 bg-[#c9922a]"></span>
+    <div class="text-center max-w-3xl mx-auto mb-14">
+      <div class="inline-flex items-center justify-center gap-3 px-5 py-1.5 rounded-full bg-white/75 backdrop-blur-md border border-white/80 shadow-xs mb-4">
+        <span class="h-[1px] w-8 bg-[#c9922a]"></span>
         <span class="text-xs md:text-sm uppercase tracking-[0.25em] text-[#1a747a] font-semibold">Tư Liệu & Thắng Cảnh</span>
-        <span class="h-[1px] w-10 bg-[#c9922a]"></span>
+        <span class="h-[1px] w-8 bg-[#c9922a]"></span>
       </div>
-      <h2 class="text-3xl md:text-5xl font-bold uppercase tracking-wider text-[#2d2a26] mb-4">
+      <h2 class="text-3xl md:text-5xl font-bold uppercase tracking-wider text-[#2d2a26] mb-4 drop-shadow-[0_1px_1px_rgba(255,255,255,0.9)]">
         Bộ Sưu Tập Hình Ảnh
       </h2>
-      <p class="text-[#5a544d] text-sm md:text-base leading-relaxed">
+      <p class="text-[#4a443d] text-sm md:text-base leading-relaxed max-w-2xl mx-auto font-medium">
         Những khoảnh khắc thanh tịnh, hình ảnh chốn trú xứ Phật Đảnh Bảo Vương và hành trình hoằng pháp lợi sinh của Thầy Thích Long Viễn.
       </p>
     </div>
@@ -175,8 +324,8 @@ get_header();
     <div class="columns-1 sm:columns-2 md:columns-3 lg:columns-4 gap-4 md:gap-6 space-y-4 md:space-y-6">
       
       <!-- Photo Item 1 -->
-      <div class="break-inside-avoid inline-block w-full group relative rounded-2xl p-2 bg-white border border-[#e5dec9] shadow-sm transition-all duration-500 hover:-translate-y-1.5 hover:shadow-xl hover:border-[#c9922a]/50">
-        <div class="overflow-hidden rounded-xl bg-[#ede7dc] relative">
+      <div class="break-inside-avoid inline-block w-full group relative rounded-2xl p-2.5 wet-glass-card">
+        <div class="overflow-hidden rounded-xl bg-[#ede7dc] relative shadow-inner">
           <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiWrG8QMgmeOqWImQBYvu5PEp2LE5oIu_3q938ARdpnHt7v0efkwYytoOcQXQefWg3aD2SXi3ibTcvC5EngUp1V6jx0ROoVMHTjiFIoG5FBZivkDK9YcET5TbxM4AR5X_342-aylc1x0gAREkXRFDDySolJ5g9YystX1o4U_tF2ZogSVootU7CyB-SD/w1200-h630-p-k-no-nu/z3616887510472_80195938836eed2327021a205e04bf40.jpg" 
                alt="Thầy Thích Long Viễn" 
                class="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-105 block" />
@@ -189,66 +338,50 @@ get_header();
       </div>
 
       <!-- Photo Item 2 -->
-      <div class="break-inside-avoid inline-block w-full group relative rounded-2xl p-2 bg-white border border-[#e5dec9] shadow-sm transition-all duration-500 hover:-translate-y-1.5 hover:shadow-xl hover:border-[#c9922a]/50">
-        <div class="overflow-hidden rounded-xl bg-[#ede7dc] relative">
-          <img src="https://images.unsplash.com/photo-1545389336-cf090694435e?q=80&w=800&auto=format&fit=crop" 
-               alt="Thiền Định Độc Cư" 
+      <div class="break-inside-avoid inline-block w-full group relative rounded-2xl p-2.5 wet-glass-card">
+        <div class="overflow-hidden rounded-xl bg-[#ede7dc] relative shadow-inner">
+          <img src="https://scontent.fhan4-3.fna.fbcdn.net/v/t39.30808-6/771909463_122145146835111474_7908241927327642531_n.jpg?stp=dst-jpg_tt6&cstp=mx2048x1536&ctp=s2048x1536&_nc_cat=103&ccb=1-7&_nc_sid=127cfc&_nc_ohc=lZVUlyMbayIQ7kNvwH9RRVM&_nc_oc=AdoT3lpmsF8Ix0PV1DDDFmdO9C_l1PtHyUDQBF_vmwPhUp8GcEKq4R-X-SA4ae3_HMQ&_nc_zt=23&_nc_ht=scontent.fhan4-3.fna&_nc_gid=vu_P5BdFSejGaBx07SZ0ig&_nc_ss=7b2a8&oh=00_AQI4w1dmDSCk5gYgLGMLwxCrk-z9SDEBZWLZMY4UQqvN7Q&oe=6AA9E869" 
+               alt="" 
                class="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-105 block" />
           <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-75 group-hover:opacity-90 transition-opacity duration-300"></div>
-          <div class="absolute bottom-0 left-0 right-0 p-4 transform translate-y-1 group-hover:translate-y-0 transition-transform duration-300">
-            <h3 class="text-sm font-semibold text-white group-hover:text-[#f4d084] transition-colors duration-300">Thiền Định Độc Cư</h3>
-            <p class="text-xs text-gray-200 mt-1 opacity-0 group-hover:opacity-100 transition-opacity duration-300">Không gian an tịnh nơi núi rừng</p>
-          </div>
         </div>
       </div>
 
       <!-- Photo Item 3 -->
-      <div class="break-inside-avoid inline-block w-full group relative rounded-2xl p-2 bg-white border border-[#e5dec9] shadow-sm transition-all duration-500 hover:-translate-y-1.5 hover:shadow-xl hover:border-[#c9922a]/50">
-        <div class="overflow-hidden rounded-xl bg-[#ede7dc] relative">
-          <img src="https://images.unsplash.com/photo-1518241353330-0f7941c2d9b5?q=80&w=800&auto=format&fit=crop" 
-               alt="Trú Xứ Núi Rừng" 
+      <div class="break-inside-avoid inline-block w-full group relative rounded-2xl p-2.5 wet-glass-card">
+        <div class="overflow-hidden rounded-xl bg-[#ede7dc] relative shadow-inner">
+          <img src="https://scontent.fhan4-1.fna.fbcdn.net/v/t39.30808-6/754143416_122141915541111474_5794926958798317414_n.jpg?stp=dst-jpg_tt6&cstp=mx1348x1265&ctp=s1348x1265&_nc_cat=105&ccb=1-7&_nc_sid=127cfc&_nc_ohc=e6KV-Sq6WMcQ7kNvwFXxKzx&_nc_oc=Adq_I4FCqQB21c_wDR54Kk4Zx41E_XyHrjbbujBxq1BFfjcD-QhJ1uWXDCTjyZKdqKs&_nc_zt=23&_nc_ht=scontent.fhan4-1.fna&_nc_gid=TDscDnSFYgrTDWhtbwpbyw&_nc_ss=7b2a8&oh=00_AQKdKyCw3bTbVmKv2rOXxPcxTO8nM5py976FhyfKA7ZVDg&oe=6AAA0117" 
+               alt="" 
                class="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-105 block" />
           <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-75 group-hover:opacity-90 transition-opacity duration-300"></div>
-          <div class="absolute bottom-0 left-0 right-0 p-4 transform translate-y-1 group-hover:translate-y-0 transition-transform duration-300">
-            <h3 class="text-sm font-semibold text-white group-hover:text-[#f4d084] transition-colors duration-300">Trú Xứ Thanh Vắng</h3>
-            <p class="text-xs text-gray-200 mt-1 opacity-0 group-hover:opacity-100 transition-opacity duration-300">Sương gió núi rừng Khánh Hòa</p>
-          </div>
         </div>
       </div>
 
       <!-- Photo Item 4 -->
-      <div class="break-inside-avoid inline-block w-full group relative rounded-2xl p-2 bg-white border border-[#e5dec9] shadow-sm transition-all duration-500 hover:-translate-y-1.5 hover:shadow-xl hover:border-[#c9922a]/50">
-        <div class="overflow-hidden rounded-xl bg-[#ede7dc] relative">
-          <img src="https://images.unsplash.com/photo-1506880018603-83d5b814b5a6?q=80&w=800&auto=format&fit=crop" 
+      <div class="break-inside-avoid inline-block w-full group relative rounded-2xl p-2.5 wet-glass-card">
+        <div class="overflow-hidden rounded-xl bg-[#ede7dc] relative shadow-inner">
+          <img src="https://scontent.fhan3-2.fna.fbcdn.net/v/t39.30808-6/794262190_122148382389111474_217835910334839665_n.jpg?stp=cp6_dst-jpg_tt6&cstp=mx1092x1446&ctp=s1092x1446&_nc_cat=107&ccb=1-7&_nc_sid=127cfc&_nc_ohc=J2V8S_Tm_p8Q7kNvwFdAwdf&_nc_oc=AdoL7MIXELGtZVTOmcR9kf0F9kGKGO3X1rdEJmARjiEGy3XMNWCIHX9JsoGNI7Dxh_Y&_nc_zt=23&_nc_ht=scontent.fhan3-2.fna&_nc_gid=iSd1Th0BHhg2sNaFY8aA2Q&_nc_ss=7b2a8&oh=00_AQLj3hNKkdlbuV1y8mfrSN5EmUeGfildX9TKitvNyo7evA&oe=6AA9D2FF" 
                alt="Kinh Sách & Biên Dịch" 
                class="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-105 block" />
           <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-75 group-hover:opacity-90 transition-opacity duration-300"></div>
-          <div class="absolute bottom-0 left-0 right-0 p-4 transform translate-y-1 group-hover:translate-y-0 transition-transform duration-300">
-            <h3 class="text-sm font-semibold text-white group-hover:text-[#f4d084] transition-colors duration-300">Biên Dịch & Trùng Tuyên</h3>
-            <p class="text-xs text-gray-200 mt-1 opacity-0 group-hover:opacity-100 transition-opacity duration-300">Các tác phẩm giáo lý Chánh Pháp</p>
-          </div>
         </div>
       </div>
 
       <!-- Photo Item 5 -->
-      <div class="break-inside-avoid inline-block w-full group relative rounded-2xl p-2 bg-white border border-[#e5dec9] shadow-sm transition-all duration-500 hover:-translate-y-1.5 hover:shadow-xl hover:border-[#c9922a]/50">
-        <div class="overflow-hidden rounded-xl bg-[#ede7dc] relative">
-          <img src="https://blogger.googleusercontent.com/img/a/AVvXsEiJxUOaJhD3KisMEPRXgZKuVkajLbAY8X7AcK0xqgJTT0fwgbWm1FYQSp5HK7zwhqL46PjHo99chz9dMIeez5CWMBRb-XI_NarVs3gasJHaqfVxG6Yl6mj3t-Cdn86TU66ECJL3KKGDDLV6_5U_LZMJAh8SHtacs7_seEGAPmV77KkK-yELlR15QjzjC3I=s600" 
+      <div class="break-inside-avoid inline-block w-full group relative rounded-2xl p-2.5 wet-glass-card">
+        <div class="overflow-hidden rounded-xl bg-[#ede7dc] relative shadow-inner">
+          <img src="https://scontent.fhan3-4.fna.fbcdn.net/v/t39.30808-6/580860953_122101809267111474_305811052544553943_n.jpg?stp=dst-jpg_tt6&cstp=mx1440x1435&ctp=s1440x1435&_nc_cat=106&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=4B4yeCvlN64Q7kNvwFm9t3J&_nc_oc=AdoKxGWC3w3TCMFEAcH-N6TLbvexR8xplq8xLTZ3vQA5T06IBa7wVS_YdXzhKKWummg&_nc_zt=23&_nc_ht=scontent.fhan3-4.fna&_nc_gid=819W2aRV3fS3ClEw8by7Pw&_nc_ss=7b2a8&oh=00_AQJW4vDGJeIEdSl6_q1kx0MrTgtotkV3pA8xfC4twaRV9g&oe=6AA9D04E" 
                alt="Chân dung Thầy Thích Long Viễn" 
                class="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-105 block" />
           <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-75 group-hover:opacity-90 transition-opacity duration-300"></div>
-          <div class="absolute bottom-0 left-0 right-0 p-4 transform translate-y-1 group-hover:translate-y-0 transition-transform duration-300">
-            <h3 class="text-sm font-semibold text-[#f4d084]">Lương Sơn Long Viễn</h3>
-            <p class="text-xs text-gray-200 mt-1 opacity-0 group-hover:opacity-100 transition-opacity duration-300">Hình ảnh hoằng pháp</p>
-          </div>
         </div>
       </div>
 
       <!-- Photo Item 6 -->
-      <div class="break-inside-avoid inline-block w-full group relative rounded-2xl p-2 bg-white border border-[#e5dec9] shadow-sm transition-all duration-500 hover:-translate-y-1.5 hover:shadow-xl hover:border-[#c9922a]/50">
-        <div class="overflow-hidden rounded-xl bg-[#ede7dc] relative">
-          <img src="https://images.unsplash.com/photo-1609137144813-7d9921338f24?q=80&w=800&auto=format&fit=crop" 
-               alt="Hoa Sen Hạ Sanh" 
+      <div class="break-inside-avoid inline-block w-full group relative rounded-2xl p-2.5 wet-glass-card">
+        <div class="overflow-hidden rounded-xl bg-[#ede7dc] relative shadow-inner">
+          <img src="https://scontent.fhan3-3.fna.fbcdn.net/v/t39.30808-6/761497503_122143300941111474_3578873891614490672_n.jpg?stp=c0.187.1480.1480a_dst-jpg_tt6&cstp=mx1480x1480&ctp=s640x640&_nc_cat=101&ccb=1-7&_nc_sid=714c7a&_nc_ohc=9jtcHGA_XKkQ7kNvwF2BC9R&_nc_oc=Adr0_pjsHW_9qOpa1DeuJlUJQp8pC_8WNwW7f3tet5N1Uh9WkMoNLqSfFziZd8XQUn4&_nc_zt=23&_nc_ht=scontent.fhan3-3.fna&_nc_gid=hNDoRkI1psyQ2jrt8un2XA&_nc_ss=7b2a8&oh=00_AQLJqMg89TxNHdjBbCox0o_JLKHf7Ym9n_kyN4J0OGOMaA&oe=6AA9E757" 
+               alt="" 
                class="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-105 block" />
           <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-75 group-hover:opacity-90 transition-opacity duration-300"></div>
           <div class="absolute bottom-0 left-0 right-0 p-4 transform translate-y-1 group-hover:translate-y-0 transition-transform duration-300">
@@ -259,44 +392,22 @@ get_header();
       </div>
 
       <!-- Photo Item 8 -->
-      <div class="break-inside-avoid inline-block w-full group relative rounded-2xl p-2 bg-white border border-[#e5dec9] shadow-sm transition-all duration-500 hover:-translate-y-1.5 hover:shadow-xl hover:border-[#c9922a]/50">
-        <div class="overflow-hidden rounded-xl bg-[#ede7dc] relative">
-          <img src="https://images.unsplash.com/photo-1599839575945-a9e5af0c3fa5?q=80&w=800&auto=format&fit=crop" 
-               alt="Hương Trầm Thanh Tịnh" 
+      <div class="break-inside-avoid inline-block w-full group relative rounded-2xl p-2.5 wet-glass-card">
+        <div class="overflow-hidden rounded-xl bg-[#ede7dc] relative shadow-inner">
+          <img src="<?php echo IMG_URL;?>anh-thay-Thich-Long-Vien.jpg" 
+               alt="" 
                class="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-105 block" />
           <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-75 group-hover:opacity-90 transition-opacity duration-300"></div>
-          <div class="absolute bottom-0 left-0 right-0 p-4 transform translate-y-1 group-hover:translate-y-0 transition-transform duration-300">
-            <h3 class="text-sm font-semibold text-white group-hover:text-[#f4d084] transition-colors duration-300">Hương Trầm Thanh Khiết</h3>
-            <p class="text-xs text-gray-200 mt-1 opacity-0 group-hover:opacity-100 transition-opacity duration-300">Tĩnh tâm niệm Phật</p>
-          </div>
         </div>
       </div>
 
       <!-- Photo Item 9 -->
-      <div class="break-inside-avoid inline-block w-full group relative rounded-2xl p-2 bg-white border border-[#e5dec9] shadow-sm transition-all duration-500 hover:-translate-y-1.5 hover:shadow-xl hover:border-[#c9922a]/50">
-        <div class="overflow-hidden rounded-xl bg-[#ede7dc] relative">
-          <img src="https://images.unsplash.com/photo-1563245372-f21724e3856d?q=80&w=800&auto=format&fit=crop" 
+      <div class="break-inside-avoid inline-block w-full group relative rounded-2xl p-2.5 wet-glass-card">
+        <div class="overflow-hidden rounded-xl bg-[#ede7dc] relative shadow-inner">
+          <img src="https://scontent.fhan4-2.fna.fbcdn.net/v/t39.30808-6/778664650_122146110525111474_1244461631909286304_n.jpg?stp=c0.91.571.571a_cp6_dst-jpg_tt6&cstp=mx571x571&ctp=s571x571&_nc_cat=111&ccb=1-7&_nc_sid=714c7a&_nc_ohc=Ly8bjh3mL9kQ7kNvwFqlO1a&_nc_oc=AdpdSIRKZoLzDbcIuH_NNk-ljaQGTfTcT4mSWqSFfWRbylyX0b5nOAj0qPIdk3Y5VDQ&_nc_zt=23&_nc_ht=scontent.fhan4-2.fna&_nc_gid=hNDoRkI1psyQ2jrt8un2XA&_nc_ss=7b2a8&oh=00_AQLAb0uMw1tzPELDYyj6Pb611qqBuxNkhMrfFKTqo8Yqbg&oe=6AA9F274" 
                alt="Phong Cảnh Khánh Hòa" 
                class="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-105 block" />
           <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-75 group-hover:opacity-90 transition-opacity duration-300"></div>
-          <div class="absolute bottom-0 left-0 right-0 p-4 transform translate-y-1 group-hover:translate-y-0 transition-transform duration-300">
-            <h3 class="text-sm font-semibold text-white group-hover:text-[#f4d084] transition-colors duration-300">Núi Rừng Ninh Hòa</h3>
-            <p class="text-xs text-gray-200 mt-1 opacity-0 group-hover:opacity-100 transition-opacity duration-300">Quê hương & Chốn tu tập</p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Photo Item 10 -->
-      <div class="break-inside-avoid inline-block w-full group relative rounded-2xl p-2 bg-white border border-[#e5dec9] shadow-sm transition-all duration-500 hover:-translate-y-1.5 hover:shadow-xl hover:border-[#c9922a]/50">
-        <div class="overflow-hidden rounded-xl bg-[#ede7dc] relative">
-          <img src="https://images.unsplash.com/photo-1519817650390-64a93db51149?q=80&w=800&auto=format&fit=crop" 
-               alt="Đèn Đạo Bát Chánh Đạo" 
-               class="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-105 block" />
-          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-75 group-hover:opacity-90 transition-opacity duration-300"></div>
-          <div class="absolute bottom-0 left-0 right-0 p-4 transform translate-y-1 group-hover:translate-y-0 transition-transform duration-300">
-            <h3 class="text-sm font-semibold text-white group-hover:text-[#f4d084] transition-colors duration-300">Ngọn Đuốc Chánh Pháp</h3>
-            <p class="text-xs text-gray-200 mt-1 opacity-0 group-hover:opacity-100 transition-opacity duration-300">Soi rọi đêm đen vô minh</p>
-          </div>
         </div>
       </div>
 
@@ -402,7 +513,7 @@ get_header();
 
   <!-- Testimonials Section -->
   <?php get_template_part('partials/sections/testimonials'); ?>
-*/ ?>
+
   </div>
 </div>
 

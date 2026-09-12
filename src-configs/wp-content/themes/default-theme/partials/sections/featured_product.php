@@ -7,7 +7,7 @@ if ($featured_product_id == 0) {
 
 <section class="sec-featured-products bg-cream2 py-25">
     <div class="lg-container">
-        <div class="grid grid-cols-2 max-tablet:grid-cols-1">
+        <div class="grid grid-cols-2 gap-5 max-tablet:grid-cols-1">
             <div class="left">
                 <?php load_partial('general/section-title', [
                     'section_title' => 'Ngọc Lệ Bi Tâm Quán Thế Âm',

@@ -8,12 +8,12 @@
     "src": "src-configs/wp-content/themes/default-theme/assets/img/blockquote-lotus.webp"
   },
   "src-configs/wp-content/themes/default-theme/assets/js/vite.js": {
-    "file": "assets/vite-79lLKABm.js",
+    "file": "assets/vite-cZsFkK6f.js",
     "name": "vite",
     "src": "src-configs/wp-content/themes/default-theme/assets/js/vite.js",
     "isEntry": true,
     "css": [
-      "assets/vite-DdoKY4Ox.css"
+      "assets/vite-CAMeiQek.css"
     ],
     "assets": [
       "assets/blockquote-lines-BeJTbbjq.webp",

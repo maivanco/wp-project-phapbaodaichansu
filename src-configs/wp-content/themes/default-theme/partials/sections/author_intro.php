@@ -24,7 +24,7 @@
                     <a href="https://www.youtube.com/watch?v=khSGoSIdWDc" target="_blank" class="block"
                     data-aos="fade-up" data-aos-offset="-500" data-aos-duration="2000">
                         <img
-                            src="<?php echo IMG_URL;?>thi-ke-de-tu-nhu-lai-thich-long-vien.png"
+                            src="<?php echo IMG_URL;?>thi-ke-de-tu-nhu-lai-thich-long-vien.webp"
                             alt="Ảnh Thầy Thích Long Viễn"
                             class="rounded-xl w-full"
                         />
