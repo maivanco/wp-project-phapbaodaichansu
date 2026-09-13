@@ -1,5 +1,8 @@
 {
 	frankenphp
+	servers {
+		trusted_proxies static private_ranges
+	}
 }
 
 # The SERVER_NAME environment variable is used to configure the domain name
@@ -41,8 +44,4 @@
 
 	# PHP handler
 	php_server
-}
-
-vkn.mike-tran.dev {
-    reverse_proxy host.docker.internal:8080
 }
