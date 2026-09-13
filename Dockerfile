@@ -32,7 +32,8 @@ COPY ./src-configs/configs/wp-config.php .
 # Copy PHP configuration
 COPY ./src-configs/configs/php.ini /usr/local/etc/php/
 
-# Copy Caddy server configuration
+# Copy Caddy server configuration (FrankenPHP reads from /etc/frankenphp/Caddyfile)
+COPY ./Caddyfile /etc/frankenphp/Caddyfile
 COPY ./Caddyfile /etc/caddy/Caddyfile
 
 # Set permissions for the WordPress files (root-owned application code, write access only for uploads)
