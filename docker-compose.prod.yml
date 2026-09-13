@@ -55,6 +55,8 @@ services:
     build: .
     container_name: ${PROJECT_NAME}-${ENVIRONMENT}-cron
     restart: unless-stopped
+    healthcheck:
+      disable: true
     depends_on:
       - db
       - wordpress
