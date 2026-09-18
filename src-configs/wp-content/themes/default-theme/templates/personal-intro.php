@@ -148,8 +148,83 @@ get_header();
   </div>
 </div>
 
+
+<!-- Featured Book Section / Introduction to Author's Special Work -->
+<?php
+$book_product_id = 0; // "Ngọc Lệ Bi Tâm Quán Thế Âm"
+$book_product = function_exists('wc_get_product') ? wc_get_product($book_product_id) : null;
+if (!$book_product && function_exists('wc_get_product')) {
+    $product_by_slug = get_page_by_path('nhat-anh-tu-van-tap-1', OBJECT, 'product');
+    if ($product_by_slug) {
+        $book_product = wc_get_product($product_by_slug->ID);
+    }
+}
+
+$book_url = $book_product ? get_permalink($book_product->get_id()) : '#';
+$book_title = $book_product ? $book_product->get_title() : 'Nhặt Ánh Từ Vân';
+$book_short_desc = ($book_product && !empty($book_product->get_short_description())) 
+    ? $book_product->get_short_description() 
+    : 'Quý đọc giả có thể đọc qua tác phẩm này để hiểu thêm về thầy Thích Long Viễn, con đường tu tập và những chia sẻ tâm huyết của thầy.';
+
+$book_img_url = '';
+if ($book_product && $book_product->get_image_id()) {
+    $book_img_url = wp_get_attachment_url($book_product->get_image_id());
+}
+if (empty($book_img_url)) {
+    $book_img_url = IMG_URL . 'v2-nhat-anh-tu-van-tap-1.webp';
+}
+?>
+
+
+<section class="bg-white border border-[#2d2a26]/15 rounded-2xl p-6 md:p-10 max-w-5xl mx-auto shadow-sm relative overflow-hidden my-16 md:my-24">
+  <!-- Background subtle glows -->
+  <div class="absolute -top-16 -left-16 w-48 h-48 rounded-full bg-[#1a747a]/5 blur-3xl pointer-events-none"></div>
+  <div class="absolute -bottom-16 -right-16 w-48 h-48 rounded-full bg-[#c9922a]/5 blur-3xl pointer-events-none"></div>
+
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center relative z-10">
+    <!-- Book Cover / Image Column -->
+    <div class="lg:col-span-5 flex justify-center">
+      <div class="group relative max-w-xs w-full border border-[#2d2a26]/10 p-3 bg-[#faf8f5] shadow-md rounded-xl transition-all duration-500 hover:shadow-xl">
+        <a href="<?php echo esc_url($book_url); ?>" class="block overflow-hidden rounded-lg">
+          <img src="<?php echo esc_url($book_img_url); ?>" 
+                alt="<?php echo esc_attr($book_title); ?>" 
+                class="w-full h-auto object-cover rounded-lg transition-transform duration-700 group-hover:scale-105" />
+        </a>
+      </div>
+    </div>
+
+    <!-- Content Column -->
+    <div class="lg:col-span-7 flex flex-col justify-center space-y-5 text-[#2d2a26]">
+      <div>
+        <h3 class="font-title text-2xl md:text-4xl font-bold tracking-tight leading-snug">
+          <a href="<?php echo esc_url($book_url); ?>" class="hover:text-[#1a747a] transition-colors duration-300">
+            <?php echo esc_html($book_title); ?>
+          </a>
+        </h3>
+        <p class="text-xs md:text-sm font-sans uppercase tracking-widest text-gray-500 mt-2 font-medium">
+          Tác giả: <span class="text-[#1a747a] font-semibold">Tỷ kheo Thích Long Viễn</span>
+        </p>
+      </div>
+
+      <div class="text-sm md:text-base leading-relaxed text-gray-700 border-l-2 border-[#c9922a] pl-4 py-1 italic font-serif">
+        <?php echo wp_kses_post($book_short_desc); ?>
+      </div>
+
+      <div class="pt-2 flex flex-wrap items-center gap-4">
+        <a href="<?php echo esc_url($book_url); ?>" 
+            class="px-8 py-3.5 bg-[#1a747a] hover:bg-[#c9922a] text-white font-sans text-xs md:text-sm font-semibold uppercase tracking-wider rounded-lg transition-all duration-300 shadow-sm hover:shadow-md inline-flex items-center gap-2">
+          <span>Tìm Hiểu & Thỉnh Sách</span>
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+          </svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- Editorial Gallery / Photo Essay Grid (Full-Width Masonry Gallery with Wet Glass & Raindrop Mirror Background) -->
-<section class="w-full wet-glass-section text-[#2d2a26] py-16 md:py-24 my-8">
+<section class="w-full wet-glass-section text-[#2d2a26] py-16 md:py-24">
 
   <!-- Wet Glass & Atmospheric Reflection Backdrop -->
   <div class="wet-glass-backdrop">
@@ -307,21 +382,13 @@ get_header();
   <div class="container mx-auto px-4 max-w-7xl relative z-10">
     <!-- Section Header -->
     <div class="text-center max-w-3xl mx-auto mb-14">
-      <div class="inline-flex items-center justify-center gap-3 px-5 py-1.5 rounded-full bg-white/75 backdrop-blur-md border border-white/80 shadow-xs mb-4">
-        <span class="h-[1px] w-8 bg-[#c9922a]"></span>
-        <span class="text-xs md:text-sm uppercase tracking-[0.25em] text-[#1a747a] font-semibold">Tư Liệu & Thắng Cảnh</span>
-        <span class="h-[1px] w-8 bg-[#c9922a]"></span>
-      </div>
       <h2 class="text-3xl md:text-5xl font-bold uppercase tracking-wider text-[#2d2a26] mb-4 drop-shadow-[0_1px_1px_rgba(255,255,255,0.9)]">
-        Bộ Sưu Tập Hình Ảnh
+        Thư viện hình ảnh
       </h2>
-      <p class="text-[#4a443d] text-sm md:text-base leading-relaxed max-w-2xl mx-auto font-medium">
-        Những khoảnh khắc thanh tịnh, hình ảnh chốn trú xứ Phật Đảnh Bảo Vương và hành trình hoằng pháp lợi sinh của Thầy Thích Long Viễn.
-      </p>
     </div>
 
     <!-- Masonry Grid Layout -->
-    <div class="columns-1 sm:columns-2 md:columns-3 lg:columns-4 gap-4 md:gap-6 space-y-4 md:space-y-6">
+    <div class="columns-1 sm:columns-2 md:columns-3 gap-4 md:gap-6 space-y-4 md:space-y-6">
       
       <!-- Photo Item 1 -->
       <div class="break-inside-avoid inline-block w-full group relative rounded-2xl p-2.5 wet-glass-card">
@@ -340,7 +407,7 @@ get_header();
       <!-- Photo Item 2 -->
       <div class="break-inside-avoid inline-block w-full group relative rounded-2xl p-2.5 wet-glass-card">
         <div class="overflow-hidden rounded-xl bg-[#ede7dc] relative shadow-inner">
-          <img src="https://scontent.fhan4-3.fna.fbcdn.net/v/t39.30808-6/771909463_122145146835111474_7908241927327642531_n.jpg?stp=dst-jpg_tt6&cstp=mx2048x1536&ctp=s2048x1536&_nc_cat=103&ccb=1-7&_nc_sid=127cfc&_nc_ohc=lZVUlyMbayIQ7kNvwH9RRVM&_nc_oc=AdoT3lpmsF8Ix0PV1DDDFmdO9C_l1PtHyUDQBF_vmwPhUp8GcEKq4R-X-SA4ae3_HMQ&_nc_zt=23&_nc_ht=scontent.fhan4-3.fna&_nc_gid=vu_P5BdFSejGaBx07SZ0ig&_nc_ss=7b2a8&oh=00_AQI4w1dmDSCk5gYgLGMLwxCrk-z9SDEBZWLZMY4UQqvN7Q&oe=6AA9E869" 
+          <img src="<?php echo IMG_URL;?>teacher-gallery/anh-thay-01.jpg" 
                alt="" 
                class="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-105 block" />
           <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-75 group-hover:opacity-90 transition-opacity duration-300"></div>
@@ -350,7 +417,7 @@ get_header();
       <!-- Photo Item 3 -->
       <div class="break-inside-avoid inline-block w-full group relative rounded-2xl p-2.5 wet-glass-card">
         <div class="overflow-hidden rounded-xl bg-[#ede7dc] relative shadow-inner">
-          <img src="https://scontent.fhan4-1.fna.fbcdn.net/v/t39.30808-6/754143416_122141915541111474_5794926958798317414_n.jpg?stp=dst-jpg_tt6&cstp=mx1348x1265&ctp=s1348x1265&_nc_cat=105&ccb=1-7&_nc_sid=127cfc&_nc_ohc=e6KV-Sq6WMcQ7kNvwFXxKzx&_nc_oc=Adq_I4FCqQB21c_wDR54Kk4Zx41E_XyHrjbbujBxq1BFfjcD-QhJ1uWXDCTjyZKdqKs&_nc_zt=23&_nc_ht=scontent.fhan4-1.fna&_nc_gid=TDscDnSFYgrTDWhtbwpbyw&_nc_ss=7b2a8&oh=00_AQKdKyCw3bTbVmKv2rOXxPcxTO8nM5py976FhyfKA7ZVDg&oe=6AAA0117" 
+          <img src="<?php echo IMG_URL;?>teacher-gallery/anh-thay-02.jpg" 
                alt="" 
                class="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-105 block" />
           <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-75 group-hover:opacity-90 transition-opacity duration-300"></div>
@@ -360,7 +427,7 @@ get_header();
       <!-- Photo Item 4 -->
       <div class="break-inside-avoid inline-block w-full group relative rounded-2xl p-2.5 wet-glass-card">
         <div class="overflow-hidden rounded-xl bg-[#ede7dc] relative shadow-inner">
-          <img src="https://scontent.fhan3-2.fna.fbcdn.net/v/t39.30808-6/794262190_122148382389111474_217835910334839665_n.jpg?stp=cp6_dst-jpg_tt6&cstp=mx1092x1446&ctp=s1092x1446&_nc_cat=107&ccb=1-7&_nc_sid=127cfc&_nc_ohc=J2V8S_Tm_p8Q7kNvwFdAwdf&_nc_oc=AdoL7MIXELGtZVTOmcR9kf0F9kGKGO3X1rdEJmARjiEGy3XMNWCIHX9JsoGNI7Dxh_Y&_nc_zt=23&_nc_ht=scontent.fhan3-2.fna&_nc_gid=iSd1Th0BHhg2sNaFY8aA2Q&_nc_ss=7b2a8&oh=00_AQLj3hNKkdlbuV1y8mfrSN5EmUeGfildX9TKitvNyo7evA&oe=6AA9D2FF" 
+          <img src="<?php echo IMG_URL;?>teacher-gallery/anh-thay-03.jpg" 
                alt="Kinh Sách & Biên Dịch" 
                class="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-105 block" />
           <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-75 group-hover:opacity-90 transition-opacity duration-300"></div>
@@ -370,7 +437,7 @@ get_header();
       <!-- Photo Item 5 -->
       <div class="break-inside-avoid inline-block w-full group relative rounded-2xl p-2.5 wet-glass-card">
         <div class="overflow-hidden rounded-xl bg-[#ede7dc] relative shadow-inner">
-          <img src="https://scontent.fhan3-4.fna.fbcdn.net/v/t39.30808-6/580860953_122101809267111474_305811052544553943_n.jpg?stp=dst-jpg_tt6&cstp=mx1440x1435&ctp=s1440x1435&_nc_cat=106&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=4B4yeCvlN64Q7kNvwFm9t3J&_nc_oc=AdoKxGWC3w3TCMFEAcH-N6TLbvexR8xplq8xLTZ3vQA5T06IBa7wVS_YdXzhKKWummg&_nc_zt=23&_nc_ht=scontent.fhan3-4.fna&_nc_gid=819W2aRV3fS3ClEw8by7Pw&_nc_ss=7b2a8&oh=00_AQJW4vDGJeIEdSl6_q1kx0MrTgtotkV3pA8xfC4twaRV9g&oe=6AA9D04E" 
+          <img src="<?php echo IMG_URL;?>teacher-gallery/anh-thay-04.jpg" 
                alt="Chân dung Thầy Thích Long Viễn" 
                class="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-105 block" />
           <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-75 group-hover:opacity-90 transition-opacity duration-300"></div>
@@ -380,7 +447,7 @@ get_header();
       <!-- Photo Item 6 -->
       <div class="break-inside-avoid inline-block w-full group relative rounded-2xl p-2.5 wet-glass-card">
         <div class="overflow-hidden rounded-xl bg-[#ede7dc] relative shadow-inner">
-          <img src="https://scontent.fhan3-3.fna.fbcdn.net/v/t39.30808-6/761497503_122143300941111474_3578873891614490672_n.jpg?stp=c0.187.1480.1480a_dst-jpg_tt6&cstp=mx1480x1480&ctp=s640x640&_nc_cat=101&ccb=1-7&_nc_sid=714c7a&_nc_ohc=9jtcHGA_XKkQ7kNvwF2BC9R&_nc_oc=Adr0_pjsHW_9qOpa1DeuJlUJQp8pC_8WNwW7f3tet5N1Uh9WkMoNLqSfFziZd8XQUn4&_nc_zt=23&_nc_ht=scontent.fhan3-3.fna&_nc_gid=hNDoRkI1psyQ2jrt8un2XA&_nc_ss=7b2a8&oh=00_AQLJqMg89TxNHdjBbCox0o_JLKHf7Ym9n_kyN4J0OGOMaA&oe=6AA9E757" 
+          <img src="<?php echo IMG_URL;?>teacher-gallery/anh-thay-05.jpg" 
                alt="" 
                class="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-105 block" />
           <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-75 group-hover:opacity-90 transition-opacity duration-300"></div>
@@ -404,12 +471,23 @@ get_header();
       <!-- Photo Item 9 -->
       <div class="break-inside-avoid inline-block w-full group relative rounded-2xl p-2.5 wet-glass-card">
         <div class="overflow-hidden rounded-xl bg-[#ede7dc] relative shadow-inner">
-          <img src="https://scontent.fhan4-2.fna.fbcdn.net/v/t39.30808-6/778664650_122146110525111474_1244461631909286304_n.jpg?stp=c0.91.571.571a_cp6_dst-jpg_tt6&cstp=mx571x571&ctp=s571x571&_nc_cat=111&ccb=1-7&_nc_sid=714c7a&_nc_ohc=Ly8bjh3mL9kQ7kNvwFqlO1a&_nc_oc=AdpdSIRKZoLzDbcIuH_NNk-ljaQGTfTcT4mSWqSFfWRbylyX0b5nOAj0qPIdk3Y5VDQ&_nc_zt=23&_nc_ht=scontent.fhan4-2.fna&_nc_gid=hNDoRkI1psyQ2jrt8un2XA&_nc_ss=7b2a8&oh=00_AQLAb0uMw1tzPELDYyj6Pb611qqBuxNkhMrfFKTqo8Yqbg&oe=6AA9F274" 
+          <img src="<?php echo IMG_URL;?>teacher-gallery/anh-thay-06.jpg" 
                alt="Phong Cảnh Khánh Hòa" 
                class="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-105 block" />
           <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-75 group-hover:opacity-90 transition-opacity duration-300"></div>
         </div>
       </div>
+
+      <!-- Photo Item 10 -->
+      <div class="break-inside-avoid inline-block w-full group relative rounded-2xl p-2.5 wet-glass-card">
+        <div class="overflow-hidden rounded-xl bg-[#ede7dc] relative shadow-inner">
+          <img src="<?php echo IMG_URL;?>teacher-gallery/anh-thay-07.jpg" 
+               alt="Phong Cảnh Khánh Hòa" 
+               class="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-105 block" />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-75 group-hover:opacity-90 transition-opacity duration-300"></div>
+        </div>
+      </div>
+
 
     </div>
   </div>
@@ -418,97 +496,7 @@ get_header();
 <div class="bg-[#faf8f5] py-12 md:py-20 text-[#2d2a26]">
   <div class="container mx-auto px-4 max-w-6xl">
 
-    <!-- Featured Book Section / Introduction to Author's Special Work -->
-    <?php
-    $book_product_id = 77; // "Ngọc Lệ Bi Tâm Quán Thế Âm"
-    $book_product = function_exists('wc_get_product') ? wc_get_product($book_product_id) : null;
-    if (!$book_product && function_exists('wc_get_product')) {
-        $product_by_slug = get_page_by_path('ngoc-le-bi-tam-quan-the-am', OBJECT, 'product');
-        if ($product_by_slug) {
-            $book_product = wc_get_product($product_by_slug->ID);
-        }
-    }
-
-    $book_url = $book_product ? get_permalink($book_product->get_id()) : '#';
-    $book_title = $book_product ? $book_product->get_title() : 'Ngọc Lệ Bi Tâm Quán Thế Âm';
-    $book_short_desc = ($book_product && !empty($book_product->get_short_description())) 
-        ? $book_product->get_short_description() 
-        : 'Tác phẩm đặc biệt ghi lại 108 bài thi kệ "Đại Ngộ Đắc Tự Tại" cùng tâm nguyện tu tập và khai thị vô giá của Thầy Thích Long Viễn. Đây là chiếc chìa khóa giúp độc giả thấu hiểu trọn vẹn về cuộc đời, trí tuệ và đạo nghiệp của tác giả.';
     
-    $book_img_url = '';
-    if ($book_product && $book_product->get_image_id()) {
-        $book_img_url = wp_get_attachment_url($book_product->get_image_id());
-    }
-    if (empty($book_img_url)) {
-        $book_img_url = IMG_URL . 'slide-ngoc-le-bi-tam-3.jpg';
-    }
-    ?>
-
-
-    <section class="bg-white border border-[#2d2a26]/15 rounded-2xl p-6 md:p-10 max-w-5xl mx-auto shadow-sm relative overflow-hidden my-16 md:my-24">
-      <!-- Background subtle glows -->
-      <div class="absolute -top-16 -left-16 w-48 h-48 rounded-full bg-[#1a747a]/5 blur-3xl pointer-events-none"></div>
-      <div class="absolute -bottom-16 -right-16 w-48 h-48 rounded-full bg-[#c9922a]/5 blur-3xl pointer-events-none"></div>
-
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center relative z-10">
-        <!-- Book Cover / Image Column -->
-        <div class="lg:col-span-5 flex justify-center">
-          <div class="group relative max-w-xs w-full border border-[#2d2a26]/10 p-3 bg-[#faf8f5] shadow-md rounded-xl transition-all duration-500 hover:shadow-xl">
-            <a href="<?php echo esc_url($book_url); ?>" class="block overflow-hidden rounded-lg">
-              <img src="<?php echo esc_url($book_img_url); ?>" 
-                   alt="<?php echo esc_attr($book_title); ?>" 
-                   class="w-full h-auto object-cover rounded-lg transition-transform duration-700 group-hover:scale-105" />
-            </a>
-            <div class="mt-3 text-center">
-              <span class="inline-block text-[11px] font-sans font-semibold uppercase tracking-widest text-[#1a747a] bg-[#1a747a]/10 px-3 py-1 rounded-full">
-                Ấn Phẩm Tiêu Biểu
-              </span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Content Column -->
-        <div class="lg:col-span-7 flex flex-col justify-center space-y-5 text-[#2d2a26]">
-          <div>
-            <h3 class="font-title text-2xl md:text-4xl font-bold tracking-tight leading-snug">
-              <a href="<?php echo esc_url($book_url); ?>" class="hover:text-[#1a747a] transition-colors duration-300">
-                <?php echo esc_html($book_title); ?>
-              </a>
-            </h3>
-            <p class="text-xs md:text-sm font-sans uppercase tracking-widest text-gray-500 mt-2 font-medium">
-              Tác giả: <span class="text-[#1a747a] font-semibold">Đại Đức Thích Long Viễn</span>
-            </p>
-          </div>
-
-          <div class="text-sm md:text-base leading-relaxed text-gray-700 border-l-2 border-[#c9922a] pl-4 py-1 italic font-serif">
-            <?php echo wp_kses_post($book_short_desc); ?>
-          </div>
-
-          <p class="text-xs md:text-sm text-gray-600 leading-relaxed font-sans">
-            Để hiểu rõ về tư tưởng, tâm nguyện và đạo lộ tu tập của Thầy Thích Long Viễn, tác phẩm này là cầu nối chân thực nhất giúp độc giả thấu cảm ngọn đuốc Chánh pháp và 108 bài thi kệ "Đại Ngộ Đắc Tự Tại" chứa đựng cốt tủy diệu pháp.
-          </p>
-
-          <div class="pt-2 flex flex-wrap items-center gap-4">
-            <a href="<?php echo esc_url($book_url); ?>" 
-               class="px-8 py-3.5 bg-[#1a747a] hover:bg-[#c9922a] text-white font-sans text-xs md:text-sm font-semibold uppercase tracking-wider rounded-lg transition-all duration-300 shadow-sm hover:shadow-md inline-flex items-center gap-2">
-              <span>Tìm Hiểu & Thỉnh Sách</span>
-              <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-              </svg>
-            </a>
-            
-            <?php if ($book_product): ?>
-              <a href="#" 
-                 data-product_id="<?php echo esc_attr($book_product->get_id()); ?>" 
-                 data-quantity="1" 
-                 class="button product_type_simple add_to_cart_button ajax_add_to_cart px-6 py-3.5 border border-[#1a747a] text-[#1a747a] hover:bg-[#1a747a] hover:text-white font-sans text-xs md:text-sm font-semibold uppercase tracking-wider rounded-lg transition-all duration-300 inline-flex items-center gap-2">
-                <span>Đặt Sách</span>
-              </a>
-            <?php endif; ?>
-          </div>
-        </div>
-      </div>
-    </section>
   
 
   <!-- Testimonials Section -->
