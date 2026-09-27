@@ -5,6 +5,9 @@
 get_header(); 
 ?>
 
+<!-- Fullscreen Hero Banner: Thầy Thích Long Viễn Toạ Thiền -->
+<?php get_template_part('partials/sections/author_hero_banner'); ?>
+
 <div class="bg-[#faf8f5] min-h-screen py-12 md:py-20 text-[#2d2a26]">
   <div class="container mx-auto px-4 max-w-6xl">
     
@@ -495,15 +498,14 @@ if (empty($book_img_url)) {
 
 <div class="bg-[#faf8f5] py-12 md:py-20 text-[#2d2a26]">
   <div class="container mx-auto px-4 max-w-6xl">
-
-    
-  
-
-  <!-- Testimonials Section -->
-  <?php get_template_part('partials/sections/testimonials'); ?>
-
+    <!-- Testimonials Section -->
+    <?php get_template_part('partials/sections/testimonials'); ?>
   </div>
 </div>
+
+<!-- Full-screen YouTube Audio Section: Tâm Thư Cảnh Sách -->
+<?php get_template_part('partials/sections/youtube-single-audio'); ?>
+<?php get_template_part('partials/sections/youtube-single-audio-v2'); ?>
 
 
 <?php get_footer(); ?>

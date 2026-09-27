@@ -7,6 +7,8 @@ services:
     restart: "no"
     environment:
       SERVER_NAME: http://pbdcs.localhost
+    volumes:
+      - ./Caddyfile:/etc/frankenphp/Caddyfile
 
   cron:
     restart: "no"

@@ -7,7 +7,7 @@
 }
 
 # The SERVER_NAME environment variable is used to configure the domain name
-http://{$SERVER_NAME:localhost} {
+{$SERVER_NAME:localhost} {
 	# Root directory
 	root * /app/public
 
